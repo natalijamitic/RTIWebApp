@@ -18,8 +18,8 @@ connection.once('open', () => {
 });
 const router = express_1.default.Router();
 app.get('/', (req, res) => {
-    res.send('Hello World!');
     seed_1.default();
+    res.status(200).json({ msg: "OK" });
 });
 app.listen(4000, () => console.log(`Express server running on port 4000`));
 //# sourceMappingURL=server.js.map

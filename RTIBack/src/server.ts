@@ -20,8 +20,8 @@ connection.once('open', ()=>{
 const router = express.Router();
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
     seed();
+    res.status(200).json({msg: "OK"});
 });
 
 app.listen(4000, () => console.log(`Express server running on port 4000`));
