@@ -1,0 +1,24 @@
+<ul class="nav navbar-nav ml-auto">
+    <li>
+        <a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle login-btn ml-auto mt-1 mb-1">
+            Login
+            <i class="fas fa-user-alt ml-1"></i>
+        </a>
+        <ul class="dropdown-menu form-wrapper">
+            <li>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Username" required="required" [(ngModel)]='username' name="username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" required="required" [(ngModel)]='password' name="password">
+                    </div>
+                    <input type="submit" class="btn btn-primary btn-block" value="Login" (click)='login()'>
+                </form>
+            </li>
+            <div class="text-center mt-2 mb-1 text-warning">
+                {{error}}
+            </div>
+        </ul>
+    </li>
+</ul>

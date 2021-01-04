@@ -2,9 +2,6 @@
 import mongoose, { connect } from 'mongoose';
 import { Assignment } from '../model/Assignment';
 
-const db = mongoose.connect('mongodb://localhost:27017/rti_katedra');
-const connection = mongoose.connection;
-
 const assignments = [
     {
         subject: "13S111P1",
@@ -100,6 +97,9 @@ function seedAssignments(): void {
 }
 
 function seedAllAssignments(): void {
+    const db = mongoose.connect('mongodb://localhost:27017/rti_katedra');
+    const connection = mongoose.connection;
+
     connection.db.dropCollection('Assignment', function (err, result) { });
 
     new Promise(resolve => {

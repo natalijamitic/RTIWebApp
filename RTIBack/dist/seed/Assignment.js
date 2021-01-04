@@ -15,8 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.seedAllAssignments = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const Assignment_1 = require("../model/Assignment");
-const db = mongoose_1.default.connect('mongodb://localhost:27017/rti_katedra');
-const connection = mongoose_1.default.connection;
 const assignments = [
     {
         subject: "13S111P1",
@@ -110,6 +108,8 @@ function seedAssignments() {
     }
 }
 function seedAllAssignments() {
+    const db = mongoose_1.default.connect('mongodb://localhost:27017/rti_katedra');
+    const connection = mongoose_1.default.connection;
     connection.db.dropCollection('Assignment', function (err, result) { });
     new Promise(resolve => {
         seedAssignments();

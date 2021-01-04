@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="home">RTI Katedra</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="home">Pocetna</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="zaposleni">Zaposleni</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="obavestenja">Obavestenja</a>
+            </li>
+            <li class="nav-item dropdown" [routerLinkActive]="['active']">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Osnovne studije
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="odsek/rti">Odsek za RTI</a>
+                    <a class="dropdown-item" routerLink="odsek/si">Odsek za SI</a>
+                    <a class="dropdown-item" routerLink="odsek/ostali">Ostali odseci</a>
+                </div>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="master">Master studije</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="nauka">Nauka</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="kontakt">Kontakt</a>
+            </li>
+        </ul>
+
+        <login class="ml-auto"></login>
+
+        <register class="ml-2"></register>
+
+    </div>
+</nav>

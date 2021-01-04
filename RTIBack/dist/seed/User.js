@@ -15,8 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.seedAllUsers = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const User_1 = require("../model/User");
-const db = mongoose_1.default.connect('mongodb://localhost:27017/rti_katedra');
-const connection = mongoose_1.default.connection;
 const users = [
     {
         username: "admin",
@@ -200,6 +198,8 @@ function seedStudents() {
     }
 }
 function seedAllUsers() {
+    const db = mongoose_1.default.connect('mongodb://localhost:27017/rti_katedra');
+    const connection = mongoose_1.default.connection;
     connection.db.dropCollection('User', function (err, result) { });
     connection.db.dropCollection('Student', function (err, result) { });
     connection.db.dropCollection('Employee', function (err, result) { });

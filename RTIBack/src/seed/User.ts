@@ -2,9 +2,6 @@
 import mongoose, { connect } from 'mongoose';
 import { User, Employee, Student } from '../model/User';
 
-const db = mongoose.connect('mongodb://localhost:27017/rti_katedra');
-const connection = mongoose.connection;
-
 const users = [
     {
         username: "admin",
@@ -194,6 +191,9 @@ function seedStudents(): void {
 }
 
 function seedAllUsers(): void {
+    const db = mongoose.connect('mongodb://localhost:27017/rti_katedra');
+    const connection = mongoose.connection;
+
     connection.db.dropCollection('User', function (err, result) { });
     connection.db.dropCollection('Student', function (err, result) { });
     connection.db.dropCollection('Employee', function (err, result) { });
