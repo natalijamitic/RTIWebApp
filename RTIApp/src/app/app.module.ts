@@ -15,9 +15,15 @@ import { AuthenticationInterceptor } from './Services/Authentication/Authenticat
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationService } from './Services/Notification/notification.service';
 import { NotificationCardComponent } from './notification-card/notification-card.component';
+import { ResearchComponent } from './research/research.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { ResearchProjectsComponent } from './research-projects/research-projects.component';
+import { ProjectsService } from './Services/Projects/projects.service';
+import { ResearchProjectsCardComponent } from './research-projects-card/research-projects-card.component';
+import { ProjectsCardComponent } from './projects-card/projects-card.component';
 @NgModule({
   declarations: [             //  all personal components
-    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent
+    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent
   ],
   imports: [                  //  foreign import components
     BrowserModule,
@@ -32,8 +38,9 @@ import { NotificationCardComponent } from './notification-card/notification-card
       multi: true,
     },
     AuthenticationService,
-    NotificationService
-],              //  services
+    NotificationService,
+    ProjectsService
+  ],              //  services
   bootstrap: [AppComponent]   //  main component
 })
 export class AppModule { }

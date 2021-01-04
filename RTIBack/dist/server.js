@@ -30,6 +30,7 @@ const seed_1 = __importDefault(require("./seed/seed"));
 const fs = __importStar(require("fs"));
 const middleware = __importStar(require("./middleware"));
 const userQueries = __importStar(require("./query/User"));
+const projectQueries = __importStar(require("./query/Projects"));
 const notificationQueries = __importStar(require("./query/Notification"));
 const jwt = require('jsonwebtoken');
 const RSA_PRIVATE_KEY = fs.readFileSync('src/assets/keys/private.key');
@@ -86,6 +87,21 @@ router.route('/login').post((request, response) => {
 router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request, respone) => {
     console.log("Proba route.");
     respone.json(true);
+});
+//******* PROJECTS ROUTES     *******/
+// GET Offered Projects
+router.route('/projects/offered').get((_request, response) => {
+    console.log("Offered proj route");
+    projectQueries.getOfferedProjects().then((result) => {
+        response.json(result);
+    });
+});
+// GET Done Projects
+router.route('/projects/done').get((_request, response) => {
+    console.log("Done proj route");
+    projectQueries.getDoneProjects().then((result) => {
+        response.json(result);
+    });
 });
 //******* NOTIFICATION ROUTES *******/
 // GET Notifications

@@ -1,0 +1,7 @@
+<div class="container">
+    <div id="accordion">
+        <div *ngFor="let proj of projects; let i = index">
+            <research-projects-card [project] = "proj"></research-projects-card>
+        </div>
+    </div>
+</div>

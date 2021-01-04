@@ -6,6 +6,7 @@ import seed from './seed/seed';
 import * as fs from "fs"
 import * as middleware from './middleware'
 import * as userQueries from './query/User';
+import * as projectQueries from './query/Projects';
 import * as notificationQueries from './query/Notification';
 
 
@@ -77,6 +78,24 @@ router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.che
     respone.json(true);
 });
 
+//******* PROJECTS ROUTES     *******/
+// GET Offered Projects
+router.route('/projects/offered').get((_request, response) => {
+    console.log("Offered proj route");
+
+    projectQueries.getOfferedProjects().then((result: any) => {
+        response.json(result)
+    })
+
+});
+// GET Done Projects
+router.route('/projects/done').get((_request, response) => {
+    console.log("Done proj route");
+
+    projectQueries.getDoneProjects().then((result: any) => {
+        response.json(result)
+    })
+});
 
 //******* NOTIFICATION ROUTES *******/
 // GET Notifications

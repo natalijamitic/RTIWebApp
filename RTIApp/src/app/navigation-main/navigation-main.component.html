@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
     <a class="navbar-brand" routerLink="home">RTI Katedra</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,17 @@
                 <a class="nav-link" routerLink="master">Master studije</a>
             </li>
             <li class="nav-item" [routerLinkActive]="['active']">
-                <a class="nav-link" routerLink="nauka">Nauka</a>
+                <a class="nav-link" routerLink="projekti">Projekti</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Nauka
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" [routerLinkActive]="['active']" routerLink="nauka/istrazivanja">Istrazivanja</a>
+                    <a class="dropdown-item" [routerLinkActive]="['active']" routerLink="nauka/projekti">Projekti</a>
+                </div>
             </li>
             <li class="nav-item" [routerLinkActive]="['active']">
                 <a class="nav-link" routerLink="kontakt">Kontakt</a>

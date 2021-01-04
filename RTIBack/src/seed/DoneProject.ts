@@ -4,12 +4,12 @@ import DoneProject from '../model/DoneProject'
 const projects = [
     {
         title: "Projekat 1",
-        members: ["Dr.Vet.Med. Zarko Marjanov, Prof Ninoslav Kovelja"],
+        members: ["Dr.Vet.Med", "Zarko Marjanov", "Prof Ninoslav Kovelja"],
         description: "Za opis ovog projekta kontaktirajte stud sluzbu."
     },
     {
         title: "Projekat 2",
-        members: ["Aleksa Zdravkovic, Nikolina Jovanovic"],
+        members: ["Aleksa Zdravkovic", "Nikolina Jovanovic"],
         description: "Za opis ovog projekta kontaktirajte stud sluzbu."
     },
     {
@@ -19,12 +19,12 @@ const projects = [
     },
     {
         title: "Projekat 4",
-        members: ["Vlastelin Duhovlatic, Ozbek Urgundi"],
+        members: ["Vlastelin Duhovlatic", "Ozbek Urgundi"],
         description: "Za opis ovog projekta kontaktirajte stud sluzbu."
     },
     {
         title: "Projekat 5",
-        members: ["Nada Stosic, Brankica Doric, Kata Manojlovic, Igor Trubar"],
+        members: ["Nada Stosic", "Brankica Doric", "Kata Manojlovic", "Igor Trubar"],
         description: "Za opis ovog projekta kontaktirajte stud sluzbu."
     }
 ]

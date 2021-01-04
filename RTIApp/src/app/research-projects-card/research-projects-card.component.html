@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" attr.data-target="{{'#' + id}}" aria-expanded="true"
+                attr.aria-controls={{id}}>
+                {{ project.title }}
+            </button>
+        </h5>
+    </div>
+
+    <div id={{id}} class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+            <p>{{project.description}}</p>
+            <p class="date"><i class="fas fa-user-astronaut mr-1"></i>{{project.members.join(', ')}}</p>
+            <hr>
+        </div>
+    </div>
+</div>
