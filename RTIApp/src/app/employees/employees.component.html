@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="contact-body">
+        <div class="contact">
+            <div class="row card-row" *ngIf="employees">
+
+                    <div class="col-md-6" *ngFor="let emp of employees">
+                        <div class="card">
+                            <div class="card-body">
+                                <a class="link-employee" (click)="openEmployee(emp)"><h2 class="card-title">{{emp.lastname}} &nbsp; {{emp.firstname}}</h2></a>
+                            </div>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="fas fa-tag mr-2"></i>{{emp.title}}</li>
+                            </ul>
+
+                            <ul class="list-group list-group-flush" *ngIf="emp.subjects && emp.subjects.length > 0">
+                                <p class="subjects-header">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                    <span class="ml-2">Lista predmeta:</span> </p>
+                                <div>
+                                    <ul class="subjects ml-3 mb-2">
+                                        <li class="" *ngFor="let subj of emp.subjects">
+                                            {{subj}}
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </ul>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>

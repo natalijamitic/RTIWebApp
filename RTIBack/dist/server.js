@@ -88,6 +88,21 @@ router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.che
     console.log("Proba route.");
     respone.json(true);
 });
+//******* EMPLOYEES ROUTES     *******/
+// GET Employees
+router.route('/employees').get((_request, response) => {
+    console.log("Employees route");
+    userQueries.getAllEmployees().then((result) => {
+        response.json(result);
+    });
+});
+// GET Assignments
+router.route('/assignments').get((_request, response) => {
+    console.log("Assignments route");
+    userQueries.getAllAssignments().then((result) => {
+        response.json(result);
+    });
+});
 //******* PROJECTS ROUTES     *******/
 // GET Offered Projects
 router.route('/projects/offered').get((_request, response) => {

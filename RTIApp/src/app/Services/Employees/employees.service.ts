@@ -1,0 +1,58 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { IAssignment, IEmployee } from 'src/app/employees/employees.component';
+import { environment } from 'src/environments/environment';
+
+
+@Injectable({
+    providedIn: 'root'
+})
+export class EmployeesService {
+
+    constructor(private http: HttpClient) {
+
+    }
+
+    getAllEmployees() {
+        return this.http.get(`${environment.api}/employees`)
+            .pipe(
+                map((e: any) => {
+                    let employees: Array<IEmployee> = [];
+                    for (let emp of e) {
+                        employees.push({
+                            username: emp.username,
+                            firstname: emp.firstName,
+                            lastname: emp.lastName,
+                            address: emp.address,
+                            phoneNumber: emp.phoneNumber,
+                            webpage: emp.webpage,
+                            personalInfo: emp.personalInfo,
+                            title: emp.title,
+                            roomNumber: emp.roomNumber,
+                            status: emp.status,
+                            type: emp.type,
+                            subjects: [] as string[]
+                        });
+                    }
+                    return employees;
+                })
+            );
+    }
+
+    getAssignmentList() {
+        return this.http.get(`${environment.api}/assignments`)
+            .pipe(
+                map((a: any) => {
+                    let assignments: Array<IAssignment> = [];
+                    for (let ass of a) {
+                        assignments.push({
+                            subject: ass.subject,
+                            employees: ass.employees
+                        });
+                    }
+                    return assignments;
+                })
+            );
+    }
+}

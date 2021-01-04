@@ -21,9 +21,12 @@ import { ResearchProjectsComponent } from './research-projects/research-projects
 import { ProjectsService } from './Services/Projects/projects.service';
 import { ResearchProjectsCardComponent } from './research-projects-card/research-projects-card.component';
 import { ProjectsCardComponent } from './projects-card/projects-card.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeesService } from './Services/Employees/employees.service';
+import { EmployeeComponent } from './employee/employee.component';
 @NgModule({
   declarations: [             //  all personal components
-    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent
+    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent
   ],
   imports: [                  //  foreign import components
     BrowserModule,
@@ -39,7 +42,8 @@ import { ProjectsCardComponent } from './projects-card/projects-card.component';
     },
     AuthenticationService,
     NotificationService,
-    ProjectsService
+    ProjectsService,
+    EmployeesService,
   ],              //  services
   bootstrap: [AppComponent]   //  main component
 })

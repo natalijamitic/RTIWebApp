@@ -1,0 +1,17 @@
+
+.card {
+    margin-bottom: 2.5rem;
+    .fas, .far {
+        color: #00bc8c;
+    }
+    .subjects-header {
+        margin-top: 0.5rem;
+        margin-left: 1rem;
+
+        .subjects {
+            margin-left: 2.5rem;
+            border: none;
+            margin-bottom: 1rem;
+        }
+    }
+}

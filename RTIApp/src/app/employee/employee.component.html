@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="contact-body">
+        <div class="contact">
+            <div class="row card-row"></div>
+
+            <div class="col-12">
+                <div class="card" *ngIf="emp != null">
+                    <div class="card-body">
+                        <h2 class="card-title text-center">{{emp.lastname}} &nbsp; {{emp.firstname}}</h2>
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-tag mr-2"></i>{{emp.title}} &nbsp; - &nbsp; {{emp.status}} </li>
+                        <li class="list-group-item"><i class="fas fa-map-marked-alt mr-2"></i>{{emp.address}}</li>
+                        <li class="list-group-item" *ngIf="emp.phoneNumber != null"><i class="fas fa-phone-alt mr-2"></i>{{emp.phoneNumber}}</li>
+                        <li class="list-group-item" *ngIf="emp.webpage != null"><i class="fas fa-globe mr-2"></i>{{emp.webpage}}</li>
+                        <li class="list-group-item" *ngIf="emp.personalInfo != null"><i class="fas fa-info-circle mr-2"></i>{{emp.personalInfo}}</li>
+                        <li class="list-group-item" *ngIf="emp.roomNumber != null"><i class="fas fa-door-closed mr-2"></i>{{emp.roomNumber}}</li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush" *ngIf="emp.subjects && emp.subjects.length > 0">
+                        <p class="subjects-header">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span class="ml-2">Lista predmeta:</span>
+                        </p>
+                        <div>
+                            <ul class="subjects ml-3 mb-2">
+                                <li class="" *ngFor="let subj of emp.subjects">
+                                    {{subj}}
+                                </li>
+                            </ul>
+                        </div>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
