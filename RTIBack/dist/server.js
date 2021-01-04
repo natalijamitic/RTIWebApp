@@ -26,10 +26,10 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const fs = __importStar(require("fs"));
 const seed_1 = __importDefault(require("./seed/seed"));
-const userQueries = __importStar(require("./query/User"));
+const fs = __importStar(require("fs"));
 const middleware = __importStar(require("./middleware"));
+const userQueries = __importStar(require("./query/User"));
 const notificationQueries = __importStar(require("./query/Notification"));
 const jwt = require('jsonwebtoken');
 const RSA_PRIVATE_KEY = fs.readFileSync('src/assets/keys/private.key');
@@ -46,22 +46,23 @@ const router = express_1.default.Router();
 app.get('/', (request, response) => {
     response.status(200).json({ msg: "OK" });
 });
+// LOGIN Route
 router.route('/login').post((request, response) => {
     const email = request.body.email;
     const password = request.body.password;
-    userQueries.loginUser(email, password).then(status => {
+    userQueries.loginUser(email, password).then((status) => {
         switch (status) {
             case userQueries.LoginError.WrongPassword: {
                 response.status(400).json({
                     status: -1,
-                    msg: "Wrong password entered."
+                    msg: "Pogresna lozinka."
                 });
                 break;
             }
             case userQueries.LoginError.WrongUsername: {
                 response.status(400).json({
                     status: -2,
-                    msg: "Wrong username entered."
+                    msg: "Pogresno korisnicko ime."
                 });
                 break;
             }
@@ -80,21 +81,24 @@ router.route('/login').post((request, response) => {
                 break;
             }
         }
-    }).catch(error => console.log("OBDE + " + error));
+    }).catch((error) => console.log("Login + " + error));
 });
 router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request, respone) => {
     console.log("Proba route.");
     respone.json(true);
 });
-router.route('/notifications').get((request, response) => {
+//******* NOTIFICATION ROUTES *******/
+// GET Notifications
+router.route('/notifications').get((_request, response) => {
     console.log("Notifications route");
-    notificationQueries.getRecentNotifications().then(result => {
+    notificationQueries.getRecentNotifications().then((result) => {
         response.json(result);
     });
 });
-router.route('/notificationtypes').get((request, response) => {
+// GET Notification Types
+router.route('/notificationtypes').get((_request, response) => {
     console.log("Notificationtypes route");
-    notificationQueries.getNotificationTypes().then(result => {
+    notificationQueries.getNotificationTypes().then((result) => {
         response.json(result);
     });
 });

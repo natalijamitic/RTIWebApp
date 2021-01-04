@@ -1,12 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import mongoose, { connect } from 'mongoose';
-import * as fs from "fs"
+import mongoose from 'mongoose';
 import seed from './seed/seed';
-import * as userQueries from './query/User';
+import * as fs from "fs"
 import * as middleware from './middleware'
-import * as notificationQueries from './query/Notification'
+import * as userQueries from './query/User';
+import * as notificationQueries from './query/Notification';
+
 
 const jwt = require('jsonwebtoken');
 const RSA_PRIVATE_KEY = fs.readFileSync('src/assets/keys/private.key');
@@ -15,7 +16,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/rti_katedra', {useNewUrlParser:true,useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/rti_katedra', { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 
 connection.once('open', () => {
@@ -29,24 +30,25 @@ app.get('/', (request, response) => {
     response.status(200).json({ msg: "OK" });
 });
 
+// LOGIN Route
 router.route('/login').post((request, response) => {
     const email = request.body.email;
     const password = request.body.password;
 
-    userQueries.loginUser(email, password).then( status => {
+    userQueries.loginUser(email, password).then((status: any) => {
 
-        switch(status) {
+        switch (status) {
             case userQueries.LoginError.WrongPassword: {
                 response.status(400).json({
                     status: -1,
-                    msg: "Wrong password entered."
+                    msg: "Pogresna lozinka."
                 });
                 break;
             }
             case userQueries.LoginError.WrongUsername: {
                 response.status(400).json({
                     status: -2,
-                    msg: "Wrong username entered."
+                    msg: "Pogresno korisnicko ime."
                 });
                 break;
             }
@@ -66,34 +68,35 @@ router.route('/login').post((request, response) => {
                 break;
             }
         }
-    }).catch(error => console.log("OBDE + " + error));
+    }).catch((error: string) => console.log("Login + " + error));
 
 });
 
-router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request, respone) => {
+router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request: any, respone: any) => {
     console.log("Proba route.");
     respone.json(true);
 });
 
-router.route('/notifications').get((request, response) => {
+
+//******* NOTIFICATION ROUTES *******/
+// GET Notifications
+router.route('/notifications').get((_request, response) => {
     console.log("Notifications route");
 
-    notificationQueries.getRecentNotifications().then(result => {
+    notificationQueries.getRecentNotifications().then((result: any) => {
         response.json(result)
     })
 
-})
-
-router.route('/notificationtypes').get((request, response) => {
+});
+// GET Notification Types
+router.route('/notificationtypes').get((_request, response) => {
     console.log("Notificationtypes route");
 
-    notificationQueries.getNotificationTypes().then(result => {
+    notificationQueries.getNotificationTypes().then((result: any) => {
         response.json(result)
     })
+});
 
-})
 
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));
-
-

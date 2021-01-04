@@ -16,5 +16,5 @@ const OfferedProjectModel = new Schema({
         type: String
     }
 });
-exports.default = mongoose_1.default.model("OfferedProjectModel", OfferedProjectModel, "Offered");
+exports.default = mongoose_1.default.model("OfferedProject", OfferedProjectModel, "OfferedProject");
 //# sourceMappingURL=OfferedProject.js.map
