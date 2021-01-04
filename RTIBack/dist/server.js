@@ -30,6 +30,7 @@ const fs = __importStar(require("fs"));
 const seed_1 = __importDefault(require("./seed/seed"));
 const userQueries = __importStar(require("./query/User"));
 const middleware = __importStar(require("./middleware"));
+const notificationQueries = __importStar(require("./query/Notification"));
 const jwt = require('jsonwebtoken');
 const RSA_PRIVATE_KEY = fs.readFileSync('src/assets/keys/private.key');
 const app = express_1.default();
@@ -84,6 +85,18 @@ router.route('/login').post((request, response) => {
 router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request, respone) => {
     console.log("Proba route.");
     respone.json(true);
+});
+router.route('/notifications').get((request, response) => {
+    console.log("Notifications route");
+    notificationQueries.getRecentNotifications().then(result => {
+        response.json(result);
+    });
+});
+router.route('/notificationtypes').get((request, response) => {
+    console.log("Notificationtypes route");
+    notificationQueries.getNotificationTypes().then(result => {
+        response.json(result);
+    });
 });
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));

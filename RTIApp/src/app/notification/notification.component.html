@@ -1,0 +1,10 @@
+<div class="container">
+
+    <div id="accordion">
+        <div *ngFor="let type of notificationTypes; let i = index">
+            <notification-card [type]="type" [notifications]="notifications[i]"></notification-card>
+        </div>
+    </div>
+
+
+</div>

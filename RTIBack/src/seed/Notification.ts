@@ -1,5 +1,5 @@
 import mongoose, { connect } from 'mongoose';
-import { Notification, NotificatonType } from '../model/Notification';
+import { Notification, NotificationType } from '../model/Notification';
 
 const notificationTypes = [
     {
@@ -74,7 +74,7 @@ function saveNotification(i: Number): void {
 function seedNotificationTypes(): void {
     let i = 0;
     for (let n of notificationTypes) {
-        let notificationType = new NotificatonType(n);
+        let notificationType = new NotificationType(n);
         notificationType.save().then(u => {
             notifications[i++].type = u;
             notifications[i++].type = u;

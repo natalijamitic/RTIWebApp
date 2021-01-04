@@ -6,6 +6,7 @@ import * as fs from "fs"
 import seed from './seed/seed';
 import * as userQueries from './query/User';
 import * as middleware from './middleware'
+import * as notificationQueries from './query/Notification'
 
 const jwt = require('jsonwebtoken');
 const RSA_PRIVATE_KEY = fs.readFileSync('src/assets/keys/private.key');
@@ -73,6 +74,24 @@ router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.che
     console.log("Proba route.");
     respone.json(true);
 });
+
+router.route('/notifications').get((request, response) => {
+    console.log("Notifications route");
+
+    notificationQueries.getRecentNotifications().then(result => {
+        response.json(result)
+    })
+
+})
+
+router.route('/notificationtypes').get((request, response) => {
+    console.log("Notificationtypes route");
+
+    notificationQueries.getNotificationTypes().then(result => {
+        response.json(result)
+    })
+
+})
 
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));

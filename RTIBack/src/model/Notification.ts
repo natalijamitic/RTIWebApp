@@ -31,7 +31,7 @@ const NotificationModel = new Schema({
 });
 
 const Notification = mongoose.model("Notification", NotificationModel, "Notification");
-const NotificatonType = mongoose.model("NotificationType", NotificationsTypeModel, "NotificationType");
+const NotificationType = mongoose.model("NotificationType", NotificationsTypeModel, "NotificationType");
 
-export {Notification, NotificatonType}
+export {Notification, NotificationType}
 

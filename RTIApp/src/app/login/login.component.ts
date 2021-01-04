@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../Authentication/authentication.service';
+import { AuthenticationService } from '../Services/Authentication/authentication.service';
 
 @Component({
   selector: 'login',
