@@ -15,13 +15,13 @@ const SubjectModel = new Schema({
         type: Number,
         required: true,
     },
-    subjectCode: {
+    code: {
         type: String,
         required: true
     },
     weekly: {
         type: {
-            lectures: {
+            lecture: {
                 type: Number,
                 required: true
             },
@@ -36,121 +36,124 @@ const SubjectModel = new Schema({
         },
         required: true
     },
-    ESPB: {
+    espb: {
         type: Number,
         required: true
     },
     classTime: {
         type: [String],
-        require: true
+        required: true
     },
     propositions: {
         type: String,
-        require: true
+        required: true
     },
     subjectGoal: {
         type: String,
-        require: true
+        required: true
     },
     examMaterials: {
         type: {
             examExamples: {
                 type: [String],
-                require: true
+                required: false
             },
             examSolutions: {
                 type: [String],
-                require: true
+                required: false
             },
             isExamExamplesHidden: {
                 type: Boolean,
-                require: true,
+                required: true,
                 default: false
             }
         },
-        require: true
+        required: false
     },
     lectures: {
         type: [String],
-        require: true
+        required: false
     },
     exercises: {
         type: [String],
-        require: true
+        required: false
     },
     haveLab: {
         type: Boolean,
-        require: true
+        required: true
     },
     lab: {
         type: {
             isHidden: {
                 type: Boolean,
-                require: true
+                required: true
             },
             numberOfLabs: {
                 type: Number,
-                require: true
+                required: true
+            },
+            basicInfo: {
+                type: String,
+                required: true
             },
             labs: {
                 type: [{
-                        basicInfo: {
+                        labDescription: {
                             type: String,
-                            require: true
-                        },
-                        instructions: {
-                            type: String,
-                            require: true
-                        },
-                        labsDescription: {
-                            type: String,
-                            require: true
+                            required: true
                         },
                         labMaterials: {
                             type: Array,
-                            require: true
+                            required: false
                         }
                     }],
+                required: true
             }
-        }
+        },
+        required: false
     },
     project: {
         type: {
             isHidden: {
                 type: Boolean,
-                require: true
+                required: true
             },
             projects: {
                 type: [{
                         basicInfo: {
                             type: String,
-                            require: true
+                            required: true
                         },
                         examinationProcess: {
                             type: String,
-                            require: true
+                            required: true
                         },
                         projectMaterials: {
                             type: String,
-                            require: true
+                            required: false
                         }
                     }]
             },
-            require: true
+            required: false
         }
     },
     notifications: {
         type: [{
                 title: {
-                    type: String
+                    type: String,
+                    required: true
                 },
                 dateCreation: {
-                    type: Date
+                    type: Date,
+                    required: true,
+                    default: Date.now()
                 },
                 content: {
-                    type: String
+                    type: String,
+                    required: true
                 }
-            }]
+            }],
+        required: false
     }
 });
 exports.default = mongoose_1.default.model('Subject', SubjectModel, 'Subject');
