@@ -5,6 +5,7 @@ import { ContactComponent } from './contact/contact.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { HomeComponent } from './home/home.component';
+import { MasterComponent } from './master/master.component';
 import { NotificationComponent } from './notification/notification.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ResearchProjectsComponent } from './research-projects/research-projects.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'obavestenja',
     component: NotificationComponent
+  },
+  {
+    path: 'predmeti/:dept',
+    component: MasterComponent
   },
   {
     path: 'kontakt',

@@ -8,6 +8,7 @@ const subjects = [
         type: "obavezni",
         semestar: 1,
         department: 'si',
+        title: "Programiranje 1",
         code: "13S111P1",
         weekly: {
             lecutre: 3,
@@ -34,6 +35,7 @@ const subjects = [
     {
         type: "obavezni",
         semestar: 2,
+        title: "Matematika 2",
         code: "13S081M2",
         department: 'si',
         weekly: {
@@ -50,6 +52,7 @@ const subjects = [
     {
         type: "izborni",
         semestar: 4,
+        title: "Veb Dizajn",
         code: "13S112VD",
         department: 'si',
         weekly: {
@@ -84,6 +87,7 @@ const subjects = [
         type: "obavezni",
         semestar: 4,
         code: "13S112OS1",
+        title: "Operativni sistemi 1",
         department: 'si',
         weekly: {
             lecutre: 2,
@@ -104,6 +108,24 @@ const subjects = [
     {
         type: "obavezni",
         semestar: 2,
+        title: "Evolucija softvera",
+        code: "13М111ЕС",
+        department: 'master',
+        weekly: {
+            lecutre: 2,
+            exercise: 2,
+            lab: 0
+        },
+        espb: 6,
+        classTime: ["Ponedeljak 18", "Sreda 14"],
+        propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
+        subjectGoal: "Cilj je nauciti osnove.",
+        haveLab: false
+    },
+    {
+        type: "obavezni",
+        semestar: 1,
+        title: "Teorija algoritama",
         code: "13М111ТА",
         department: 'master',
         weekly: {
@@ -135,7 +157,7 @@ function seedAllSubjects(): void {
     const db = mongoose.connect('mongodb://localhost:27017/rti_katedra');
     const connection = mongoose.connection;
 
-    connection.db.dropCollection('Subjects', function (err, result) { });
+    connection.db.dropCollection('Subject', function (err, result) { });
 
     new Promise(resolve => {
         seedSubjects();

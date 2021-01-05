@@ -24,9 +24,12 @@ import { ProjectsCardComponent } from './projects-card/projects-card.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeesService } from './Services/Employees/employees.service';
 import { EmployeeComponent } from './employee/employee.component';
+import { MasterComponent } from './master/master.component';
+import { SubjectsService } from './Services/Subjects/subjects.service';
+import { MasterCardComponent } from './master-card/master-card.component';
 @NgModule({
   declarations: [             //  all personal components
-    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent
+    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent
   ],
   imports: [                  //  foreign import components
     BrowserModule,
@@ -44,6 +47,7 @@ import { EmployeeComponent } from './employee/employee.component';
     NotificationService,
     ProjectsService,
     EmployeesService,
+    SubjectsService,
   ],              //  services
   bootstrap: [AppComponent]   //  main component
 })

@@ -32,6 +32,7 @@ const middleware = __importStar(require("./middleware"));
 const userQueries = __importStar(require("./query/User"));
 const projectQueries = __importStar(require("./query/Projects"));
 const notificationQueries = __importStar(require("./query/Notification"));
+const subjectQueries = __importStar(require("./query/Subject"));
 const jwt = require('jsonwebtoken');
 const RSA_PRIVATE_KEY = fs.readFileSync('src/assets/keys/private.key');
 const app = express_1.default();
@@ -87,6 +88,14 @@ router.route('/login').post((request, response) => {
 router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request, respone) => {
     console.log("Proba route.");
     respone.json(true);
+});
+//******* SUBJECT ROUTES       ********/
+router.route('/subjects/:dept').get((request, response) => {
+    console.log(request.params);
+    console.log("Subject route");
+    subjectQueries.getSubjectsByDepartment(request.params.dept).then((result) => {
+        response.json(result);
+    });
 });
 //******* EMPLOYEES ROUTES     *******/
 // GET Employees

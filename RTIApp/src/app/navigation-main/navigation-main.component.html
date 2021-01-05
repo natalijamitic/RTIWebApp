@@ -16,19 +16,19 @@
             <li class="nav-item" [routerLinkActive]="['active']">
                 <a class="nav-link" routerLink="obavestenja">Obavestenja</a>
             </li>
-            <li class="nav-item dropdown" [routerLinkActive]="['active']">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Osnovne studije
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" routerLink="odsek/rti">Odsek za RTI</a>
-                    <a class="dropdown-item" routerLink="odsek/si">Odsek za SI</a>
-                    <a class="dropdown-item" routerLink="odsek/ostali">Ostali odseci</a>
+                    <a class="dropdown-item" [routerLinkActive]="['active']" routerLink="predmeti/rti">Odsek za RTI</a>
+                    <a class="dropdown-item" [routerLinkActive]="['active']" routerLink="predmeti/si">Odsek za SI</a>
+                    <a class="dropdown-item" [routerLinkActive]="['active']" routerLink="predmeti/ostali">Ostali odseci</a>
                 </div>
             </li>
             <li class="nav-item" [routerLinkActive]="['active']">
-                <a class="nav-link" routerLink="master">Master studije</a>
+                <a class="nav-link" routerLink="predmeti/master">Master studije</a>
             </li>
             <li class="nav-item" [routerLinkActive]="['active']">
                 <a class="nav-link" routerLink="projekti">Projekti</a>

@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" attr.data-target="{{'#' + id}}" aria-expanded="true"
+                attr.aria-controls={{id}}>
+                Semestar #{{ semestar }}
+            </button>
+        </h5>
+    </div>
+
+    <div id={{id}} class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <table border="2" cellpadding="4" style="width: 100%">
+            <tbody>
+                <tr>
+                    <td style="text-align: center"><strong>Sifra</strong></td>
+                    <td style="text-align: center"><strong>Predmet</strong></td>
+                    <td style="text-align: center"><strong>Status</strong></td>
+                    <td style="text-align: center"><strong>Casovi<br>
+                            (P+V+L)</strong></td>
+                    <td style="text-align: center"><strong>Krediti</strong></td>
+                </tr>
+                <tr  *ngFor="let subj of subjects; let i = index">
+
+                        <td class="text-center"><a href="">{{subj.code}}</a></td>
+                        <td class="text-center">{{subj.title}}</td>
+                        <td class="text-center">{{subj.type}}</td>
+                        <td class="text-center">{{subj.weekly.lecutre}}+{{subj.weekly.exercise}}+{{subj.weekly.lab}}</td>
+                        <td class="text-center">{{subj.espb}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

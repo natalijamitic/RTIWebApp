@@ -8,6 +8,7 @@ import * as middleware from './middleware'
 import * as userQueries from './query/User';
 import * as projectQueries from './query/Projects';
 import * as notificationQueries from './query/Notification';
+import * as subjectQueries from './query/Subject';
 
 
 const jwt = require('jsonwebtoken');
@@ -76,6 +77,17 @@ router.route('/login').post((request, response) => {
 router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request: any, respone: any) => {
     console.log("Proba route.");
     respone.json(true);
+});
+
+//******* SUBJECT ROUTES       ********/
+router.route('/subjects/:dept').get((request, response) => {
+    console.log(request.params);
+    console.log("Subject route");
+
+    subjectQueries.getSubjectsByDepartment(request.params.dept).then((result: any) => {
+        response.json(result)
+    })
+
 });
 
 //******* EMPLOYEES ROUTES     *******/

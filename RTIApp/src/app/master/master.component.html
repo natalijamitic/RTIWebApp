@@ -1,0 +1,8 @@
+<div class="container">
+    <div id="accordion">
+        <div *ngFor="let subjGroup of subjectsGrouped; let i = index">
+            <master-card [subjects] = "subjGroup" [semestar] = "subjGroup[0].semestar"></master-card>
+            <!-- <projects-card [project] = "proj"></projects-card> -->
+        </div>
+    </div>
+</div>
