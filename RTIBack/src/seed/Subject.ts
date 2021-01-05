@@ -7,6 +7,7 @@ const subjects = [
     {
         type: "obavezni",
         semestar: 1,
+        department: 'si',
         code: "13S111P1",
         weekly: {
             lecutre: 3,
@@ -34,6 +35,7 @@ const subjects = [
         type: "obavezni",
         semestar: 2,
         code: "13S081M2",
+        department: 'si',
         weekly: {
             lecutre: 3,
             exercise: 2,
@@ -49,6 +51,7 @@ const subjects = [
         type: "izborni",
         semestar: 4,
         code: "13S112VD",
+        department: 'si',
         weekly: {
             lecutre: 2,
             exercise: 2,
@@ -81,6 +84,7 @@ const subjects = [
         type: "obavezni",
         semestar: 4,
         code: "13S112OS1",
+        department: 'si',
         weekly: {
             lecutre: 2,
             exercise: 2,
@@ -96,6 +100,22 @@ const subjects = [
             basicInfo: "Visenitni OS",
             examinationProcess: "Pokrece se na racunaru u paviljonu i objasnjava se ukratko kako je implementiran."
         }]
+    },
+    {
+        type: "obavezni",
+        semestar: 2,
+        code: "13М111ТА",
+        department: 'master',
+        weekly: {
+            lecutre: 2,
+            exercise: 2,
+            lab: 0
+        },
+        espb: 6,
+        classTime: ["Ponedeljak 18", "Sreda 14"],
+        propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
+        subjectGoal: "Cilj je nauciti osnove.",
+        haveLab: false
     }
 ];
 

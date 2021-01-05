@@ -11,6 +11,11 @@ const SubjectModel = new Schema({
         required: true,
         enum: ["izborni", "obavezni"]
     },
+    department: {
+        type: String,
+        required: true,
+        enum: ['si', 'rti', 'ostali', 'master']
+    },
     semestar: {
         type: Number,
         required: true,
