@@ -85,6 +85,10 @@ router.route('/login').post((request, response) => {
         }
     }).catch((error) => console.log("Login + " + error));
 });
+router.route('/kontakt').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request, respone) => {
+    console.log("Kontakt route.");
+    respone.json(true);
+});
 router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request, respone) => {
     console.log("Proba route.");
     respone.json(true);
@@ -143,5 +147,10 @@ router.route('/notificationtypes').get((_request, response) => {
     });
 });
 app.use('/', router);
+app.use(function (err, req, res, next) {
+    if (err.name === 'UnauthorizedError') {
+        res.status(401).json({ msg: 'Not logged in' });
+    }
+});
 app.listen(4000, () => console.log(`Express server running on port 4000`));
 //# sourceMappingURL=server.js.map

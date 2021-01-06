@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../Services/Authentication/authentication.service';
 
 @Component({
   selector: 'contact',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  public hide = true;
+  public msg: string;
+
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.authService.tryKontakt().subscribe((result:any) => {
+      console.log(result);
+      this.hide = false;
+    },
+    (error: HttpErrorResponse) => {
+      console.log(error);
+      this.hide = true;
+      this.msg = error.error.msg;
+    })
   }
 
 }

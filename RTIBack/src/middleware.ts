@@ -5,19 +5,12 @@ const expressJwt = require('express-jwt');
 const RSA_PUBLIC_KEY = fs.readFileSync('src/assets/keys/public.key');
 
 export var list = {
-    checkIfLoggedIn: function(request, response, next) {
-        if (expressJwt({
+    checkIfLoggedIn:
+        expressJwt({
             secret: RSA_PUBLIC_KEY,
             algorithms: ['RS256']
-        })) {
-            return next();
-        } else {
-            response.status(400).json({
-                status: 5,
-                msg: "You are not logged in."
-            });
-        }
-    },
+        })
+    ,
     checkIfAdmin: function(request, response, next) {
         const user = JSON.parse(jwt.decode(request.headers.authorization.substr(7)).sub);
         if (user.type === "admin") {
@@ -25,7 +18,7 @@ export var list = {
         } else {
             response.status(400).json({
                 status: 10,
-                msg: "You are not a admin."
+                msg: "You are not an admin."
             });
         }
     },
@@ -36,7 +29,7 @@ export var list = {
         } else {
             response.status(400).json({
                 status: 11,
-                msg: "You are not a employee."
+                msg: "You are not an employee."
             });
         }
     },

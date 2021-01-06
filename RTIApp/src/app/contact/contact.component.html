@@ -1,4 +1,8 @@
-<div class="container">
+<div class="container" *ngIf="hide">
+    {{msg}}
+</div>
+
+<div class="container" *ngIf="!hide">
     <div class="contact-body">
         <div class="contact">
             <div class="row card-row">

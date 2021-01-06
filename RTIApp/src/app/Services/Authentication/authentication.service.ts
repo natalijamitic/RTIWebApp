@@ -31,4 +31,8 @@ export class AuthenticationService {
     localStorage.setItem('idToken', authResult.idToken);
     localStorage.setItem('expiresIn', JSON.stringify(expiresAt.valueOf));
   }
+
+  public tryKontakt() {
+    return this.http.get(`${environment.api}/kontakt`);
+  }
 }

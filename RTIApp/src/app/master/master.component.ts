@@ -36,7 +36,6 @@ export class MasterComponent implements OnInit, OnDestroy {
 
     this.activatedRoute.params.subscribe(params => {
       this.initComponent(params['dept']);
-
     });
   }
 
