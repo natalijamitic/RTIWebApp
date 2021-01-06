@@ -62,7 +62,7 @@ const EmployeeModel = new Schema({
         enum: ["redovni profesor", "vanredni profesor", "docent", "asistent", "saradnik u nastavi", "istrazivac", "laboratorijski inzenjer", "laboratorijski tehnicar"]
     },
     roomNumber: {
-        type: Number,
+        type: String,
         required: false
     },
     status: {

@@ -33,8 +33,9 @@ export class RegistrationComponent implements OnInit {
     return this._studentUsername;
   }
 
-  public employeeTitles = ["Istrazivac", "Laboratorijski inzenjer", "Laboratorijski tehnicar", "Redovni profesor", "Vanredni profesor", "Docent", "Asistent", "Saradnik u nastavi"];
+  public employeeTitles = ["istrazivac", "laboratorijski inzenjer", "laboratorijski tehnicar", "redovni profesor", "vanredni profesor", "docent", "asistent", "saradnik u nastavi"];
 
+  public employeeUsername: string;
   public employee: IEmployee = {
     username: null,
     firstName: null,
@@ -120,19 +121,45 @@ export class RegistrationComponent implements OnInit {
       (error: HttpErrorResponse) => {
         this.msgStud = error.error.msg;
       }
-    )
+    );
   }
 
   public registerEmployee(): void {
-    if (!this.emplPass1 || !this.emplPass2) {
+    if (!this.employeeUsername || !this.employee.firstName || !this.employee.lastName || this.employee.title == "Zvanje" || !this.employee.address || !this.emplPass1 || !this.emplPass2 || (this.isTeacher() && !this.employee.roomNumber)) {
       this.msgEmpl = "Unesite sva obavezna polja.";
       return;
     }
+
     if (this.emplPass1 !== this.emplPass2) {
       this.msgEmpl = "Unete sifre se ne podudaraju.";
       return;
     }
-    this.msgEmpl = "";
+
+    this.employee.username = `${this.employeeUsername}@etf.bg.ac.rs`;
+    if (!this.isTeacher()) {
+      this.employee.roomNumber = null;
+      this.employee.type = 'laborant';
+    } else {
+      this.employee.type = 'nastavnik';
+    }
+    this.employee.status = 'aktivan';
+
+    this.userEmpl = {
+      username: this.employee.username,
+      password: this.emplPass1,
+      type: 'zaposlen',
+      firstLogin: 'yes',
+    };
+
+    this.authService.registerEmployee(this.userEmpl, this.employee).subscribe(
+      (result: any) => {
+        this.msgEmpl = result.msg;
+        this.emptyEmployee();
+      },
+      (error: HttpErrorResponse) => {
+        this.msgEmpl = error.error.msg;
+      }
+    );
   }
 
   public isTeacher(): boolean {
@@ -159,5 +186,31 @@ export class RegistrationComponent implements OnInit {
     };
     this.studPass1 = null;
     this.studPass2 = null;
+  }
+
+  private emptyEmployee(): void {
+    this.employee = {
+      username: null,
+      firstName: null,
+      lastName: null,
+      address: null,
+      phoneNumber: null,
+      webpage: null,
+      personalInfo: null,
+      title: "Zvanje",
+      roomNumber: null,
+      status: null,
+      type: null,
+      subjects: null,
+    };
+    this.userEmpl = {
+      username: null,
+      password: null,
+      type: null,
+      firstLogin: null,
+    };
+    this.emplPass1 = null;
+    this.employeeUsername = null;
+    this.emplPass2 = null;
   }
 }

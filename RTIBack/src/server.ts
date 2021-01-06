@@ -43,6 +43,17 @@ router.route('/register/student').post((request, response) => {
             response.status(400).json({msg: result.msg})
         }
     });
+});
+router.route('/register/employee').post((request, response) => {
+    const user = request.body.user;
+    const employee = request.body.employee;
+    userQueries.registerEmployee(user, employee).then((result:any)=> {
+        if (result.status == 0) {
+            response.status(200).json({msg: result.msg});
+        } else {
+            response.status(400).json({msg: result.msg})
+        }
+    });
 })
 
 // LOGIN Route

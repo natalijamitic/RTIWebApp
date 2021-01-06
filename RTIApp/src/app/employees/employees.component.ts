@@ -12,7 +12,7 @@ export interface IEmployee {
   webpage: string;
   personalInfo: string;
   title: string;
-  roomNumber: Number;
+  roomNumber: string;
   status: string;
   type: string;
   subjects: string[];

@@ -24,7 +24,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i>*</span>
                         </div>
-                        <input name="username" onkeypress="return /[a-zA-Z0-9.]/i.test(event.key)"  class="form-control" placeholder="Username" type="text" [(ngModel)]="employee.username">
+                        <input name="username" onkeypress="return /[a-zA-Z0-9.]/i.test(event.key)"  class="form-control" placeholder="Username" type="text" [(ngModel)]="employeeUsername">
                         <div class="input-group-append">
                             <span class="input-group-text"> @etf.bg.ac.rs </span>
                         </div>
@@ -62,7 +62,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                         </div>
-                        <input name="phoneNumber" class="form-control" placeholder="Telefon" type="text" [(ngModel)]="employee.phoneNumber">
+                        <input name="phoneNumber" onkeypress="return /[0-9]/i.test(event.key)" class="form-control" placeholder="Telefon" type="text" [(ngModel)]="employee.phoneNumber">
                     </div> <!-- form-group// -->
 
                     <div class="form-group input-group">
@@ -81,18 +81,18 @@
 
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fas fa-tag mr-2"></i>*</span>
+                            <span class="input-group-text"> <i class="fas fa-tag"></i>*</span>
                         </div>
                         <select name="title" class="form-control select" oninput="style.color='black'" [(ngModel)]="employee.title">
                             <option disabled selected class="select-placeholder">Zvanje</option>
-                            <option>Redovni profesor</option>
-                            <option>Vanredni profesor</option>
-                            <option>Docent</option>
-                            <option>Asistent</option>
-                            <option>Saradnik u nastavi</option>
-                            <option>Istrazivac</option>
-                            <option>Laboratorijski inzenjer</option>
-                            <option>Laboratorijski tehnicar</option>
+                            <option>redovni profesor</option>
+                            <option>vanredni profesor</option>
+                            <option>docent</option>
+                            <option>asistent</option>
+                            <option>saradnik u nastavi</option>
+                            <option>istrazivac</option>
+                            <option>laboratorijski inzenjer</option>
+                            <option>laboratorijski tehnicar</option>
                         </select>
                     </div> <!-- form-group end.// -->
 
