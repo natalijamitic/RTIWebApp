@@ -64,6 +64,7 @@ router.route('/login').post((request, response) => {
                     status: 0,
                     msg: "Successfully logged in.",
                     idToken: token,
+                    user: userQueries.stringifyUser(user),
                     expiresIn: 120
                 });
                 break;

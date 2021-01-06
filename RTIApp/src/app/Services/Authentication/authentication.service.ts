@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, shareReplay, tap } from 'rxjs/operators';
 import * as moment from "moment";
 import { environment } from 'src/environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -10,11 +11,17 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthenticationService {
 
-  constructor(private http: HttpClient) {
+  private loggedInUser = new BehaviorSubject(null);
+  public isLoggedIn = this.loggedInUser.asObservable();
 
+  public constructor(private http: HttpClient) {
   }
 
-  login(email: string, password: string) {
+  public changeUser(user: any) {
+    this.loggedInUser.next(user);
+  }
+
+  public login(email: string, password: string) {
     return this.http.post(`${environment.api}/login`, { email, password }).
             pipe(
                 tap(res=>this.setSession(res)),
@@ -22,17 +29,20 @@ export class AuthenticationService {
             );
   }
 
-  proba(){
-    return this.http.get(`${environment.api}/proba`);
-  }
-
   private setSession(authResult: any): void {
     const expiresAt = moment().add(authResult.expiresIn, 'second');
     localStorage.setItem('idToken', authResult.idToken);
     localStorage.setItem('expiresIn', JSON.stringify(expiresAt.valueOf));
+    this.changeUser(authResult.user);
+    console.log(authResult);
   }
 
+
+  // EXPERIMENTING
   public tryKontakt() {
     return this.http.get(`${environment.api}/kontakt`);
+  }
+  proba(){
+    return this.http.get(`${environment.api}/proba`);
   }
 }

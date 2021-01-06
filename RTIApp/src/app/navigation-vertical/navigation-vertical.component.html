@@ -1,9 +1,11 @@
 <nav id="sidebar" class="active">
     <div class="sidebar-header">
-        <strong>RTI</strong>
+        <a href="/" class="href">
+            <strong>RTI</strong>
+        </a>
     </div>
 
-    <ul class="list-unstyled components">
+    <ul class="list-unstyled components" *ngIf="user">
         <li class="active">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-home"></i>
