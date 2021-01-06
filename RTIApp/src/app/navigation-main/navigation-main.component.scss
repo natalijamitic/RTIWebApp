@@ -2,7 +2,7 @@
     padding: 0.5rem 0.5rem;
 
     .nav-item {
-        margin-right: 20px;
+        margin-right: 15px;
 
         .nav-link {
             font-size: medium;
@@ -17,4 +17,19 @@
     .navbar .nav .btn-primary, .navbar .nav .btn-primary:active {
         display: block;
     }
+}
+
+@media (max-width: 1218px){
+    .navbar {
+        padding: 0.25rem 0.25rem;
+
+        .nav-item {
+            margin-right: 8px;
+
+            .nav-link {
+                font-size: medium;
+            }
+        }
+    }
+
 }

@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --main-sidebar-color:#884541;
+    --main-sidebar-color-darker: #663330;
+    --main-sidebar-color-lighter: #a7544f;
+ }
+
+html, body {
+    height: 100vh;
+    margin:0;
+    padding:0;
+    overflow: auto;
+}

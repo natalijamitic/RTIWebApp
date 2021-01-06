@@ -27,9 +27,11 @@ import { EmployeeComponent } from './employee/employee.component';
 import { MasterComponent } from './master/master.component';
 import { SubjectsService } from './Services/Subjects/subjects.service';
 import { MasterCardComponent } from './master-card/master-card.component';
+import { NavigationVerticalComponent } from './navigation-vertical/navigation-vertical.component';
+import { RegistrationComponent } from './registration/registration.component';
 @NgModule({
   declarations: [             //  all personal components
-    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent
+    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent, NavigationVerticalComponent, RegistrationComponent
   ],
   imports: [                  //  foreign import components
     BrowserModule,

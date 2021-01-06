@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { MasterComponent } from './master/master.component';
 import { NotificationComponent } from './notification/notification.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { RegistrationComponent } from './registration/registration.component';
 import { ResearchProjectsComponent } from './research-projects/research-projects.component';
 import { ResearchComponent } from './research/research.component';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'registracija',
+    component: RegistrationComponent
   },
   {
     path: 'zaposlen',
@@ -34,12 +39,12 @@ const routes: Routes = [
     component: MasterComponent
   },
   {
-    path: 'kontakt',
-    component: ContactComponent
-  },
-  {
     path: 'projekti',
     component: ProjectsComponent
+  },
+  {
+    path: 'nauka/projekti',
+    component: ResearchProjectsComponent
   },
   {
     path: 'nauka/istrazivanja',
@@ -48,6 +53,10 @@ const routes: Routes = [
   {
     path: 'nauka/projekti',
     component: ResearchProjectsComponent
+  },
+  {
+    path: 'kontakt',
+    component: ContactComponent
   },
 ];
 
