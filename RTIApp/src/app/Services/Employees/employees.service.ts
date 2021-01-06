@@ -22,8 +22,8 @@ export class EmployeesService {
                     for (let emp of e) {
                         employees.push({
                             username: emp.username,
-                            firstname: emp.firstName,
-                            lastname: emp.lastName,
+                            firstName: emp.firstName,
+                            lastName: emp.lastName,
                             address: emp.address,
                             phoneNumber: emp.phoneNumber,
                             webpage: emp.webpage,

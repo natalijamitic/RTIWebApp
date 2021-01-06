@@ -14,7 +14,6 @@ export class EmployeeComponent implements OnInit {
   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       this.emp = JSON.parse(params.employee);
-      console.log(this.emp.firstname);
     });
   }
 

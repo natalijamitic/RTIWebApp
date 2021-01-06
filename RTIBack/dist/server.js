@@ -38,6 +38,7 @@ const RSA_PRIVATE_KEY = fs.readFileSync('src/assets/keys/private.key');
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(body_parser_1.default.json());
+app.use(body_parser_1.default.urlencoded({ extended: true }));
 mongoose_1.default.connect('mongodb://localhost:27017/rti_katedra', { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose_1.default.connection;
 connection.once('open', () => {
@@ -47,6 +48,19 @@ connection.once('open', () => {
 const router = express_1.default.Router();
 app.get('/', (request, response) => {
     response.status(200).json({ msg: "OK" });
+});
+// REGISTER Route
+router.route('/register/student').post((request, response) => {
+    const user = request.body.user;
+    const student = request.body.student;
+    userQueries.registerStudent(user, student).then((result) => {
+        if (result.status == 0) {
+            response.status(200).json({ msg: result.msg });
+        }
+        else {
+            response.status(400).json({ msg: result.msg });
+        }
+    });
 });
 // LOGIN Route
 router.route('/login').post((request, response) => {

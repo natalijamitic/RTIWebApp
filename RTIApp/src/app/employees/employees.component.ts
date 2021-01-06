@@ -5,8 +5,8 @@ import { EmployeesService } from '../Services/Employees/employees.service';
 
 export interface IEmployee {
   username: string;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   address: string;
   phoneNumber: string;
   webpage: string;

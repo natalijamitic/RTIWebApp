@@ -4,6 +4,8 @@ import { catchError, shareReplay, tap } from 'rxjs/operators';
 import * as moment from "moment";
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
+import { IStudent, IUser } from 'src/app/registration/registration.component';
+import { IEmployee } from 'src/app/employees/employees.component';
 
 
 @Injectable({
@@ -19,6 +21,14 @@ export class AuthenticationService {
 
   public changeUser(user: any) {
     this.loggedInUser.next(user);
+  }
+
+  public registerStudent(user: IUser, student: IStudent) {
+    return this.http.post(`${environment.api}/register/student`, {user, student});
+  }
+
+  public registerEmployee(user: IUser, employee: IEmployee) {
+    return this.http.post(`${environment.api}/register/employee`, {user, employee});
   }
 
   public login(email: string, password: string) {
