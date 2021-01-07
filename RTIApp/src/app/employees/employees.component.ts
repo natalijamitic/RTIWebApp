@@ -69,10 +69,9 @@ export class EmployeesComponent implements OnInit {
 
   public openEmployee(employee: IEmployee) {
     let navigationExtras: NavigationExtras = {
-      queryParams: {
+      state: {
         employee: JSON.stringify(employee)
-      },
-      skipLocationChange: true
+      }
     }
     this.router.navigate(['zaposlen'], navigationExtras);
   }

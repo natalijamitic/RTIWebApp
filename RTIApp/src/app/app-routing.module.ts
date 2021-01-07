@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'zaposlen',
-    component: EmployeeComponent
+    component: EmployeeComponent,
   },
   {
     path: 'zaposleni',
