@@ -223,6 +223,33 @@ router.route('/subjects/:dept').get((request, response) => {
         response.json(result);
     });
 });
+/******** STUDENTS ROUTES  *********/
+// GET Student By Username
+router.route('/students/:username').get((request, response) => {
+    userQueries.getStudentByUsername(request.params.username).then((result) => {
+        response.json(result);
+    });
+});
+// UPDATE Student
+router.route('/students/update').post((request, response) => {
+    const oldUser = request.body.oldStud;
+    const newUser = request.body.newStud;
+    userQueries.updateStudent(oldUser, newUser).then((result) => {
+        response.json(result);
+    });
+});
+// EXISTS Student
+router.route('/students/exists').post((request, response) => {
+    const user = request.body.student;
+    userQueries.existsStudent(user).then((result) => {
+        if (result) {
+            response.status(400).json(result);
+        }
+        else {
+            response.status(200).json(result);
+        }
+    });
+});
 //******* EMPLOYEES ROUTES     *******/
 // GET Employees
 router.route('/employees').get((_request, response) => {
@@ -249,7 +276,6 @@ router.route('/employees/update').post((request, response) => {
     const oldUser = request.body.oldEmp;
     const newUser = request.body.newEmp;
     userQueries.updateEmployee(oldUser, newUser).then((result) => {
-        console.log(result);
         response.json(result);
     });
 });

@@ -36,9 +36,11 @@ import { UsersComponent } from './users/users.component';
 import { UsersService } from './Services/Users/users.service';
 import { DisplayAdminComponent } from './display-admin/display-admin.component';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
+import { DisplayStudentComponent } from './display-student/display-student.component';
+import { StudentService } from './Services/Students/student.service';
 @NgModule({
   declarations: [             //  all personal components
-    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent, NavigationVerticalComponent, RegistrationComponent, ProfileComponent, LogoutComponent, FirstLoginComponent, UsersComponent, DisplayAdminComponent, DisplayEmployeeComponent
+    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent, NavigationVerticalComponent, RegistrationComponent, ProfileComponent, LogoutComponent, FirstLoginComponent, UsersComponent, DisplayAdminComponent, DisplayEmployeeComponent, DisplayStudentComponent
   ],
   imports: [                  //  foreign import components
     BrowserModule,
@@ -58,6 +60,7 @@ import { DisplayEmployeeComponent } from './display-employee/display-employee.co
     EmployeesService,
     SubjectsService,
     UsersService,
+    StudentService,
     FormBuilder,
   ],              //  services
   bootstrap: [AppComponent]   //  main component

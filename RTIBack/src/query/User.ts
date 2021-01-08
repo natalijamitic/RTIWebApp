@@ -157,6 +157,16 @@ export async function updateUser(oldUser: any, newUser: any) {
     });
 }
 
+export function updateStudent(oldUser: any, newUser: any) {
+    return Student.findOneAndUpdate({ username: newUser.username }, {
+      firstName: newUser.firstName,
+      lastName: newUser.lastName,
+      index: newUser.index,
+      studyType: newUser.studyType,
+      status: newUser.status
+    }).then((u: any) => u);
+}
+
 export function updateEmployee(oldUser: any, newUser: any) {
     return Employee.findOneAndUpdate({ username: newUser.username }, {
       firstName: newUser.firstName,
@@ -199,6 +209,10 @@ export function getAllEmployees(): any {
 
 export function getEmployeeByUsername(username: string): any {
     return Employee.findOne({ username: username }).then((emp: any) => emp);
+}
+
+export function getStudentByUsername(username: string): any {
+    return Student.findOne({ username: username }).then((stud: any) => stud);
 }
 
 export function getAllAssignments(): any {

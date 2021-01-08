@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
 import { DisplayAdminComponent } from './display-admin/display-admin.component';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
+import { DisplayStudentComponent } from './display-student/display-student.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { HomeComponent } from './home/home.component';
@@ -40,7 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'korisnici/obrada/student',
-    component: DisplayAdminComponent
+    component: DisplayStudentComponent
   },
   {
     path: 'registracija',

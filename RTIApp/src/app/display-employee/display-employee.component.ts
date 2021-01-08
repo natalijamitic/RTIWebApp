@@ -136,11 +136,11 @@ export class DisplayEmployeeComponent implements OnInit, OnDestroy {
       firstName: this.employee.firstName ? this.employee.firstName : this.employeeOld.firstName,
       lastName: this.employee.lastName ? this.employee.lastName : this.employeeOld.lastName,
       address: this.employee.address ? this.employee.address : this.employeeOld.address,
-      phoneNumber: this.employee.phoneNumber,
-      webpage: this.employee.webpage,
-      personalInfo: this.employee.personalInfo,
+      phoneNumber: this.employee.phoneNumber ? this.employee.phoneNumber : null,
+      webpage: this.employee.webpage ? this.employee.webpage : null,
+      personalInfo: this.employee.personalInfo ? this.employee.personalInfo : null,
       title: this.employee.title,
-      roomNumber: this.employee.roomNumber,
+      roomNumber: this.employee.roomNumber ? this.employee.roomNumber : null,
       status: this.employee.status,
       type: this.employee.type,
       subjects: this.employeeOld.subjects
@@ -161,11 +161,12 @@ export class DisplayEmployeeComponent implements OnInit, OnDestroy {
 
       this.employeeService.updateEmployee(this.employeeOld, employeeNew).subscribe((result: any) => {
         console.log(result);
-        this.user = newUser;
-        this.msg = 'Uspesno izmenjeno.';
         this.uploadImage(result);
-
+        this.user = newUser;
+        this.employeeOld = employeeNew;
+        this.msg = 'Uspesno izmenjeno.';
       })
+
     }, (error:HttpErrorResponse) => {
       this.msg = error.error.msg
     })
@@ -173,7 +174,6 @@ export class DisplayEmployeeComponent implements OnInit, OnDestroy {
   }
 
   public uploadImage(result: any): void {
-
     if (!this.fileUploadForm.get('uploadedImage').value) {
       this.msg = result.msg;
       return;
