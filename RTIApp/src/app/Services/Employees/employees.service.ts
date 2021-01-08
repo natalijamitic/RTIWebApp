@@ -32,7 +32,8 @@ export class EmployeesService {
                             roomNumber: emp.roomNumber,
                             status: emp.status,
                             type: emp.type,
-                            subjects: [] as string[]
+                            subjects: [] as string[],
+                            profilePicture: emp.profilePicture
                         });
                     }
                     return employees;

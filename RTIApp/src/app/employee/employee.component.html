@@ -7,6 +7,7 @@
                 <div class="card" *ngIf="emp != null">
                     <div class="card-body">
                         <h2 class="card-title text-center">{{emp.lastName}} &nbsp; {{emp.firstName}}</h2>
+                        <img *ngIf="emp.profilePicture?.image" src="data:{{emp.profilePicture.contentType}};base64,{{emp.profilePicture.image}}" alt="nema" class="src">
                     </div>
 
                     <ul class="list-group list-group-flush">

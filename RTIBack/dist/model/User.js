@@ -28,6 +28,10 @@ const UserModel = new Schema({
     }
 });
 const EmployeeModel = new Schema({
+    profilePicture: {
+        type: {},
+        required: false
+    },
     username: {
         type: String,
         required: true

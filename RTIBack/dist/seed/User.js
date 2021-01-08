@@ -14,12 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.seedAllUsers = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
-const User_1 = require("../model/User");
+const User_1 = require("../query/User");
+const User_2 = require("../model/User");
 const users = [
     {
         username: "admin",
         password: "admin123",
-        type: "admin"
+        type: "admin",
+        firstLogin: "no"
     },
     {
         username: "pera@etf.bg.ac.rs",
@@ -169,17 +171,12 @@ const students = [
 ];
 function seedUsers() {
     for (let u of users) {
-        let user = new User_1.User(u);
-        user.save().then(u => {
-            //console.log("Successfuly saved a user in db.");
-        }).catch(err => {
-            console.log("Error, couldn't save a user in db.");
-        });
+        User_1.insertUser(u);
     }
 }
 function seedEmployees() {
     for (let e of employees) {
-        let employee = new User_1.Employee(e);
+        let employee = new User_2.Employee(e);
         employee.save().then(u => {
             //console.log("Successfuly saved a user in db.");
         }).catch(err => {
@@ -189,7 +186,7 @@ function seedEmployees() {
 }
 function seedStudents() {
     for (let s of students) {
-        let student = new User_1.Student(s);
+        let student = new User_2.Student(s);
         student.save().then(u => {
             //console.log("Successfuly saved a user in db.");
         }).catch(err => {

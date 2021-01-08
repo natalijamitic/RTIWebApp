@@ -1,1 +1,9 @@
-<p>profile works!</p>
+<div *ngIf="!user">
+    <h1>Zabranjen pristup</h1>
+</div>
+
+<div *ngIf="user" class="container">
+
+    <first-login [isFirst]="isFirstLogin()" [user]="user.username"></first-login>
+
+</div>

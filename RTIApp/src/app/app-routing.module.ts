@@ -7,10 +7,12 @@ import { EmployeesComponent } from './employees/employees.component';
 import { HomeComponent } from './home/home.component';
 import { MasterComponent } from './master/master.component';
 import { NotificationComponent } from './notification/notification.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ResearchProjectsComponent } from './research-projects/research-projects.component';
 import { ResearchComponent } from './research/research.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,8 +21,16 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'korisnici',
+    component: UsersComponent
+  },
+  {
     path: 'registracija',
     component: RegistrationComponent
+  },
+  {
+    path: 'profil',
+    component: ProfileComponent,
   },
   {
     path: 'zaposlen',

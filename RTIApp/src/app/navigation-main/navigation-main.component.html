@@ -48,9 +48,11 @@
             </li>
         </ul>
 
-        <login class="ml-auto float-left"></login>
+        <login *ngIf="!user" class="ml-auto float-left"></login>
 
-        <register class="ml-2 float-left"></register>
+        <register *ngIf="!user" class="ml-2 float-left"></register>
+
+        <logout *ngIf="user" class="ml-auto float-left"></logout>
 
     </div>
 </nav>

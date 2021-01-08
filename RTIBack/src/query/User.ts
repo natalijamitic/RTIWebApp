@@ -9,13 +9,38 @@ export enum LoginError {
     WrongUsername
 }
 
-export function loginUser(username: string, password: string): any {
-    return User.findOne({username: username})
-    .then( (user: any) => {
-        if (!user) return LoginError.WrongUsername;
-        return bcrypt.compare(password, user.password) ? user : LoginError.WrongPassword;
-    });
+export async function loginUser(username: string, password: string): Promise<any> {
+    let user = await User.findOne({username: username});
+    if (!user) return LoginError.WrongUsername;
+    let samePass = await bcrypt.compare(password, user.password);
+    return  samePass ? user : LoginError.WrongPassword;
 }
+
+
+
+export async function firstLoginPassChange(username: string, oldPass: string, password: string): Promise<any> {
+    let user = await existsUser({username: username});
+    console.log(user);
+    if (user) {
+        let samePass = await bcrypt.compare(oldPass, user.password);
+        if (samePass) {
+            await updateUserPass(username, password);
+            return new Promise(resolve => {
+                resolve({status: 0, msg: "Uspesno izmenjena lozinka. Prijavite se ponovo."})
+            });
+        } else {
+            return new Promise(resolve => {
+                resolve({status: -2, msg: "Neispravno uneta stara/trenutna lozinka."})
+            });
+        }
+    } else {
+        return new Promise(resolve => {
+            resolve({status: -1, msg: "Korisnik datog korisnickog imena ne postoji."})
+        });
+    }
+}
+
+
 
 export function existsStudent(student: any) : any {
     return Student.findOne({index: student.index, studyType: student.studyType})
@@ -23,9 +48,16 @@ export function existsStudent(student: any) : any {
 }
 
 export function existsEmployee(employee: any) : any {
-    return User.findOne({username: employee.username})
+    return Employee.findOne({username: employee.username})
     .then((user: any) => user);
 }
+
+export function existsUser(user: any) : any {
+    return User.findOne({username: user.username})
+    .then((user: any) => user);
+}
+
+
 
 export function insertStudent(student: any): void {
     const newStudent = new Student(student);
@@ -45,7 +77,9 @@ export function insertEmployee(employee: any): void {
     })
 }
 
-export function insertUser(user: any): void {
+export async function insertUser(user: any): Promise<any> {
+    let hashedPassword = await bcrypt.hash(user.password, BCRYPT_SALT_ROUNDS);
+    user.password = hashedPassword;
     const newUser = new User(user);
     newUser.save().then(u => {
     }).catch(err => {
@@ -54,21 +88,19 @@ export function insertUser(user: any): void {
 }
 
 
+
 export async function registerStudent(user: any, student: any): Promise<any> {
     let exists = await existsStudent(student);
 
     if (exists) {
         return new Promise(resolve => {
-            resolve({status: -1, msg: "Korisnik na takvim studijama sa tim indeksom vec postoji."});
+            resolve({status: -1, msg: "Korisnik sa tim indeksom na takvim studijama vec postoji."});
         });
     } else {
-
-        let hashedPassword = await bcrypt.hash(user.password, BCRYPT_SALT_ROUNDS);
-        user.password = hashedPassword;
         await insertUser(user);
         await insertStudent(student);
         return new Promise(resolve => {
-            resolve({status: 0, msg: "Korisnik uspesno registrovan. Mozete se ulogovati"})
+            resolve({status: 0, msg: "Korisnik uspesno registrovan."})
         });
     }
 }
@@ -81,20 +113,14 @@ export async function registerEmployee(user: any, employee: any): Promise<any> {
             resolve({status: -1, msg: "Korisnik sa takvim username-om vec postoji."});
         });
     } else {
-
-        let hashedPassword = await bcrypt.hash(user.password, BCRYPT_SALT_ROUNDS);
-        user.password = hashedPassword;
         await insertUser(user);
         await insertEmployee(employee);
         return new Promise(resolve => {
-            resolve({status: 0, msg: "Korisnik uspesno registrovan. Mozete se ulogovati"})
+            resolve({status: 0, msg: "Korisnik uspesno registrovan."})
         });
     }
 }
 
-export function stringifyUser(user: any): string {
-    return JSON.stringify({username: user.username, password: user.password, firstLogin: user.firstLogin, type: user.type});
-}
 
 export function getAllEmployees(): any {
     return Employee.find({}).then((emp: any) => emp);
@@ -102,4 +128,17 @@ export function getAllEmployees(): any {
 
 export function getAllAssignments(): any {
     return Assignment.find({}).then((emp: any) => emp);
+}
+
+
+
+export async function updateUserPass(username: string, newPass: string): Promise<any> {
+    let hashedPassword = await bcrypt.hash(newPass, BCRYPT_SALT_ROUNDS);
+
+    User.findOneAndUpdate({username: username}, {password: hashedPassword, firstLogin: 'no'}).then((result: any) => result);
+}
+
+
+export function stringifyUser(user: any): string {
+    return JSON.stringify({username: user.username, password: user.password, firstLogin: user.firstLogin, type: user.type});
 }

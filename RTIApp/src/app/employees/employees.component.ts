@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { EmployeesService } from '../Services/Employees/employees.service';
 
+export interface IPicture {
+  contentType: string;
+  image: string;
+}
 export interface IEmployee {
   username: string;
   firstName: string;
@@ -16,6 +20,7 @@ export interface IEmployee {
   status: string;
   type: string;
   subjects: string[];
+  profilePicture?: IPicture;
 }
 
 export interface IAssignment {

@@ -23,14 +23,6 @@ export class AuthenticationService {
     this.loggedInUser.next(user);
   }
 
-  public registerStudent(user: IUser, student: IStudent) {
-    return this.http.post(`${environment.api}/register/student`, {user, student});
-  }
-
-  public registerEmployee(user: IUser, employee: IEmployee) {
-    return this.http.post(`${environment.api}/register/employee`, {user, employee});
-  }
-
   public login(email: string, password: string) {
     return this.http.post(`${environment.api}/login`, { email, password }).
             pipe(
@@ -39,14 +31,34 @@ export class AuthenticationService {
             );
   }
 
-  private setSession(authResult: any): void {
-    const expiresAt = moment().add(authResult.expiresIn, 'second');
-    localStorage.setItem('idToken', authResult.idToken);
-    localStorage.setItem('expiresIn', JSON.stringify(expiresAt.valueOf));
-    this.changeUser(authResult.user);
-    console.log(authResult);
+  public logout(): void {
+    localStorage.removeItem('idToken');
+    this.changeUser(null);
   }
 
+
+
+  public registerStudent(user: IUser, student: IStudent) {
+    return this.http.post(`${environment.api}/register/student`, {user, student});
+  }
+
+  public registerEmployee(user: IUser, employee: IEmployee) {
+    return this.http.post(`${environment.api}/register/employee`, {user, employee});
+  }
+
+  public firstLoginPassChange(username: string, oldPass: string, newPass: string) {
+    return this.http.post(`${environment.api}/login/first`, {username, oldPass, newPass});
+  }
+
+
+  public postImage(formData: FormData){
+    return this.http.post(`${environment.api}/register/uploadFile`, formData);
+  }
+
+  private setSession(authResult: any): void {
+    localStorage.setItem('idToken', authResult.idToken);
+    this.changeUser(authResult.user);
+  }
 
   // EXPERIMENTING
   public tryKontakt() {

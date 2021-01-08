@@ -1,5 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { IEmployee } from '../employees/employees.component';
 import { AuthenticationService } from '../Services/Authentication/authentication.service';
 
@@ -24,7 +26,7 @@ export interface IStudent {
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent implements OnInit, OnDestroy {
 
   private _studentUsername = "piGGBBBBx";
 
@@ -79,9 +81,48 @@ export class RegistrationComponent implements OnInit {
   public msgEmpl: string = "";
   public msgStud: string = "";
 
-  public constructor(private authService: AuthenticationService) { }
+
+  public loggedUser: IUser = null;
+  private subscription: Subscription;
+  private subscriptionStudent: Subscription;
+  private subscriptionEmployee: Subscription;
+
+  @ViewChild('UploadFileInput', { static: false }) uploadFileInput: ElementRef;
+  fileUploadForm: FormGroup;
+  file: any;
+  fileInputLabel: string;
+  imgH: number = -1;
+  imgW : number = -1;
+
+  public constructor(private authService: AuthenticationService, private formBuilder: FormBuilder) { }
 
   public ngOnInit(): void {
+    this.subscription = this.authService.isLoggedIn.subscribe((user: any) => {
+      this.loggedUser = JSON.parse(user);
+    });
+
+    this.fileUploadForm = this.formBuilder.group({
+      uploadedImage: ['']
+    });
+  }
+
+  onFileSelect(event) {
+    const file = event.target.files[0];
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const img = new Image();
+      img.src = reader.result as string;
+      img.onload = () => {
+        this.imgH = img.naturalHeight;
+        this.imgW = img.naturalWidth;
+      };
+    };
+
+    this.fileInputLabel = file.name;
+
+    this.fileUploadForm.get('uploadedImage').setValue(file);
   }
 
   public registerStudent(): void {
@@ -113,7 +154,7 @@ export class RegistrationComponent implements OnInit {
       firstLogin: 'yes'
     };
 
-    this.authService.registerStudent(this.userStud, this.student).subscribe(
+    this.subscriptionStudent = this.authService.registerStudent(this.userStud, this.student).subscribe(
       (result: any) => {
         this.msgStud = result.msg;
         this.emptyStudent();
@@ -124,9 +165,16 @@ export class RegistrationComponent implements OnInit {
     );
   }
 
+  public slika: string = null;
+
   public registerEmployee(): void {
+
     if (!this.employeeUsername || !this.employee.firstName || !this.employee.lastName || this.employee.title == "Zvanje" || !this.employee.address || !this.emplPass1 || !this.emplPass2 || (this.isTeacher() && !this.employee.roomNumber)) {
       this.msgEmpl = "Unesite sva obavezna polja.";
+      return;
+    }
+
+    if (this.imgTooBig()) {
       return;
     }
 
@@ -151,10 +199,16 @@ export class RegistrationComponent implements OnInit {
       firstLogin: 'yes',
     };
 
-    this.authService.registerEmployee(this.userEmpl, this.employee).subscribe(
+    this.subscriptionEmployee = this.authService.registerEmployee(this.userEmpl, this.employee).subscribe(
       (result: any) => {
-        this.msgEmpl = result.msg;
-        this.emptyEmployee();
+
+        if (this.loggedUser.type == 'admin') {
+          this.uploadImage(result);
+        } else {
+          this.msgEmpl = result.msg;
+          this.emptyEmployee();
+        }
+
       },
       (error: HttpErrorResponse) => {
         this.msgEmpl = error.error.msg;
@@ -162,11 +216,65 @@ export class RegistrationComponent implements OnInit {
     );
   }
 
+  public uploadImage(result: any): void {
+
+    if (!this.fileUploadForm.get('uploadedImage').value) {
+      this.msgEmpl = result.msg;
+      this.emptyEmployee();
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('uploadedImage', this.fileUploadForm.get('uploadedImage').value);
+    formData.append('employeeUsername', `${this.employeeUsername}@etf.bg.ac.rs`);
+
+    this.authService.postImage(formData).subscribe((response: any) => {
+      console.log(response);
+      if (response.statusCode === 200) {
+        this.uploadFileInput.nativeElement.value = "";
+        this.fileInputLabel = undefined;
+        this.fileUploadForm.get('uploadedImage').setValue(null);
+
+        this.msgEmpl = result.msg;
+        this.emptyEmployee();
+        this.slika = `data:image/png;base64,${response.finalImg.image}`;
+      }
+    }, (error: HttpErrorResponse) => {
+      console.log(error);
+      alert(error.error.error);
+    });
+
+  }
+
   public isTeacher(): boolean {
     if (!this.employee.title || this.employeeTitles.findIndex((title: String) => title === this.employee.title) < 3) {
       return false;
     }
     return true;
+  }
+
+  public ngOnDestroy(): void {
+    if (this.subscription)
+      this.subscription.unsubscribe();
+    if (this.subscriptionEmployee)
+      this.subscriptionEmployee.unsubscribe();
+    if (this.subscriptionStudent)
+      this.subscriptionStudent.unsubscribe();
+  }
+
+  private imgTooBig(): boolean {
+    if (this.fileUploadForm.get('uploadedImage').value) {
+      if (this.imgH > 300 || this.imgW > 300) {
+        this.msgEmpl = "Slika moze biti maksimalnih dimenzija 300 x 300 px";
+        this.uploadFileInput.nativeElement.value = "";
+        this.fileInputLabel = undefined;
+        this.fileUploadForm.get('uploadedImage').setValue(null);
+        return true;
+      } else {
+        this.msgEmpl = '';
+      }
+    }
+    return false;
   }
 
   private emptyStudent(): void {

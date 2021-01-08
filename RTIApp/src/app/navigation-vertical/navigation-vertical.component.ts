@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { IUser } from '../registration/registration.component';
 import { AuthenticationService } from '../Services/Authentication/authentication.service';
 
 @Component({
@@ -9,13 +10,13 @@ import { AuthenticationService } from '../Services/Authentication/authentication
 })
 export class NavigationVerticalComponent implements OnInit, OnDestroy {
 
-  public user: any = null;
+  public user: IUser = null;
   public subscription: Subscription;
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.subscription = this.authService.isLoggedIn.subscribe((user: any) => {
-      this.user = user;
+      this.user = JSON.parse(user);
     });
   }
 

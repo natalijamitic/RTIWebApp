@@ -5,6 +5,26 @@
             width: 37px;
         }
 
+        .profile-pic-logo {
+            span {
+                width: 37px;
+            }
+            z-index: 2;
+            height: 2.25rem;
+        }
+
+        .profile-pic-label {
+            cursor: pointer;
+            left: 34px;
+            right: 1px;
+            border: 1px solid black;
+            height: auto;
+        }
+
+        .profile-pic-input {
+            cursor: pointer;
+        }
+
         .select {
             color: gray;
 

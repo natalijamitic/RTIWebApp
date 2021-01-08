@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../Services/Authentication/authentication.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   public password: string;
   public error: string;
 
-  public constructor(private authService: AuthenticationService) { }
+  public constructor(private authService: AuthenticationService, private router: Router) { }
 
   public ngOnInit(): void {
   }
@@ -23,10 +24,7 @@ export class LoginComponent implements OnInit {
       (result: any)=>{
         console.log(result);
         if (result) {
-
-          // this.authService.proba().subscribe((b:Boolean)=>{
-          //   console.log("CAO CAO " + b);
-          // })
+          this.router.navigate(['profil']);
           console.log(result.msg)
         } else {
           console.log("Never");

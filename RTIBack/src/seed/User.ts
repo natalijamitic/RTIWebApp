@@ -1,12 +1,14 @@
 
 import mongoose, { connect } from 'mongoose';
+import { insertUser } from '../query/User';
 import { User, Employee, Student } from '../model/User';
 
 const users = [
     {
         username: "admin",
         password: "admin123",
-        type: "admin"
+        type: "admin",
+        firstLogin: "no"
     },
     {
         username: "pera@etf.bg.ac.rs",
@@ -159,12 +161,7 @@ const students = [
 
 function seedUsers(): void {
     for (let u of users) {
-        let user = new User(u);
-        user.save().then(u => {
-            //console.log("Successfuly saved a user in db.");
-        }).catch(err => {
-            console.log("Error, couldn't save a user in db.");
-        })
+        insertUser(u);
     }
 }
 

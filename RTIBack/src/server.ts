@@ -9,9 +9,14 @@ import * as userQueries from './query/User';
 import * as projectQueries from './query/Projects';
 import * as notificationQueries from './query/Notification';
 import * as subjectQueries from './query/Subject';
+import { Employee } from './model/User';
 
 const jwt = require('jsonwebtoken');
 const RSA_PRIVATE_KEY = fs.readFileSync('src/assets/keys/private.key');
+
+const multer = require('multer');
+var sizeOf = require('image-size')
+var fileExtension = require('file-extension');
 
 const app = express();
 app.use(cors());
@@ -21,8 +26,88 @@ app.use(bodyParser.urlencoded({ extended: true }))
 mongoose.connect('mongodb://localhost:27017/rti_katedra', { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 
+mongoose.set('useFindAndModify', false);
+
+
+/*** PORFILE PICTURE ***/
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'src/uploaded_files/profile_pictures');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + '.' + fileExtension(file.originalname))
+    }
+});
+
+var upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 2000000 //2MBs
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+            //Error
+            cb(new Error('Please upload JPG and PNG images only!'))
+        }
+        //Success
+        cb(undefined, true)
+    }
+});
+
+app.post('/register/uploadfile', upload.single('uploadedImage'), (req, res, next) => {
+    const username = req.body.employeeUsername;
+    const file = req.file;
+
+    if (!file) {
+        res.status(400).json({error: "File upload failed."})
+        return;
+    }
+
+    let oldFileUrl = file.destination + '/' + file.filename;
+
+    const dimensions = sizeOf(oldFileUrl)
+    console.log(dimensions.width, dimensions.height)
+    if (dimensions.width > 300 || dimensions.height > 300) {
+        res.status(400).json({error: "File can be max 300 x 300 px."})
+        return;
+    }
+
+    let newFileUrl = file.destination + '/' + username + "." + fileExtension(file.originalname);
+
+    // Rename file
+    fs.renameSync(oldFileUrl, newFileUrl);
+
+    var img = fs.readFileSync(newFileUrl);
+    var encode_image = Buffer.from(img).toString('base64');
+
+    var finalImg = {
+        contentType: file.mimetype,
+        image: encode_image
+    };
+
+    Employee.findOneAndUpdate({username: username}, {profilePicture: finalImg}, (err, result) => {
+        if (err) {
+            res.status(400).send({
+                error: "GRESKA"
+            })
+        }
+        res.status(200).send({
+            statusCode: 200,
+            status: 'success',
+            finalImg: finalImg
+        })
+    })
+
+
+
+})
+
+
+/************* ROUTES ***************/
+
 connection.once('open', () => {
-    seed();
+    //seed();
     console.log('mongo connected');
 })
 
@@ -36,22 +121,22 @@ app.get('/', (request, response) => {
 router.route('/register/student').post((request, response) => {
     const user = request.body.user;
     const student = request.body.student;
-    userQueries.registerStudent(user, student).then((result:any)=> {
+    userQueries.registerStudent(user, student).then((result: any) => {
         if (result.status == 0) {
-            response.status(200).json({msg: result.msg});
+            response.status(200).json({ msg: result.msg });
         } else {
-            response.status(400).json({msg: result.msg})
+            response.status(400).json({ msg: result.msg })
         }
     });
 });
 router.route('/register/employee').post((request, response) => {
     const user = request.body.user;
     const employee = request.body.employee;
-    userQueries.registerEmployee(user, employee).then((result:any)=> {
+    userQueries.registerEmployee(user, employee).then((result: any) => {
         if (result.status == 0) {
-            response.status(200).json({msg: result.msg});
+            response.status(200).json({ msg: result.msg });
         } else {
-            response.status(400).json({msg: result.msg})
+            response.status(400).json({ msg: result.msg })
         }
     });
 })
@@ -98,6 +183,20 @@ router.route('/login').post((request, response) => {
     }).catch((error: string) => console.log("Login + " + error));
 
 });
+
+router.route('/login/first').post((request, response) => {
+    const oldPass = request.body.oldPass;
+    const newPass = request.body.newPass;
+    const username = request.body.username;
+
+    userQueries.firstLoginPassChange(username, oldPass, newPass).then((result: any) => {
+        if (result.status == 0) {
+            response.status(200).json({ msg: result.msg });
+        } else {
+            response.status(400).json({ msg: result.msg })
+        }
+    });
+})
 
 router.route('/kontakt').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request: any, respone: any) => {
     console.log("Kontakt route.");
@@ -183,7 +282,7 @@ app.use('/', router);
 
 app.use(function (err, req, res, next) {
     if (err.name === 'UnauthorizedError') {
-        res.status(401).json({msg: 'Not logged in'});
+        res.status(401).json({ msg: 'Not logged in' });
     }
 })
 

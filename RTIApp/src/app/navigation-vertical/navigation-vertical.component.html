@@ -6,8 +6,8 @@
     </div>
 
     <ul class="list-unstyled components" *ngIf="user">
-        <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <li [routerLinkActive]="['active']">
+            <a routerLink="profil" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-home"></i>
                 Home
             </a>
@@ -23,27 +23,14 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="#">
-                <i class="fas fa-briefcase"></i>
-                About
+
+        <li *ngIf="user?.type == 'admin'" [routerLinkActive]="['active']">
+            <a routerLink="korisnici">
+                <i class="fas fa-user-plus"></i>
+                Korisnici
             </a>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fas fa-copy"></i>
-                Pages
-            </a>
-            <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li>
-                    <a href="#">Page 1</a>
-                </li>
-                <li>
-                    <a href="#">Page 2</a>
-                </li>
-                <li>
-                    <a href="#">Page 3</a>
-                </li>
-            </ul>
         </li>
+
         <li>
             <a href="#">
                 <i class="fas fa-image"></i>

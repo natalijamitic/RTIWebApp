@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NavigationMainComponent } from './navigation-main/navigation-main.component';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import { AuthenticationService } from './Services/Authentication/authentication.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticationInterceptor } from './Services/Authentication/AuthenticationInterceptor';
@@ -30,15 +30,18 @@ import { MasterCardComponent } from './master-card/master-card.component';
 import { NavigationVerticalComponent } from './navigation-vertical/navigation-vertical.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LogoutComponent } from './logout/logout.component';
+import { FirstLoginComponent } from './first-login/first-login.component';
+import { UsersComponent } from './users/users.component';
 @NgModule({
   declarations: [             //  all personal components
-    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent, NavigationVerticalComponent, RegistrationComponent, ProfileComponent
+    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent, NavigationVerticalComponent, RegistrationComponent, ProfileComponent, LogoutComponent, FirstLoginComponent, UsersComponent
   ],
   imports: [                  //  foreign import components
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {
@@ -51,6 +54,7 @@ import { ProfileComponent } from './profile/profile.component';
     ProjectsService,
     EmployeesService,
     SubjectsService,
+    FormBuilder
   ],              //  services
   bootstrap: [AppComponent]   //  main component
 })
