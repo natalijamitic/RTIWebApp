@@ -5,7 +5,8 @@
         </a>
     </div>
 
-    <ul class="list-unstyled components" *ngIf="user">
+    <ul class="list-unstyled components">
+        <!-- *ngIf="user"> -->
         <li [routerLinkActive]="['active']">
             <a routerLink="profil" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-home"></i>
@@ -24,7 +25,8 @@
             </ul>
         </li>
 
-        <li *ngIf="user?.type == 'admin'" [routerLinkActive]="['active']">
+        <li [routerLinkActive]="['active']">
+            <!-- *ngIf="user?.type == 'admin'" -->
             <a routerLink="korisnici">
                 <i class="fas fa-user-plus"></i>
                 Korisnici

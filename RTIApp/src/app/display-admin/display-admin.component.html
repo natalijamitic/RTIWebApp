@@ -1,0 +1,56 @@
+<div class="card bg-dark">
+    <div class="card-body mx-auto">
+
+        <h4 class="card-title mt-3 text-center">Izmenite Nalog za {{user.username}}</h4>
+
+
+            <form name="admin-form" class="mt-3">
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i></span>
+                    </div>
+                    <input name="firstname" class="form-control"
+                        placeholder="Ime" type="text" [(ngModel)]="username">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i></span>
+                    </div>
+                    <input name="pass1" class="form-control" placeholder="Lozinka" type="password"
+                        [(ngModel)]="pass1">
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i></span>
+                    </div>
+                    <input name="pass2" class="form-control" placeholder="Ponovljena lozinka" type="password"
+                        [(ngModel)]="pass2">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-lock"></i></span>
+                    </div>
+                    <select name="type" [(ngModel)]="firstLogin" class="form-control select"
+                        oninput="style.color='black'">
+                        <option disabled selected class="select-placeholder">Prvo logovanje</option>
+                        <option value="yes">Da</option>
+                        <option value="no">Ne</option>
+                    </select>
+                </div> <!-- form-group end.// -->
+
+                <div class="form-group">
+                    <input (click)="update()" type="submit" class="btn btn-primary btn-block"
+                        value="Azuriraj">
+                </div> <!-- form-group// -->
+
+            </form>
+
+            <div class="text-center text-warning">
+                <p>{{msg}}</p>
+            </div>
+
+    </div>
+</div>

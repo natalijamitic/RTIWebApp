@@ -93,6 +93,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   fileInputLabel: string;
   imgH: number = -1;
   imgW : number = -1;
+  public slika: string = null;
 
   public constructor(private authService: AuthenticationService, private formBuilder: FormBuilder) { }
 
@@ -164,8 +165,6 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       }
     );
   }
-
-  public slika: string = null;
 
   public registerEmployee(): void {
 

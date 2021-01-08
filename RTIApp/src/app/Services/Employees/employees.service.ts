@@ -14,6 +14,35 @@ export class EmployeesService {
 
     }
 
+    getEmployeeByUsername(username: string) {
+        return this.http.get(`${environment.api}/employees/${username}`)
+            .pipe(
+                map((emp: any) => {
+                    let employee: IEmployee = {
+                        username: emp.username,
+                        firstName: emp.firstName,
+                        lastName: emp.lastName,
+                        address: emp.address,
+                        phoneNumber: emp.phoneNumber,
+                        webpage: emp.webpage,
+                        personalInfo: emp.personalInfo,
+                        title: emp.title,
+                        roomNumber: emp.roomNumber,
+                        status: emp.status,
+                        type: emp.type,
+                        subjects: [] as string[],
+                        profilePicture: emp.profilePicture
+                    };
+
+                    return employee;
+                })
+            );
+    }
+
+    updateEmployee(oldEmp: IEmployee, newEmp: IEmployee) {
+        return this.http.post(`${environment.api}/employees/update`, {oldEmp, newEmp});
+    }
+
     getAllEmployees() {
         return this.http.get(`${environment.api}/employees`)
             .pipe(

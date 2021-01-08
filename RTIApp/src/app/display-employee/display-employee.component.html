@@ -1,0 +1,143 @@
+<div class="card bg-dark">
+    <div class="card-body mx-auto">
+
+        <h4 class="card-title mt-3 text-center">Izmenite Nalog za {{user.username}}</h4>
+
+            <form name="employee-form" class="mt-3">
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i></span>
+                    </div>
+                    <input name="username" class="form-control"
+                        placeholder="Username" type="text" [(ngModel)]="employee.username">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i></span>
+                    </div>
+                    <input name="pass1" class="form-control" placeholder="Lozinka" type="password"
+                        [(ngModel)]="pass1">
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i></span>
+                    </div>
+                    <input name="pass2" class="form-control" placeholder="Ponovljena lozinka" type="password"
+                        [(ngModel)]="pass2">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-lock"></i></span>
+                    </div>
+                    <select name="firstLogin" [(ngModel)]="firstLogin" class="form-control select"
+                        oninput="style.color='black'">
+                        <option disabled selected class="select-placeholder">Prvo logovanje</option>
+                        <option value="yes">Da</option>
+                        <option value="no">Ne</option>
+                    </select>
+                </div> <!-- form-group end.// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i></span>
+                    </div>
+                    <input name="firstname" onkeypress="return /[- 'a-zA-Z]/i.test(event.key)" class="form-control"
+                        placeholder="Ime" type="text" [(ngModel)]="employee.firstName">
+                    <input name="lastname" onkeypress="return /[- 'a-zA-Z]/i.test(event.key)" class="form-control"
+                        placeholder="Prezime" type="text" [(ngModel)]="employee.lastName">
+                </div> <!-- form-group// -->
+
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-map-marked-alt"></i></span>
+                    </div>
+                    <input name="address" class="form-control" placeholder="Ulica i broj, grad" type="text"
+                        [(ngModel)]="employee.address">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    <input name="phoneNumber" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
+                        placeholder="Telefon" type="text" [(ngModel)]="employee.phoneNumber">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-globe"></i> </span>
+                    </div>
+                    <input name="webpage" class="form-control" placeholder="Vebsajt" type="text"
+                        [(ngModel)]="employee.webpage">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-info-circle"></i> </span>
+                    </div>
+                    <input name="personalInfo" class="form-control" placeholder="Licni podaci" type="text"
+                        [(ngModel)]="employee.personalInfo">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-tag"></i></span>
+                    </div>
+                    <select name="title" id="selectTitleBox" class="form-control select" oninput="style.color='black'"
+                        [(ngModel)]="employee.title">
+                        <option disabled selected class="select-placeholder">Zvanje</option>
+                        <option *ngFor="let title of employeeTitles" value="{{title}}">{{title}}</option>
+                    </select>
+                </div> <!-- form-group end.// -->
+
+                <div class="form-group input-group" *ngIf="isTeacher()">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-door-closed"></i></span>
+                    </div>
+                    <input name="roomNumber" class="form-control" placeholder="Broj kabineta" type="text"
+                        [(ngModel)]="employee.roomNumber">
+                </div> <!-- form-group// -->
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend profile-pic-logo">
+                        <span class="input-group-text"><i class="far fa-image"></i></span>
+                    </div>
+                    <input type="file" class="custom-file-input form-control profile-pic-input" id="customFile" name="uploadedImage"
+                        (change)="onFileSelect($event)" #UploadFileInput>
+
+                    <div class="input-group-append">
+                        <label class="custom-file-label profile-pic-label" for="customFile">{{fileInputLabel ||
+                            'Choose File'}}</label>
+                    </div>
+                </div>
+
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-tag"></i></span>
+                    </div>
+                    <select name="status" class="form-control select" oninput="style.color='black'"
+                        [(ngModel)]="employee.status">
+                        <option disabled selected class="select-placeholder">Status</option>
+                        <option>aktivan</option>
+                        <option>neaktivan</option>
+                    </select>
+                </div> <!-- form-group end.// -->
+
+
+                <div class="form-group">
+                    <input (click)="update()" type="submit" class="btn btn-primary btn-block"
+                        value="Azuriraj">
+                </div> <!-- form-group// -->
+
+            </form>
+
+            <div class="text-center text-warning">
+                <p>{{msg}}</p>
+            </div>
+
+    </div>
+</div>

@@ -203,20 +203,37 @@ router.route('/kontakt').get([middleware.list.checkIfLoggedIn, middleware.list.c
     respone.json(true);
 });
 
-router.route('/proba').get([middleware.list.checkIfLoggedIn, middleware.list.checkIfAdmin], (request: any, respone: any) => {
-    console.log("Proba route.");
-    respone.json(true);
-});
+
+
+/******** USER ROUTES ********/
+router.route('/users').get((request, response) => {
+    userQueries.getAllUsers().then((result: any) => {
+        response.status(200).json(result);
+    })
+})
+router.route('/users/delete').post((request, response) => {
+    const user = request.body.user
+    userQueries.deleteUser(user.username, user.type).then((result: any) => {
+        response.status(200).json(result);
+    })
+})
+router.route('/users/update').post((request, response) => {
+    const oldUser = request.body.oldUser;
+    const newUser = request.body.newUser;
+    userQueries.updateUser(oldUser, newUser).then((result: any) => {
+        if (result.status == 0) {
+            response.status(200).json(result);
+        } else {
+            response.status(400).json(result);
+        }
+    })
+})
 
 //******* SUBJECT ROUTES       ********/
 router.route('/subjects/:dept').get((request, response) => {
-    console.log(request.params);
-    console.log("Subject route");
-
     subjectQueries.getSubjectsByDepartment(request.params.dept).then((result: any) => {
         response.json(result)
     })
-
 });
 
 //******* EMPLOYEES ROUTES     *******/
@@ -238,6 +255,21 @@ router.route('/assignments').get((_request, response) => {
     })
 
 });
+// GET Employee By Username
+router.route('/employees/:username').get((request, response) => {
+    userQueries.getEmployeeByUsername(request.params.username).then((result: any) => {
+        response.json(result);
+    })
+})
+// UPDATE Employee
+router.route('/employees/update').post((request, response) => {
+    const oldUser = request.body.oldEmp;
+    const newUser = request.body.newEmp;
+    userQueries.updateEmployee(oldUser, newUser).then((result: any) => {
+        console.log(result);
+        response.json(result);
+    })
+})
 
 //******* PROJECTS ROUTES     *******/
 // GET Offered Projects

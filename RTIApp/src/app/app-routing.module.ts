@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
+import { DisplayAdminComponent } from './display-admin/display-admin.component';
+import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +25,22 @@ const routes: Routes = [
   {
     path: 'korisnici',
     component: UsersComponent
+  },
+  {
+    path: 'korisnici/registracija',
+    component: RegistrationComponent
+  },
+  {
+    path: 'korisnici/obrada/admin',
+    component: DisplayAdminComponent
+  },
+  {
+    path: 'korisnici/obrada/zaposlen',
+    component: DisplayEmployeeComponent
+  },
+  {
+    path: 'korisnici/obrada/student',
+    component: DisplayAdminComponent
   },
   {
     path: 'registracija',
