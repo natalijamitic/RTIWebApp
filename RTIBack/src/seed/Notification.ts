@@ -60,7 +60,7 @@ const notifications = [
     }
 ]
 
-function saveNotification(i: Number): void {
+function saveNotification(i: number): void {
     for (let j = 0; j < 2; j++) {
         let notification = new Notification(notifications[i++]);
         notification.save().then(u => {

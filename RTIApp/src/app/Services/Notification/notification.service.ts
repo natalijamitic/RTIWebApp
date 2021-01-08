@@ -32,6 +32,10 @@ export class NotificationService {
       );
   }
 
+  updateNotificationType(oldType: string, newType: string){
+    return this.http.post(`${environment.api}/notificationtypes/update`, {oldType, newType});
+  }
+
   getAllNotificationTypes() {
     return this.http.get(`${environment.api}/notificationtypes`)
       .pipe(

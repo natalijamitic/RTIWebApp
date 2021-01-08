@@ -297,15 +297,23 @@ router.route('/projects/done').get((_request, response) => {
 //******* NOTIFICATION ROUTES *******/
 // GET Notifications
 router.route('/notifications').get((_request, response) => {
-    console.log("Notifications route");
     notificationQueries.getRecentNotifications().then((result) => {
         response.json(result);
     });
 });
 // GET Notification Types
 router.route('/notificationtypes').get((_request, response) => {
-    console.log("Notificationtypes route");
     notificationQueries.getNotificationTypes().then((result) => {
+        response.json(result);
+    });
+});
+// UPDATE Notification Types
+router.route('/notificationtypes/update').post((request, response) => {
+    const oldType = request.body.oldType;
+    const newType = request.body.newType;
+    console.log(oldType);
+    console.log(newType);
+    notificationQueries.updateNotificationTypes(oldType, newType).then((result) => {
         response.json(result);
     });
 });

@@ -1,0 +1,60 @@
+<div *ngIf="types">
+    <div class="card bg-dark">
+        <div class="card-body mr-4 ml-4">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Tip</th>
+                        <th scope="col">Akcija</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let type of types; let i = index  trackBy:trackByFn">
+                        <td>
+                            <form>
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-tag"></i></span>
+                                    </div>
+                                    <input disabled name="firstname" class="form-control {{'type-'+i}}" placeholder="Ime" type="text"
+                                        [(ngModel)]="types[i]">
+                                </div> <!-- form-group// -->
+                            </form>
+                        <td>
+                            <button *ngIf="!show[i]" (click)="updateType(types[i], i)" type="button" class="btn btn-warning action mr-2">
+                                <i class="fas fa-edit"></i></button>
+
+                            <button *ngIf="show[i]" (click)="updateType(types[i], i)" type="button" class="btn btn-success action mr-2">
+                                <i class="fas fa-edit"></i></button>
+
+                            <button (click)="deleteType(types[i])" type="button"
+                                class="btn btn-danger action ml-2">
+                                <i class="fas fa-trash-alt"></i></button>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <form>
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-tag"></i></span>
+                                    </div>
+                                    <input name="firstname" class="form-control" placeholder="Ime" type="text"
+                                        [(ngModel)]="newType">
+                                </div> <!-- form-group// -->
+                            </form>
+                        </td>
+                        <td>
+                            <button type="button" (click)="insertType()"
+                            class="btn btn-success action mr-2">
+                            <i class="fas fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

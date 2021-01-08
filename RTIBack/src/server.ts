@@ -319,8 +319,6 @@ router.route('/projects/done').get((_request, response) => {
 //******* NOTIFICATION ROUTES *******/
 // GET Notifications
 router.route('/notifications').get((_request, response) => {
-    console.log("Notifications route");
-
     notificationQueries.getRecentNotifications().then((result: any) => {
         response.json(result)
     })
@@ -328,9 +326,17 @@ router.route('/notifications').get((_request, response) => {
 });
 // GET Notification Types
 router.route('/notificationtypes').get((_request, response) => {
-    console.log("Notificationtypes route");
-
     notificationQueries.getNotificationTypes().then((result: any) => {
+        response.json(result)
+    })
+});
+// UPDATE Notification Types
+router.route('/notificationtypes/update').post((request, response) => {
+    const oldType = request.body.oldType;
+    const newType = request.body.newType;
+    console.log(oldType)
+    console.log(newType)
+    notificationQueries.updateNotificationTypes(oldType, newType).then((result: any) => {
         response.json(result)
     })
 });
