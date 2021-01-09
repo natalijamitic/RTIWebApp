@@ -5,6 +5,7 @@ import { ContactComponent } from './contact/contact.component';
 import { DisplayAdminComponent } from './display-admin/display-admin.component';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
 import { DisplayNotificationTypesComponent } from './display-notification-types/display-notification-types.component';
+import { DisplayNotificationsComponent } from './display-notifications/display-notifications.component';
 import { DisplayStudentComponent } from './display-student/display-student.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
@@ -65,7 +66,11 @@ const routes: Routes = [
     component: NotificationComponent
   },
   {
-    path: 'obavestenja/tipovi',
+    path: 'admin/obavestenja/pregled',
+    component: DisplayNotificationsComponent
+  },
+  {
+    path: 'admin/obavestenja/tipovi',
     component: DisplayNotificationTypesComponent
   },
   {

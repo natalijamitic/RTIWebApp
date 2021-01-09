@@ -42,39 +42,32 @@ export class DisplayNotificationTypesComponent implements OnInit, OnDestroy {
       if (this.typesOld[num] != type) {
 
         this.notifService.updateNotificationType(this.typesOld[num], type).subscribe((result)=>{
-          console.log(result);
           this.typesOld[num] = type;
         })
 
       }
-
       (elem as HTMLInputElement).disabled = true;
       this.show[num] = false;
     }
-    // v
-    // if ((elem as HTMLInputElement).disabled) {
-    //   (elem as HTMLInputElement).disabled = false;
-    // } else {
-    //   if (this.typesOld[num] != type) {
-
-    //     this.notifService.updateNotificationType(this.typesOld[num], type).subscribe((result)=>{
-    //       console.log(result);
-    //       this.typesOld[num] = type;
-    //     })
-
-    //   }
-
-
-    //   (elem as HTMLInputElement).disabled = true;
-    // }
   }
 
-  public deleteType(type: string): void {
-    console.log(type);
+  public deleteType(type: string, num: number): void {
+    this.notifService.deleteNotificationType(type).subscribe((result: any) => {
+      this.typesOld.splice(num, 1);
+      this.types.splice(num, 1);
+      this.show.splice(num, 1);
+    })
   }
 
   public insertType(): void {
-    console.log(this.newType);
+    if (this.newType) {
+      this.notifService.insertNotificationType(this.newType).subscribe((result: any) => {
+        this.typesOld.push(this.newType);
+        this.types.push(this.newType);
+        this.newType = null;
+        this.show.push(false);
+      })
+    }
   }
 
   trackByFn(index: any, item: any) {

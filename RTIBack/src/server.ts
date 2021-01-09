@@ -324,6 +324,27 @@ router.route('/notifications').get((_request, response) => {
     })
 
 });
+// GET Notifications
+router.route('/notifications/all').get((_request, response) => {
+    notificationQueries.getAllNotifications().then((result: any) => {
+        response.json(result)
+    });
+});
+// INSERT Notification
+router.route('/notification/insert').post((request, response) => {
+    const notif = request.body.notif;
+    notificationQueries.insertNotification(notif).then((result: any) => {
+        response.json(result)
+    })
+});
+// DELETE Notification
+router.route('/notification/delete').post((request, response) => {
+    const date = request.body.date;
+    notificationQueries.deleteNotification(date).then((result: any) => {
+        response.json(result)
+    })
+});
+
 // GET Notification Types
 router.route('/notificationtypes').get((_request, response) => {
     notificationQueries.getNotificationTypes().then((result: any) => {
@@ -334,9 +355,21 @@ router.route('/notificationtypes').get((_request, response) => {
 router.route('/notificationtypes/update').post((request, response) => {
     const oldType = request.body.oldType;
     const newType = request.body.newType;
-    console.log(oldType)
-    console.log(newType)
     notificationQueries.updateNotificationTypes(oldType, newType).then((result: any) => {
+        response.json(result)
+    })
+});
+// INSERT Notification Types
+router.route('/notificationtypes/insert').post((request, response) => {
+    const newType = request.body.newType;
+    notificationQueries.insertNotificationType(newType).then((result: any) => {
+        response.json(result)
+    })
+});
+// DELETE Notification Types
+router.route('/notificationtypes/delete').post((request, response) => {
+    const type = request.body.type;
+    notificationQueries.deleteNotificationType(type).then((result: any) => {
         response.json(result)
     })
 });

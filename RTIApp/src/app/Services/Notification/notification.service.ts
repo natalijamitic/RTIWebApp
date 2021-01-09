@@ -32,8 +32,42 @@ export class NotificationService {
       );
   }
 
+  getAllNotificationsNoFilter() {
+    return this.http.get(`${environment.api}/notifications/all`)
+    .pipe(
+      map((n: any) => {
+        let notifications: Array<INotification> = [];
+        for (let notification of n) {
+          notifications.push({
+            title: notification.title,
+            content: notification.content,
+            dateCreation: notification.dateCreation,
+            type: notification.type.typeName
+          });
+        }
+        return notifications;
+      })
+    );
+  }
+
+  insertNotification(notif: INotification) {
+    return this.http.post(`${environment.api}/notification/insert`, {notif});
+  }
+
+  deleteNotification(date: any) {
+    return this.http.post(`${environment.api}/notification/delete`, {date});
+  }
+
   updateNotificationType(oldType: string, newType: string){
     return this.http.post(`${environment.api}/notificationtypes/update`, {oldType, newType});
+  }
+
+  insertNotificationType(newType: string){
+    return this.http.post(`${environment.api}/notificationtypes/insert`, {newType});
+  }
+
+  deleteNotificationType(type: string) {
+    return this.http.post(`${environment.api}/notificationtypes/delete`, {type});
   }
 
   getAllNotificationTypes() {

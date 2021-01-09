@@ -34,10 +34,18 @@
         </li>
 
         <li [routerLinkActive]="['active']">
-            <a routerLink="obavestenja/tipovi">
+            <a href="#vestiSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-bell"></i>
-                Tipovi Vesti
+                Vesti
             </a>
+            <ul class="collapse list-unstyled" id="vestiSubmenu">
+                <li [routerLinkActive]="['active']">
+                    <a routerLink="admin/obavestenja/tipovi">Tipovi</a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a routerLink="admin/obavestenja/pregled">Vesti</a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="#">

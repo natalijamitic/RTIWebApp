@@ -1,0 +1,74 @@
+<div *ngIf="notifications">
+    <div class="card bg-dark">
+        <div class="card-body mr-4 ml-4">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Naslov</th>
+                        <th scope="col">Sadrzaj</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Tip</th>
+                        <th scope="col">Akcija</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let notif of notifications; let i = index">
+                        <td>
+                            {{notif.title}}
+                        </td>
+                        <td>
+                            {{notif.content}}
+                        </td>
+                        <td>
+                            {{notif.dateCreation | date}} &nbsp; {{notif.dateCreation | date:"HH:mm"}}
+                        </td>
+                        <td>
+                            {{notif.type}}
+                        </td>
+                        <td>
+                            <button (click)="deleteNotification(notif, i)" type="button"
+                                class="btn btn-danger action ml-2">
+                                <i class="fas fa-trash-alt"></i></button>
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="title" class="form-control" placeholder="Naslov" type="text"
+                                        [(ngModel)]="notification.title">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="title" class="form-control" placeholder="Sadrzaj" type="text"
+                                        [(ngModel)]="notification.content">
+                                </div>
+                            </td>
+                            <td><div class="form-group input-group">
+                                <input name="date" class="form-control" placeholder="Vreme" type="datetime-local"
+                                    [(ngModel)]="notification.dateCreation">
+                            </div>
+
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <select name="type" [(ngModel)]="notification.type" class="form-control select"
+                                        oninput="style.color='black'">
+                                        <option *ngFor="let n of notificationTypes">{{n}}</option>
+                                    </select>
+                                </div> <!-- form-group end.// -->
+                            </td>
+                        <td>
+                            <button type="button" (click)="insertType()" class="btn btn-success action mr-2">
+                                <i class="fas fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
