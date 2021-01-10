@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUser } from '../registration/registration.component';
+import { AuthenticationService } from '../Services/Authentication/authentication.service';
 import { UsersService } from '../Services/Users/users.service';
 
 @Component({
@@ -13,10 +14,12 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   public users: Array<IUser> = null;
 
+  public loggedInUser: IUser = null;
+
   private subscription: Subscription;
   private subscriptionDelete: Subscription;
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router, private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.subscription = this.usersService.getAllUsers().subscribe((result: Array<IUser>) => {
@@ -28,10 +31,18 @@ export class UsersComponent implements OnInit, OnDestroy {
       });
       console.log(result);
     })
+
+    this.authService.isLoggedIn.subscribe((user: any) => {
+      this.loggedInUser = JSON.parse(user);
+      if (!this.loggedInUser || this.loggedInUser.type != 'admin') {
+        this.router.navigate(['error']);
+      }
+    });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription){
+      this.subscription.unsubscribe();}
     if (this.subscriptionDelete) {
       this.subscriptionDelete.unsubscribe();
     }

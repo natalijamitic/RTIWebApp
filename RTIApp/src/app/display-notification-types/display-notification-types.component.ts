@@ -30,7 +30,8 @@ export class DisplayNotificationTypesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription){
+      this.subscription.unsubscribe();}
   }
 
   public updateType(type: string, num: number): void {

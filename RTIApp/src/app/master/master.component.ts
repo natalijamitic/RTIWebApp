@@ -73,7 +73,9 @@ export class MasterComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.subjects = null;
     this.subjectsGrouped = null;
-    this.subscription.unsubscribe();
+
+    if (this.subscription){
+      this.subscription.unsubscribe();}
   }
 
 }

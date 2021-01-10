@@ -38,7 +38,8 @@ export class DisplayAdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription){
+      this.subscription.unsubscribe();}
   }
 
   public update(): void {
@@ -60,7 +61,7 @@ export class DisplayAdminComponent implements OnInit, OnDestroy {
       console.log(result);
       this.user = updateUser;
       this.msg = 'Uspesno izmenjeno.';
-    }, (error:HttpErrorResponse) => {
+    }, (error: HttpErrorResponse) => {
       this.msg = error.error.msg
     })
 

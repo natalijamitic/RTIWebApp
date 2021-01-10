@@ -253,12 +253,12 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    if (this.subscription)
-      this.subscription.unsubscribe();
-    if (this.subscriptionEmployee)
-      this.subscriptionEmployee.unsubscribe();
-    if (this.subscriptionStudent)
-      this.subscriptionStudent.unsubscribe();
+    if (this.subscription){
+      this.subscription.unsubscribe();}
+    if (this.subscriptionEmployee){
+      this.subscriptionEmployee.unsubscribe();}
+    if (this.subscriptionStudent){
+      this.subscriptionStudent.unsubscribe();}
   }
 
   private imgTooBig(): boolean {

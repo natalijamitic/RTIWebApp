@@ -7,23 +7,6 @@ import { AuthenticationService } from '../Services/Authentication/authentication
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit {
-
-  public hide = true;
-  public msg: string;
-
-  constructor(private authService: AuthenticationService) { }
-
-  ngOnInit(): void {
-    this.authService.tryKontakt().subscribe((result:any) => {
-      console.log(result);
-      this.hide = false;
-    },
-    (error: HttpErrorResponse) => {
-      console.log(error);
-      this.hide = true;
-      this.msg = error.error.msg;
-    })
-  }
+export class ContactComponent {
 
 }

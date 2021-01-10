@@ -43,9 +43,10 @@ import { StudentService } from './Services/Students/student.service';
 import { DisplayNotificationTypesComponent } from './display-notification-types/display-notification-types.component';
 import { DisplayNotificationsComponent } from './display-notifications/display-notifications.component';
 import { AssignmentConfigurationComponent } from './assignment-configuration/assignment-configuration.component';
+import { ErrorRoutePageComponent } from './error-route-page/error-route-page.component';
 @NgModule({
   declarations: [             //  all personal components
-    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent, NavigationVerticalComponent, RegistrationComponent, ProfileComponent, LogoutComponent, FirstLoginComponent, UsersComponent, DisplayAdminComponent, DisplayEmployeeComponent, DisplayStudentComponent, DisplayNotificationTypesComponent, DisplayNotificationsComponent, AssignmentConfigurationComponent
+    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent, NavigationVerticalComponent, RegistrationComponent, ProfileComponent, LogoutComponent, FirstLoginComponent, UsersComponent, DisplayAdminComponent, DisplayEmployeeComponent, DisplayStudentComponent, DisplayNotificationTypesComponent, DisplayNotificationsComponent, AssignmentConfigurationComponent, ErrorRoutePageComponent
   ],
   imports: [                  //  foreign import components
     BrowserModule,

@@ -92,7 +92,8 @@ export class DisplayEmployeeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+  if (this.subscription){
+    this.subscription.unsubscribe();}
   }
 
   onFileSelect(event) {

@@ -7,6 +7,9 @@ import { SubjectsService } from '../Services/Subjects/subjects.service';
 
 
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { AuthenticationService } from '../Services/Authentication/authentication.service';
+import { IUser } from '../registration/registration.component';
+import { Router } from '@angular/router';
 
 export interface IGroup {
   name: string;
@@ -40,7 +43,7 @@ export class AssignmentConfigurationComponent implements OnInit, OnDestroy {
   }
 
 
-  public selectedSubject: [{code: string}];
+  public selectedSubject: [{ code: string }];
   public selectedTeachersP = Array(10);
   public selectedTeachersV = Array(10);
   public selectedNumGroup: number = null;
@@ -51,14 +54,18 @@ export class AssignmentConfigurationComponent implements OnInit, OnDestroy {
   public counter = Array;
 
 
-  public msg: string ='';
+  public msg: string = '';
+
+  public loggedInUser: IUser = null;
 
   private sub1: Subscription;
   private sub2: Subscription;
   private sub3: Subscription;
 
   constructor(private employeeService: EmployeesService,
-              private subjectService: SubjectsService) { }
+    private subjectService: SubjectsService,
+    private authService: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.sub1 = this.employeeService.getAssignmentListFull().subscribe((result: Array<IAssignmentFull>) => {
@@ -74,6 +81,13 @@ export class AssignmentConfigurationComponent implements OnInit, OnDestroy {
       this.allSubjects = [...result];
       this.subjects = result.filter((subj: ISubjectShort) => !this.assignments.find((ass: IAssignmentFull) => ass.subject == subj.code));
     })
+
+    this.authService.isLoggedIn.subscribe((user: any) => {
+      this.loggedInUser = JSON.parse(user);
+      if (!this.loggedInUser || this.loggedInUser.type != 'admin') {
+        this.router.navigate(['error']);
+      }
+    });
 
     this.dropdownSettings = {
       singleSelection: false,
@@ -100,9 +114,15 @@ export class AssignmentConfigurationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub1.unsubscribe();
-    this.sub2.unsubscribe();
-    this.sub3.unsubscribe();
+    if (this.sub1){
+      this.sub1.unsubscribe();
+    }
+
+    if (this.sub2) {
+      this.sub2.unsubscribe();
+    }
+    if (this.sub3){
+      this.sub3.unsubscribe();}
   }
 
   public deleteAssignment(ass: IAssignmentFull, num: number) {
@@ -130,10 +150,10 @@ export class AssignmentConfigurationComponent implements OnInit, OnDestroy {
     let groups: Array<IGroup> = [];
 
     for (let i = 0; i < this.selectedNumGroup; i++) {
-      if(!employeesAll.find((emp: string) => emp == this.selectedTeachersP[i])) {
+      if (!employeesAll.find((emp: string) => emp == this.selectedTeachersP[i])) {
         employeesAll.push(...this.selectedTeachersP[i]);
       }
-      if(!employeesAll.find((emp: string) => emp == this.selectedTeachersV[i])) {
+      if (!employeesAll.find((emp: string) => emp == this.selectedTeachersV[i])) {
         employeesAll.push(...this.selectedTeachersV[i]);
       }
       let group: IGroup = {

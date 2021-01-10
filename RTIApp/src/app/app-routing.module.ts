@@ -10,6 +10,7 @@ import { DisplayNotificationsComponent } from './display-notifications/display-n
 import { DisplayStudentComponent } from './display-student/display-student.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
+import { ErrorRoutePageComponent } from './error-route-page/error-route-page.component';
 import { HomeComponent } from './home/home.component';
 import { MasterComponent } from './master/master.component';
 import { NotificationComponent } from './notification/notification.component';
@@ -113,6 +114,10 @@ const routes: Routes = [
   {
     path: 'kontakt',
     component: ContactComponent
+  },
+  {
+    path: 'error',
+    component: ErrorRoutePageComponent
   },
 ];
 

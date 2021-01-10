@@ -1,5 +1,5 @@
-<div *ngIf="users">
-    <div class="card bg-dark">
+<div *ngIf="loggedInUser && loggedInUser.type == 'admin'">
+    <div class="card bg-dark" *ngIf="users">
         <div class="card-body mx-auto">
 
             <table class="table table-bordered">

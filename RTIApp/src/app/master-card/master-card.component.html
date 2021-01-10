@@ -19,13 +19,20 @@
                             (P+V+L)</strong></td>
                     <td style="text-align: center"><strong>Krediti</strong></td>
                 </tr>
-                <tr  *ngFor="let subj of subjects; let i = index">
+                <tr *ngFor="let subj of subjects; let i = index">
 
-                        <td class="text-center"><a href="">{{subj.code}}</a></td>
-                        <td class="text-center">{{subj.title}}</td>
-                        <td class="text-center">{{subj.type}}</td>
-                        <td class="text-center">{{subj.weekly.lecutre}}+{{subj.weekly.exercise}}+{{subj.weekly.lab}}</td>
-                        <td class="text-center">{{subj.espb}}</td>
+                    <td class="text-center" *ngIf="showSubjectLink(subj); else notstudent">
+                        <a href="">{{subj.code}}</a>
+                    </td>
+                    <ng-template #notstudent>
+                        <td class='text-center'>
+                            {{subj.code}}
+                        </td>
+                    </ng-template>
+                    <td class="text-center">{{subj.title}}</td>
+                    <td class="text-center">{{subj.type}}</td>
+                    <td class="text-center">{{subj.weekly.lecutre}}+{{subj.weekly.exercise}}+{{subj.weekly.lab}}</td>
+                    <td class="text-center">{{subj.espb}}</td>
 
                 </tr>
             </tbody>
