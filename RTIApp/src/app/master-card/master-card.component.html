@@ -22,7 +22,7 @@
                 <tr *ngFor="let subj of subjects; let i = index">
 
                     <td class="text-center" *ngIf="showSubjectLink(subj); else notstudent">
-                        <a href="">{{subj.code}}</a>
+                        <a routerLink='/listapredmeta/{{subj.code}}'>{{subj.code}}</a>
                     </td>
                     <ng-template #notstudent>
                         <td class='text-center'>

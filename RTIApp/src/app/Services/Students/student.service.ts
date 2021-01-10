@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { ISubjectShort } from 'src/app/master/master.component';
 import { IStudent } from 'src/app/registration/registration.component';
 import { environment } from 'src/environments/environment';
 
@@ -24,7 +25,8 @@ export class StudentService {
                         lastName: stud.lastName,
                         index: stud.index,
                         studyType: stud.studyType,
-                        status: stud.status
+                        status: stud.status,
+                        subjects: stud.subjects,
                     };
 
                     return student;
@@ -38,6 +40,14 @@ export class StudentService {
 
     updateStudent(oldStud: IStudent, newStud: IStudent) {
         return this.http.post(`${environment.api}/students/update`, {oldStud, newStud});
+    }
+
+    insertSubjects(username: string, subjects: Array<string>) {
+        return this.http.post(`${environment.api}/students/insert/subjects`, {username, subjects});
+    }
+
+    deleteSubject(username: string, subject: string) {
+        return this.http.post(`${environment.api}/students/delete/subject`, {username, subject});
     }
 
 }

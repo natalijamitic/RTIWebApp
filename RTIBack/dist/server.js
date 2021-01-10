@@ -255,6 +255,22 @@ router.route('/students/exists').post((request, response) => {
         }
     });
 });
+// INSERT SUBJECTS into Student
+router.route('/students/insert/subjects').post((request, response) => {
+    const username = request.body.username;
+    const subjects = request.body.subjects;
+    userQueries.insertSubjects(username, subjects).then((result) => {
+        response.status(200).json(result);
+    });
+});
+// DELETE SUBJECT from Student
+router.route('/students/delete/subject').post((request, response) => {
+    const username = request.body.username;
+    const subject = request.body.subject;
+    userQueries.deleteSubject(username, subject).then((result) => {
+        response.status(200).json(result);
+    });
+});
 //******* EMPLOYEES ROUTES     *******/
 // GET Employees
 router.route('/employees').get((_request, response) => {

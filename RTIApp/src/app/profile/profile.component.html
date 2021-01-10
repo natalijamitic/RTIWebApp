@@ -1,14 +1,10 @@
-<div *ngIf="!user">
-    <h1>Zabranjen pristup</h1>
-</div>
-
 <div *ngIf="user" class="container">
 
     <first-login [isFirst]="isFirstLogin()" [user]="user.username"></first-login>
 
     <div *ngIf="!isFirstLogin()">
         <h1>Welcome {{user.username}}</h1>
-        <button type="button" (click)="editProfile()" class="btn btn-success btn-lg">Edit profile</button>
+        <button *ngIf="user.type != 'student'" type="button" (click)="editProfile()" class="btn btn-success btn-lg">Edit profile</button>
     </div>
 
 </div>

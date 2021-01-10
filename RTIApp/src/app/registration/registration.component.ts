@@ -19,6 +19,7 @@ export interface IStudent {
   firstName: string;
   lastName: string;
   status: string;
+  subjects?: string[];
 }
 
 @Component({

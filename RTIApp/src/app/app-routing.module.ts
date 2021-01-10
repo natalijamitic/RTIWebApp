@@ -8,6 +8,7 @@ import { DisplayEmployeeComponent } from './display-employee/display-employee.co
 import { DisplayNotificationTypesComponent } from './display-notification-types/display-notification-types.component';
 import { DisplayNotificationsComponent } from './display-notifications/display-notifications.component';
 import { DisplayStudentComponent } from './display-student/display-student.component';
+import { DisplaySubjectStudentComponent } from './display-subject-student/display-subject-student.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { ErrorRoutePageComponent } from './error-route-page/error-route-page.component';
@@ -19,6 +20,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ResearchProjectsComponent } from './research-projects/research-projects.component';
 import { ResearchComponent } from './research/research.component';
+import { SubjectListComponent } from './subject-list/subject-list.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
@@ -90,6 +92,14 @@ const routes: Routes = [
   {
     path: 'admin/obavestenja/tipovi',
     component: DisplayNotificationTypesComponent
+  },
+  {
+    path: 'listapredmeta',
+    component: SubjectListComponent
+  },
+  {
+    path: 'listapredmeta/:code',
+    component: DisplaySubjectStudentComponent
   },
   {
     path: 'predmeti/:dept',

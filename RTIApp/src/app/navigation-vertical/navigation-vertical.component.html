@@ -41,6 +41,13 @@
             </a>
         </li>
 
+        <li [routerLinkActive]="['active']" *ngIf="user?.type == 'student'">
+            <a routerLink="listapredmeta">
+                <i class="far fa-list-alt"></i>
+                Lista predmeta
+            </a>
+        </li>
+
     </ul>
 
 </nav>

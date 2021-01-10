@@ -231,6 +231,23 @@ export function insertAssignment(ass: any): any {
 }
 
 
+export function insertSubjects(username: string, subjects: any) {
+    return Student.updateOne({username: username}, {
+        $push: {
+            subjects: {
+                $each: subjects
+            }
+        }
+    }).then((r: any) => r);
+}
+export function deleteSubject(username: string, subject: string) {
+    return Student.updateOne({username: username}, {
+        $pull: {
+            "subjects": subject
+        }
+    }).then((r: any) => r);
+}
+
 
 export async function updateUserPass(username: string, newPass: string): Promise<any> {
     let hashedPassword = await bcrypt.hash(newPass, BCRYPT_SALT_ROUNDS);

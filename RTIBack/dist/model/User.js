@@ -107,6 +107,10 @@ const StudentModel = new Schema({
         required: true,
         enum: ["aktivan", "neaktivan"]
     },
+    subjects: {
+        type: [String],
+        required: false
+    }
 });
 const User = mongoose_1.default.model("User", UserModel, "User");
 exports.User = User;

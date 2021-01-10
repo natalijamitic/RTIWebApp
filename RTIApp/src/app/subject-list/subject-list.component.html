@@ -1,0 +1,56 @@
+<div *ngIf="loggedInStudent">
+    <div id="custom" class="card bg-dark">
+        <div class="card-body mr-4 ml-4">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Sifra predmeta</th>
+                        <th scope="col">Akcija</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let subj of loggedInStudent.subjects; let i = index">
+                        <td>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-tag"></i></span>
+                                </div>
+                                <input disabled name="code" class="form-control" placeholder="Tip" type="text"
+                                    value="{{subj}}">
+                            </div>
+                        <td>
+
+                            <a routerLink='/listapredmeta/{{subj}}'><button type="button" class="btn btn-warning action ml-2">
+                                    <i class="fas fa-link"></i></button></a>
+
+                            <button (click)="deleteSubject(subj, i)" type="button" class="btn btn-danger action ml-2">
+                                <i class="fas fa-trash-alt"></i></button>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <form>
+                                <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-tag"></i></span>
+                                    </div>
+                                    <ng-multiselect-dropdown class="input-multiselect" name="subject" [data]="subjects"
+                                        [placeholder]="'Izaberite predmet'" [settings]="dropdownSettingsSubject"
+                                        [(ngModel)]="selectedSubject">
+                                    </ng-multiselect-dropdown>
+                                </div>
+                            </form>
+                        </td>
+                        <td>
+                            <button type="button" (click)="insertSubject()" class="btn btn-success action ml-2">
+                                <i class="fas fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

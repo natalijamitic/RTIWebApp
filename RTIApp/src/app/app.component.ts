@@ -63,12 +63,18 @@ export class AppComponent {
             }
             break;
           case "/profil/obrada/student":
+          case "/listapredmeta":
             if (!this.loggedInUser || this.loggedInUser.type != 'student') {
               forbid = true;
             }
             break;
 
           default:
+            if(event.url.match(/^\/listapredmeta/)) {
+              if (!this.loggedInUser || this.loggedInUser.type != 'student') {
+                forbid = true;
+              }
+            }
             break;
         }
 

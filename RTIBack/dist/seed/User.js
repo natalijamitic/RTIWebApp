@@ -26,7 +26,8 @@ const users = [
     {
         username: "pera@etf.bg.ac.rs",
         password: "zap123",
-        type: "zaposlen"
+        type: "zaposlen",
+        firstLogin: "no"
     },
     {
         username: "zika@etf.bg.ac.rs",
@@ -51,7 +52,8 @@ const users = [
     {
         username: "mm170017d@student.etf.rs",
         password: "stud123",
-        type: "student"
+        type: "student",
+        firstLogin: "no"
     },
     {
         username: "nn180018d@student.etf.rs",
@@ -134,7 +136,8 @@ const students = [
         studyType: "d",
         firstName: "Manja",
         lastName: "Marjanov",
-        status: "aktivan"
+        status: "aktivan",
+        subjects: ["13S112OS1", "13S112VD"]
     },
     {
         username: "nn180018d@student.etf.rs",
