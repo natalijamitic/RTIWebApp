@@ -28,7 +28,8 @@ const subjects = [
         notifications: [
             {
                 title: "Obavestenje 1",
-                content: "Obavezno prijvate ovaj predmete kako biste bili u toku s informacijama."
+                content: "Obavezno prijvate ovaj predmete kako biste bili u toku s informacijama.",
+                creator: "pera@etf.rs"
             }
         ]
     },

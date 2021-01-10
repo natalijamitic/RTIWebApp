@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,9 +47,47 @@ import { AssignmentConfigurationComponent } from './assignment-configuration/ass
 import { ErrorRoutePageComponent } from './error-route-page/error-route-page.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { DisplaySubjectStudentComponent } from './display-subject-student/display-subject-student.component';
+import { DisplaySubjectNotificationsComponent } from './display-subject-notifications/display-subject-notifications.component';
+import { AddSubjectNotificationsComponent } from './add-subject-notifications/add-subject-notifications.component';
+import { UploadFilesComponent } from './upload-files/upload-files.component';
+import { UploadFilesService } from './Services/UploadFiles/upload-files.service';
 @NgModule({
   declarations: [             //  all personal components
-    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent, NavigationVerticalComponent, RegistrationComponent, ProfileComponent, LogoutComponent, FirstLoginComponent, UsersComponent, DisplayAdminComponent, DisplayEmployeeComponent, DisplayStudentComponent, DisplayNotificationTypesComponent, DisplayNotificationsComponent, AssignmentConfigurationComponent, ErrorRoutePageComponent, SubjectListComponent, DisplaySubjectStudentComponent
+    AppComponent,
+    ContactComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    NavigationMainComponent,
+    NotificationComponent,
+    NotificationCardComponent,
+    ResearchComponent,
+    ProjectsComponent,
+    ResearchProjectsComponent,
+    ResearchProjectsCardComponent,
+    ProjectsCardComponent,
+    EmployeesComponent,
+    EmployeeComponent,
+    MasterComponent,
+    MasterCardComponent,
+    NavigationVerticalComponent,
+    RegistrationComponent,
+    ProfileComponent,
+    LogoutComponent,
+    FirstLoginComponent,
+    UsersComponent,
+    DisplayAdminComponent,
+    DisplayEmployeeComponent,
+    DisplayStudentComponent,
+    DisplayNotificationTypesComponent,
+    DisplayNotificationsComponent,
+    AssignmentConfigurationComponent,
+    ErrorRoutePageComponent,
+    SubjectListComponent,
+    DisplaySubjectStudentComponent,
+    DisplaySubjectNotificationsComponent,
+     AddSubjectNotificationsComponent,
+     UploadFilesComponent
   ],
   imports: [                  //  foreign import components
     BrowserModule,
@@ -56,6 +95,7 @@ import { DisplaySubjectStudentComponent } from './display-subject-student/displa
     FormsModule,
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),
+    EditorModule
   ],
   providers: [
     {
@@ -71,6 +111,7 @@ import { DisplaySubjectStudentComponent } from './display-subject-student/displa
     UsersService,
     StudentService,
     FormBuilder,
+    UploadFilesService,
   ],              //  services
   bootstrap: [AppComponent]   //  main component
 })

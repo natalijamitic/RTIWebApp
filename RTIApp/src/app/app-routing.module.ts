@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddSubjectNotificationsComponent } from './add-subject-notifications/add-subject-notifications.component';
 import { AppComponent } from './app.component';
 import { AssignmentConfigurationComponent } from './assignment-configuration/assignment-configuration.component';
 import { ContactComponent } from './contact/contact.component';
@@ -8,6 +9,7 @@ import { DisplayEmployeeComponent } from './display-employee/display-employee.co
 import { DisplayNotificationTypesComponent } from './display-notification-types/display-notification-types.component';
 import { DisplayNotificationsComponent } from './display-notifications/display-notifications.component';
 import { DisplayStudentComponent } from './display-student/display-student.component';
+import { DisplaySubjectNotificationsComponent } from './display-subject-notifications/display-subject-notifications.component';
 import { DisplaySubjectStudentComponent } from './display-subject-student/display-subject-student.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
@@ -92,6 +94,14 @@ const routes: Routes = [
   {
     path: 'admin/obavestenja/tipovi',
     component: DisplayNotificationTypesComponent
+  },
+  {
+    path: 'vesti/dodaj',
+    component: AddSubjectNotificationsComponent
+  },
+  {
+    path: 'vesti/pregled',
+    component: DisplaySubjectNotificationsComponent
   },
   {
     path: 'listapredmeta',

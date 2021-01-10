@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { INotification } from 'src/app/add-subject-notifications/add-subject-notifications.component';
 import { ISubjectShort } from 'src/app/master/master.component';
 import { environment } from 'src/environments/environment';
 
@@ -52,5 +53,9 @@ export class SubjectsService {
                 return subjects;
             })
         );
+    }
+
+    postNotification(notif: INotification, subjects: string[]) {
+        return this.http.post(`${environment.api}/subjects/insert/notification`, {notif, subjects});
     }
 }

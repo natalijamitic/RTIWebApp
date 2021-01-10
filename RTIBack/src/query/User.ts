@@ -216,6 +216,9 @@ export function getStudentByUsername(username: string): any {
 }
 
 
+export function getAllAssignmentsForEmployee(username: string) {
+    return Assignment.find({employees: username}).then((emp: any) => emp);
+}
 
 export function getAllAssignments(): any {
     return Assignment.find({}).then((emp: any) => emp);

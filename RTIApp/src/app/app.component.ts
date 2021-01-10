@@ -58,6 +58,8 @@ export class AppComponent {
             break;
 
           case "/profil/obrada/zaposlen":
+          // case "/vesti/dodaj":
+          // case "/vesti/pregled":
             if (!this.loggedInUser || this.loggedInUser.type != 'zaposlen') {
               forbid = true;
             }
@@ -70,7 +72,7 @@ export class AppComponent {
             break;
 
           default:
-            if(event.url.match(/^\/listapredmeta/)) {
+            if (event.url.match(/^\/listapredmeta/)) {
               if (!this.loggedInUser || this.loggedInUser.type != 'student') {
                 forbid = true;
               }

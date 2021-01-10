@@ -41,6 +41,25 @@
             </a>
         </li>
 
+
+
+        <li [routerLinkActive]="['active']" *ngIf="emp && emp.type=='nastavnik'">
+            <a href="#vestiSubmenuZap" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-bell"></i>
+                Vesti
+            </a>
+            <ul class="collapse list-unstyled" id="vestiSubmenuZap">
+                <li [routerLinkActive]="['active']">
+                    <a routerLink="vesti/dodaj">Dodaj</a>
+                </li>
+                <li [routerLinkActive]="['active']">
+                    <a routerLink="vesti/pregled">Pregled</a>
+                </li>
+            </ul>
+        </li>
+
+
+
         <li [routerLinkActive]="['active']" *ngIf="user?.type == 'student'">
             <a routerLink="listapredmeta">
                 <i class="far fa-list-alt"></i>

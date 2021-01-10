@@ -1,0 +1,9 @@
+<label class="btn btn-default">
+    <form name="fileupload" enctype="multipart/form-data" method="post">
+        <input type="file" multiple (change)="selectFiles($event)" name="uploadedFile" />
+    </form>
+</label>
+
+<div class="text-center">
+{{msg}}
+</div>

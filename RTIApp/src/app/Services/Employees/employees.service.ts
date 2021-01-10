@@ -104,6 +104,18 @@ export class EmployeesService {
             );
     }
 
+    getSubjectsForEmployee(username: string) {
+        return this.http.get(`${environment.api}/assignments/${username}`).pipe(
+            map((a: any) => {
+                let subjects: Array<string> = [];
+                for (let ass of a) {
+                    subjects.push(ass.subject);
+                }
+                return subjects;
+            })
+        );
+    }
+
     insertAssignment(ass: IAssignmentFull) {
         return this.http.post(`${environment.api}/assignments/insert`, {ass});
     }

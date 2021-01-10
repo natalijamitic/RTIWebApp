@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { EmployeeComponent } from '../employee/employee.component';
+import { IEmployee } from '../employees/employees.component';
 import { IUser } from '../registration/registration.component';
 import { AuthenticationService } from '../Services/Authentication/authentication.service';
+import { EmployeesService } from '../Services/Employees/employees.service';
 
 @Component({
   selector: 'navigation-vertical',
@@ -11,17 +14,27 @@ import { AuthenticationService } from '../Services/Authentication/authentication
 export class NavigationVerticalComponent implements OnInit, OnDestroy {
 
   public user: IUser = null;
-  public subscription: Subscription;
-  constructor(private authService: AuthenticationService) { }
+  public emp: IEmployee = null;
+
+  private sub1: Subscription;
+  private sub2: Subscription;
+  constructor(private authService: AuthenticationService,
+              private employeeService: EmployeesService) { }
 
   ngOnInit(): void {
-    this.subscription = this.authService.isLoggedIn.subscribe((user: any) => {
+    this.sub1 = this.authService.isLoggedIn.subscribe((user: any) => {
       this.user = JSON.parse(user);
+      if (this.user.type == 'zaposlen') {
+        this.sub2 = this.employeeService.getEmployeeByUsername(this.user.username).subscribe((result: IEmployee) => {
+          this.emp = result;
+        })
+      }
     });
   }
 
   ngOnDestroy(): void {
-    if (this.subscription){
-      this.subscription.unsubscribe();}
+    this.sub1?.unsubscribe();
+    this.sub2?.unsubscribe();
+
   }
 }

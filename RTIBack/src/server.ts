@@ -29,80 +29,6 @@ const connection = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 
 
-/*** PORFILE PICTURE ***/
-
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'src/uploaded_files/profile_pictures');
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + '.' + fileExtension(file.originalname))
-    }
-});
-
-var upload = multer({
-    storage: storage,
-    limits: {
-        fileSize: 2000000 //2MBs
-    },
-    fileFilter(req, file, cb) {
-        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-            //Error
-            cb(new Error('Please upload JPG and PNG images only!'))
-        }
-        //Success
-        cb(undefined, true)
-    }
-});
-
-app.post('/register/uploadfile', upload.single('uploadedImage'), (req, res, next) => {
-    const username = req.body.employeeUsername;
-    const file = req.file;
-
-    if (!file) {
-        res.status(400).json({error: "File upload failed."})
-        return;
-    }
-
-    let oldFileUrl = file.destination + '/' + file.filename;
-
-    const dimensions = sizeOf(oldFileUrl)
-    console.log(dimensions.width, dimensions.height)
-    if (dimensions.width > 300 || dimensions.height > 300) {
-        res.status(400).json({error: "File can be max 300 x 300 px."})
-        return;
-    }
-
-    let newFileUrl = file.destination + '/' + username + "." + fileExtension(file.originalname);
-
-    // Rename file
-    fs.renameSync(oldFileUrl, newFileUrl);
-
-    var img = fs.readFileSync(newFileUrl);
-    var encode_image = Buffer.from(img).toString('base64');
-
-    var finalImg = {
-        contentType: file.mimetype,
-        image: encode_image
-    };
-
-    Employee.findOneAndUpdate({username: username}, {profilePicture: finalImg}, (err, result) => {
-        if (err) {
-            res.status(400).send({
-                error: "GRESKA"
-            })
-        }
-        res.status(200).send({
-            statusCode: 200,
-            status: 'success',
-            finalImg: finalImg
-        })
-    })
-
-
-
-})
-
 
 /************* ROUTES ***************/
 
@@ -319,6 +245,12 @@ router.route('/assignments/insert').post((request, response) => {
     })
 
 });
+// GET Assignments For Employee
+router.route('/assignments/:username').get((request, response) => {
+    userQueries.getAllAssignmentsForEmployee(request.params.username).then((result: any) => {
+        response.json(result);
+    });
+});
 
 // GET Employee By Username
 router.route('/employees/:username').get((request, response) => {
@@ -411,6 +343,164 @@ router.route('/notificationtypes/delete').post((request, response) => {
         response.json(result)
     })
 });
+
+
+
+
+/************SUBJECT *************/
+router.route('/subjects/insert/notification').post((request, response) => {
+    subjectQueries.insertNotification(request.body.notif, request.body.subjects).then((result) => {
+        response.json(200);
+    })
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const profilePictureUrl = "src/uploaded_files/profile_pictures";
+const subjectInfoFilesUrl = "src/uploaded_files/subjects";
+
+
+/*** PORFILE PICTURE ***/
+var storageImg = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, profilePictureUrl);
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + '.' + fileExtension(file.originalname))
+    }
+});
+var uploadImg = multer({
+    storage: storageImg,
+    limits: {
+        fileSize: 2000000 //2MBs
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+            //Error
+            cb(new Error('Please upload JPG and PNG images only!'))
+        }
+        //Success
+        cb(undefined, true)
+    }
+});
+
+app.post('/register/uploadfile', uploadImg.single('uploadedImage'), (req, res, next) => {
+    const username = req.body.employeeUsername;
+    const file = req.file;
+
+    if (!file) {
+        res.status(400).json({error: "File upload failed."})
+        return;
+    }
+
+    let oldFileUrl = file.destination + '/' + file.filename;
+
+    const dimensions = sizeOf(oldFileUrl)
+    console.log(dimensions.width, dimensions.height)
+    if (dimensions.width > 300 || dimensions.height > 300) {
+        res.status(400).json({error: "File can be max 300 x 300 px."})
+        return;
+    }
+
+    let newFileUrl = file.destination + '/' + username + "." + fileExtension(file.originalname);
+
+    // Rename file
+    fs.renameSync(oldFileUrl, newFileUrl);
+
+    var img = fs.readFileSync(newFileUrl);
+    var encode_image = Buffer.from(img).toString('base64');
+
+    var finalImg = {
+        contentType: file.mimetype,
+        image: encode_image
+    };
+
+    Employee.findOneAndUpdate({username: username}, {profilePicture: finalImg}, (err, result) => {
+        if (err) {
+            res.status(400).send({
+                error: "GRESKA"
+            })
+        }
+        res.status(200).send({
+            statusCode: 200,
+            status: 'success',
+            finalImg: finalImg
+        })
+    })
+
+})
+
+
+/*** PORFILE PICTURE ***/
+var storageInfoFile = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, subjectInfoFilesUrl);
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + '.' + fileExtension(file.originalname))
+    }
+});
+
+var uploadInfoFile = multer({
+    storage: storageInfoFile,
+    limits: {
+        fileSize: 10000000 //2MBs
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(pdf)$/)) {
+            //Error
+            cb(new Error('Please upload PDF files only!'))
+        }
+        //Success
+        cb(undefined, true)
+    }
+});
+
+app.post('/upload/notification/file', uploadInfoFile.single('uploadedFile'), (req, res, next) => {
+    const info = JSON.parse(req.body.additionalInfo);
+    info.date = Date.now()
+
+    const file = req.file;
+
+    if (!file) {
+        res.status(400).json({error: "File upload failed."})
+        return;
+    }
+
+    let oldFileUrl = file.destination + '/' + file.filename;
+    let newFileUrl = file.destination + '/' + info.title + "-" + info.username + '-' + info.date + "." + fileExtension(file.originalname);
+    fs.renameSync(oldFileUrl, newFileUrl);
+    res.status(200).json({fileName: newFileUrl});
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.use('/', router);

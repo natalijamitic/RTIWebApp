@@ -157,6 +157,14 @@ const SubjectModel = new Schema({
             content: {
                 type: String,
                 required: true
+            },
+            creator: {
+                type: String,
+                required: true
+            },
+            files: {
+                type: [String],
+                required: false
             }
         }],
         required: false
