@@ -59,6 +59,18 @@ const routes: Routes = [
     component: ProfileComponent,
   },
   {
+    path: 'profil/obrada/admin',
+    component: DisplayAdminComponent
+  },
+  {
+    path: 'profil/obrada/zaposlen',
+    component: DisplayEmployeeComponent
+  },
+  {
+    path: 'profil/obrada/student',
+    component: DisplayStudentComponent
+  },
+  {
     path: 'zaposlen',
     component: EmployeeComponent,
   },

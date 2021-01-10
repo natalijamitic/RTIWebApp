@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUser } from '../registration/registration.component';
 import { AuthenticationService } from '../Services/Authentication/authentication.service';
@@ -13,10 +14,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public user: IUser = null;
   public subscription: Subscription;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
-    this.subscription = this.authService.isLoggedIn.subscribe((user: any) => this.user = JSON.parse(user));
+    this.subscription = this.authService.isLoggedIn.subscribe((user: any) => {
+      this.user = JSON.parse(user)
+    },
+    (error: any) => {
+      console.log(error)
+    });
+
+
   }
 
   ngOnDestroy(): void {
@@ -24,6 +32,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   public isFirstLogin(): boolean {
+    if (!this.user) {
+      return false;
+    }
     return this.user.firstLogin === 'yes' ? true : false;
   }
+
+  public editProfile(): void {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        employee: JSON.stringify(this.user)
+      }
+    }
+    this.router.navigate([`profil/obrada/${this.user.type}`], navigationExtras);
+  }
+
 }
