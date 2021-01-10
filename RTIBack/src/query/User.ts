@@ -215,8 +215,19 @@ export function getStudentByUsername(username: string): any {
     return Student.findOne({ username: username }).then((stud: any) => stud);
 }
 
+
+
 export function getAllAssignments(): any {
     return Assignment.find({}).then((emp: any) => emp);
+}
+
+export function deleteAssignment(subject: string): any {
+    return Assignment.deleteOne({subject: subject}).then((r: any) => r);
+}
+
+export function insertAssignment(ass: any): any {
+    let A = new Assignment(ass);
+    return A.save().then((r: any) => r);
 }
 
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { IAssignmentFull } from 'src/app/assignment-configuration/assignment-configuration.component';
 import { IAssignment, IEmployee } from 'src/app/employees/employees.component';
 import { environment } from 'src/environments/environment';
 
@@ -84,5 +85,30 @@ export class EmployeesService {
                     return assignments;
                 })
             );
+    }
+
+    getAssignmentListFull() {
+        return this.http.get(`${environment.api}/assignments`)
+            .pipe(
+                map((a: any) => {
+                    let assignments: Array<IAssignmentFull> = [];
+                    for (let ass of a) {
+                        assignments.push({
+                            subject: ass.subject,
+                            employees: ass.employees,
+                            group: ass.group
+                        });
+                    }
+                    return assignments;
+                })
+            );
+    }
+
+    insertAssignment(ass: IAssignmentFull) {
+        return this.http.post(`${environment.api}/assignments/insert`, {ass});
+    }
+
+    deleteAssignment(subject: string) {
+        return this.http.post(`${environment.api}/assignments/delete`, {subject});
     }
 }

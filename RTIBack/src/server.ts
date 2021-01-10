@@ -230,11 +230,17 @@ router.route('/users/update').post((request, response) => {
 })
 
 //******* SUBJECT ROUTES       ********/
+router.route('/subjects').get((request, response) => {
+    subjectQueries.getAllSubjects().then((result: any) => {
+        response.json(result)
+    })
+});
 router.route('/subjects/:dept').get((request, response) => {
     subjectQueries.getSubjectsByDepartment(request.params.dept).then((result: any) => {
         response.json(result)
     })
 });
+
 
 /******** STUDENTS ROUTES  *********/
 // GET Student By Username
@@ -282,6 +288,21 @@ router.route('/assignments').get((_request, response) => {
     })
 
 });
+// DELETE Assignments
+router.route('/assignments/delete').post((request, response) => {
+    userQueries.deleteAssignment(request.body.subject).then((result: any) => {
+        response.json(result)
+    })
+
+});
+// DELETE Assignments
+router.route('/assignments/insert').post((request, response) => {
+    userQueries.insertAssignment(request.body.ass).then((result: any) => {
+        response.json(result)
+    })
+
+});
+
 // GET Employee By Username
 router.route('/employees/:username').get((request, response) => {
     userQueries.getEmployeeByUsername(request.params.username).then((result: any) => {

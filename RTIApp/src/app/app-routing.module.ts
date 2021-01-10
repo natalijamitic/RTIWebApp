@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AssignmentConfigurationComponent } from './assignment-configuration/assignment-configuration.component';
 import { ContactComponent } from './contact/contact.component';
 import { DisplayAdminComponent } from './display-admin/display-admin.component';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'korisnici',
     component: UsersComponent
+  },
+  {
+    path: 'planangazovanja',
+    component: AssignmentConfigurationComponent
   },
   {
     path: 'korisnici/registracija',

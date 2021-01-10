@@ -218,6 +218,11 @@ router.route('/users/update').post((request, response) => {
     });
 });
 //******* SUBJECT ROUTES       ********/
+router.route('/subjects').get((request, response) => {
+    subjectQueries.getAllSubjects().then((result) => {
+        response.json(result);
+    });
+});
 router.route('/subjects/:dept').get((request, response) => {
     subjectQueries.getSubjectsByDepartment(request.params.dept).then((result) => {
         response.json(result);
@@ -262,6 +267,18 @@ router.route('/employees').get((_request, response) => {
 router.route('/assignments').get((_request, response) => {
     console.log("Assignments route");
     userQueries.getAllAssignments().then((result) => {
+        response.json(result);
+    });
+});
+// DELETE Assignments
+router.route('/assignments/delete').post((request, response) => {
+    userQueries.deleteAssignment(request.body.subject).then((result) => {
+        response.json(result);
+    });
+});
+// DELETE Assignments
+router.route('/assignments/insert').post((request, response) => {
+    userQueries.insertAssignment(request.body.ass).then((result) => {
         response.json(result);
     });
 });

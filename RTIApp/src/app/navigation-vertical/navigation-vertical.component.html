@@ -8,21 +8,10 @@
     <ul class="list-unstyled components">
         <!-- *ngIf="user"> -->
         <li [routerLinkActive]="['active']">
-            <a routerLink="profil" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <a routerLink="profil">
                 <i class="fas fa-home"></i>
                 Home
             </a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li>
-                    <a href="#">Home 1</a>
-                </li>
-                <li>
-                    <a href="#">Home 2</a>
-                </li>
-                <li>
-                    <a href="#">Home 3</a>
-                </li>
-            </ul>
         </li>
 
         <li [routerLinkActive]="['active']">
@@ -47,10 +36,10 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="#">
-                <i class="fas fa-question"></i>
-                FAQ
+        <li [routerLinkActive]="['active']">
+            <a routerLink="planangazovanja">
+                <i class="far fa-list-alt"></i>
+                Plan rada
             </a>
         </li>
         <li>

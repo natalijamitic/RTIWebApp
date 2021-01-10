@@ -33,4 +33,24 @@ export class SubjectsService {
                 })
             );
     }
+
+    getAllSubjects() {
+        return this.http.get(`${environment.api}/subjects`)
+        .pipe(
+            map((s: any) => {
+                let subjects: Array<ISubjectShort> = [];
+                for (let subj of s) {
+                    subjects.push({
+                        type: subj.type,
+                        semestar: subj.semestar,
+                        code: subj.code,
+                        title: subj.title,
+                        weekly: subj.weekly,
+                        espb: subj.espb,
+                    });
+                }
+                return subjects;
+            })
+        );
+    }
 }

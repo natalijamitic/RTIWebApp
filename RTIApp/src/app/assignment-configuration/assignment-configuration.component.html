@@ -1,0 +1,115 @@
+<div id="custom" *ngIf="assignments">
+    <div class="card bg-dark">
+        <div class="card-body mr-4 ml-4">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width:35%">Sifra</th>
+                        <th scope="col" style="width:15%">Broj grupa</th>
+                        <th scope="col" style="width:20%">Predavanja</th>
+                        <th scope="col" style="width:20%">Vezbe</th>
+                        <th scope="col" style="width:10%">Akcija</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ass of assignments; let i = index">
+                        <td>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-tag"></i></span>
+                                </div>
+                                <input disabled name="sifra" class="form-control {{'type-'+i}}" placeholder="Tip"
+                                    type="text" [(ngModel)]="assignments[i].subject">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="form-group input-group">
+                                <input disabled name="brgrupa" class="form-control {{'type-'+i}}"
+                                    placeholder="{{assignments[i].group.length / 2}}" type="number" min="1">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div *ngFor="let lecture of assignments[i].group; let j=index">
+                                <div *ngIf="lecture.name[0].toLowerCase() == 'p'" class="form-group input-group">
+                                    <ng-multiselect-dropdown name="employeeP" [disabled]=true [data]="lecture.employees"
+                                        [settings]="dropdownSettings" [(ngModel)]="lecture.employees">
+                                    </ng-multiselect-dropdown>
+                                </div>
+
+                            </div>
+                        </td>
+
+                        <td>
+                            <div *ngFor="let lecture of assignments[i].group; let j=index">
+                                <div *ngIf="lecture.name[0].toLowerCase() == 'v'" class="form-group input-group">
+                                    <ng-multiselect-dropdown name="employeeV" [disabled]=true [data]="lecture.employees"
+                                        [settings]="dropdownSettings" [(ngModel)]="lecture.employees">
+                                    </ng-multiselect-dropdown>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <button (click)="deleteAssignment(assignments[i], i)" type="button"
+                                class="btn btn-danger action ml-2">
+                                <i class="fas fa-trash-alt"></i></button>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-tag"></i></span>
+                                </div>
+                                <ng-multiselect-dropdown class="input-multiselect" name="subject" [data]="subjects"
+                                    [placeholder]="'Izaberite predmet'" [settings]="dropdownSettingsSubject"
+                                    [(ngModel)]="selectedSubject">
+                                </ng-multiselect-dropdown>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="form-group input-group">
+                                <input name="brgrupa" class="form-control" placeholder="Broj grupa" type="number"
+                                    min="1" max="10" [(ngModel)]="selectedNumGroup">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div *ngIf="selectedNumGroup">
+                                <div *ngFor="let i of counter(selectedNumGroup).fill(0); let j=index">
+                                    <ng-multiselect-dropdown class="max-width" [placeholder]="'Drzi predavanja'" name="employeePinsert" [data]="teachersNames"
+                                        [settings]="dropdownSettingsTeachers" [(ngModel)]="selectedTeachersP[j]">
+                                    </ng-multiselect-dropdown>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div *ngIf="selectedNumGroup">
+                                <div *ngFor="let i of counter(selectedNumGroup).fill(0); let j=index">
+                                    <ng-multiselect-dropdown class="max-width" [placeholder]="'Drzi vezbe'" name="employeeVinsert" [data]="teachersNames"
+                                        [settings]="dropdownSettingsTeachers" [(ngModel)]="selectedTeachersV[j]">
+                                    </ng-multiselect-dropdown>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td>
+                            <button type="button" (click)="insertAssignment()" class="btn btn-success action mr-2">
+                                <i class="fas fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="text-center text-warning">
+                {{msg}}
+            </div>
+        </div>
+    </div>
+</div>

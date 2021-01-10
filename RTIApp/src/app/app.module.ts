@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactComponent } from './contact/contact.component';
@@ -40,15 +42,17 @@ import { DisplayStudentComponent } from './display-student/display-student.compo
 import { StudentService } from './Services/Students/student.service';
 import { DisplayNotificationTypesComponent } from './display-notification-types/display-notification-types.component';
 import { DisplayNotificationsComponent } from './display-notifications/display-notifications.component';
+import { AssignmentConfigurationComponent } from './assignment-configuration/assignment-configuration.component';
 @NgModule({
   declarations: [             //  all personal components
-    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent, NavigationVerticalComponent, RegistrationComponent, ProfileComponent, LogoutComponent, FirstLoginComponent, UsersComponent, DisplayAdminComponent, DisplayEmployeeComponent, DisplayStudentComponent, DisplayNotificationTypesComponent, DisplayNotificationsComponent
+    AppComponent, ContactComponent, HomeComponent, LoginComponent, RegisterComponent, NavigationMainComponent, NotificationComponent, NotificationCardComponent, ResearchComponent, ProjectsComponent, ResearchProjectsComponent, ResearchProjectsCardComponent, ProjectsCardComponent, EmployeesComponent, EmployeeComponent, MasterComponent, MasterCardComponent, NavigationVerticalComponent, RegistrationComponent, ProfileComponent, LogoutComponent, FirstLoginComponent, UsersComponent, DisplayAdminComponent, DisplayEmployeeComponent, DisplayStudentComponent, DisplayNotificationTypesComponent, DisplayNotificationsComponent, AssignmentConfigurationComponent
   ],
   imports: [                  //  foreign import components
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [
     {
