@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { INotification } from 'src/app/add-subject-notifications/add-subject-notifications.component';
@@ -53,6 +53,14 @@ export class SubjectsService {
                 return subjects;
             })
         );
+    }
+
+    getSubjectsByCodes(codes: string[]) {
+        return this.http.post(`${environment.api}/subjects/codes`, {codes});
+    }
+
+    deleteNotification(notif: INotification, code: string) {
+        return this.http.delete(`${environment.api}/subjects/notification/${code}/${notif.dateCreation}/${notif.title}`);
     }
 
     postNotification(notif: INotification, subjects: string[]) {

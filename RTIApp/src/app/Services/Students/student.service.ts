@@ -47,7 +47,7 @@ export class StudentService {
     }
 
     deleteSubject(username: string, subject: string) {
-        return this.http.post(`${environment.api}/students/delete/subject`, {username, subject});
+        return this.http.delete(`${environment.api}/students/delete/subject/${username}/${subject}`);
     }
 
 }

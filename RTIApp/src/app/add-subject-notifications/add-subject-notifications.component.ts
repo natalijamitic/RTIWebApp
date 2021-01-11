@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Subscription } from 'rxjs';
+import { ISubjNotif } from '../display-subject-notifications/display-subject-notifications.component';
 import { IEmployee } from '../employees/employees.component';
 import { IUser } from '../registration/registration.component';
 import { AuthenticationService } from '../Services/Authentication/authentication.service';
@@ -24,10 +25,11 @@ export interface INotification {
   templateUrl: './add-subject-notifications.component.html',
   styleUrls: ['./add-subject-notifications.component.scss']
 })
-export class AddSubjectNotificationsComponent implements OnInit, OnDestroy {
+export class AddSubjectNotificationsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public dropdownSettings: IDropdownSettings = {};
-  public selectedSubjects: [];
+  public selectedSubjects: string[] = [];
+  public selectedFiles: string[] = [];
   public subjects: Array<string> = null;
 
   public title: string;
@@ -45,6 +47,9 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy {
 
   public user: IUser;
   public empl: IEmployee;
+  public notif: ISubjNotif;
+  public notifOld: ISubjNotif;
+
   public info: any = null;
 
   @ViewChild('uploadFiles') uploadFiles: UploadFilesComponent;
@@ -56,7 +61,27 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthenticationService,
     private employeeService: EmployeesService,
     private subjectService: SubjectsService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) {
+
+    this.route.queryParams.subscribe(() => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.notif = JSON.parse(this.router.getCurrentNavigation().extras.state.notif);
+        this.notifOld = JSON.parse(this.router.getCurrentNavigation().extras.state.notif);
+        console.log(this.notif)
+        if (this.notif) {
+          this.title = this.notif.notification.title;
+          this.selectedSubjects.push(this.notif.code);
+          if (this.notif.notification.files) {
+            this.selectedFiles = [...this.notif.notification.files];
+          } else {
+            this.notif.notification.files = [];
+          }
+          this.dateCreation = (this.notif.notification.dateCreation as unknown as string).substr(0, 16);
+        }
+      }
+    });
+  }
 
   ngOnInit(): void {
 
@@ -76,7 +101,6 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy {
 
         this.sub3 = this.employeeService.getSubjectsForEmployee(this.user.username).subscribe((result: Array<string>) => {
           this.subjects = result;
-          console.log(this.subjects);
         })
 
       })
@@ -88,6 +112,13 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy {
       textField: '',
       enableCheckAll: false,
       allowSearchFilter: true,
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (this.notif) {
+
+      tinymce.activeEditor.setContent(this.notif.notification.content);
     }
   }
 
@@ -110,7 +141,8 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy {
       title: this.title,
       content: content,
       dateCreation: this.dateCreation,
-      creator: this.user.username
+      creator: this.user.username,
+      files: []
     }
     this.subjectsNotif = [...this.selectedSubjects];
 
@@ -118,12 +150,25 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy {
       title: this.title,
       username: this.user.username
     }
-    this.uploadFiles.uploadFiles();
+    if (!this.uploadFiles.uploadFiles()) {
+      this.postNotification();
+    }
   }
 
   public filesUploaded($event) {
     this.notification.files = $event.fileNames;
-    this.subjectService.postNotification(this.notification, this.subjectsNotif).subscribe((result: any) => {
+    this.postNotification();
+  }
+
+  public postNotification() {
+    if (this.notif) {
+      this.notification.files = this.notification.files.concat(this.selectedFiles);
+      this.subjectService.deleteNotification(this.notifOld.notification, this.notifOld.code).subscribe((result: any) => {
+        this.subjectService.postNotification(this.notification, this.subjectsNotif).subscribe((result: any) => {
+        })
+      });
+    }
+    else this.subjectService.postNotification(this.notification, this.subjectsNotif).subscribe((result: any) => {
     })
   }
 }

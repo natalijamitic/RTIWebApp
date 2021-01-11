@@ -33,9 +33,9 @@ export class UploadFilesComponent implements OnInit {
     this.msg = "";
   }
 
-  public uploadFiles(): void {
+  public uploadFiles(): boolean {
     if (!this.selectedFiles || this.selectedFiles.length == 0) {
-      return;
+      return false;
     }
 
     this.current = 0;
@@ -45,6 +45,7 @@ export class UploadFilesComponent implements OnInit {
     for (let i = 0; i < this.selectedFiles.length; i++) {
       this.upload(i, this.selectedFiles[i]);
     }
+    return true;
   }
 
   public upload(idx: number, file: File) {

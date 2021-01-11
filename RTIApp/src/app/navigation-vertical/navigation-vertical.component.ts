@@ -24,7 +24,7 @@ export class NavigationVerticalComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sub1 = this.authService.isLoggedIn.subscribe((user: any) => {
       this.user = JSON.parse(user);
-      if (this.user.type == 'zaposlen') {
+      if (this.user && this.user.type == 'zaposlen') {
         this.sub2 = this.employeeService.getEmployeeByUsername(this.user.username).subscribe((result: IEmployee) => {
           this.emp = result;
         })

@@ -203,9 +203,9 @@ router.route('/students/insert/subjects').post((request, response) => {
     })
 })
 // DELETE SUBJECT from Student
-router.route('/students/delete/subject').post((request, response) => {
-    const username = request.body.username;
-    const subject = request.body.subject;
+router.route('/students/delete/subject/:username/:subject').delete((request, response) => {
+    const username = request.params.username;
+    const subject = request.params.subject;
     userQueries.deleteSubject(username, subject).then((result: any) => {
         response.status(200).json(result);
     })
@@ -232,8 +232,8 @@ router.route('/assignments').get((_request, response) => {
 
 });
 // DELETE Assignments
-router.route('/assignments/delete').post((request, response) => {
-    userQueries.deleteAssignment(request.body.subject).then((result: any) => {
+router.route('/assignments/delete/:subject').delete((request, response) => {
+    userQueries.deleteAssignment(request.params.subject).then((result: any) => {
         response.json(result)
     })
 
@@ -308,8 +308,8 @@ router.route('/notification/insert').post((request, response) => {
     })
 });
 // DELETE Notification
-router.route('/notification/delete').post((request, response) => {
-    const date = request.body.date;
+router.route('/notification/delete/:date').delete((request, response) => {
+    const date = request.params.date;
     notificationQueries.deleteNotification(date).then((result: any) => {
         response.json(result)
     })
@@ -337,8 +337,8 @@ router.route('/notificationtypes/insert').post((request, response) => {
     })
 });
 // DELETE Notification Types
-router.route('/notificationtypes/delete').post((request, response) => {
-    const type = request.body.type;
+router.route('/notificationtypes/delete/:type').delete((request, response) => {
+    const type = request.params.type;
     notificationQueries.deleteNotificationType(type).then((result: any) => {
         response.json(result)
     })
@@ -350,10 +350,22 @@ router.route('/notificationtypes/delete').post((request, response) => {
 /************SUBJECT *************/
 router.route('/subjects/insert/notification').post((request, response) => {
     subjectQueries.insertNotification(request.body.notif, request.body.subjects).then((result) => {
-        response.json(200);
+        response.status(200);
     })
 });
-
+router.route('/subjects/codes').post((request, response) => {
+    subjectQueries.getSubjectsByCodes(request.body.codes).then((result: any) => {
+        response.status(200).json(result);
+    })
+})
+router.route('/subjects/notification/:code/:date/:title').delete((request, response) => {
+    const code = request.params.code;
+    const date = request.params.date;
+    const title = request.params.title;
+    subjectQueries.deleteNotificationFromSubject(code, date, title).then((result: any) => {
+        response.status(200).json(result);
+    })
+})
 
 
 
@@ -481,7 +493,7 @@ app.post('/upload/notification/file', uploadInfoFile.single('uploadedFile'), (re
     }
 
     let oldFileUrl = file.destination + '/' + file.filename;
-    let newFileUrl = file.destination + '/' + info.title + "-" + info.username + '-' + info.date + "." + fileExtension(file.originalname);
+    let newFileUrl = file.destination + '/' + file.originalname + "-" + info.title + '-' + info.date + "." + fileExtension(file.originalname);
     fs.renameSync(oldFileUrl, newFileUrl);
     res.status(200).json({fileName: newFileUrl});
 })

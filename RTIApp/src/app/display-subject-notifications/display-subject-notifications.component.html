@@ -1,1 +1,48 @@
-<p>display-subject-notifications works!</p>
+<div *ngIf="subjects">
+    <div class="card bg-dark">
+        <div class="card-body mr-4 ml-4">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Sifra</th>
+                        <th scope="col">Naslov</th>
+                        <th scope="col">Broj fajlova</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Akcija</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let notif of subjects; let i = index">
+                        <td>
+                            {{notif.code}}
+                        </td>
+                        <td>
+                            {{notif.notification.title}}
+                        </td>
+                        <td>
+                            {{notif.notification.files.length}}
+                        </td>
+                        <td>
+                            {{notif.notification.creator}}
+                        </td>
+                        <td>
+                            {{notif.notification.dateCreation | date}} &nbsp; {{notif.notification.dateCreation | date:"HH:mm"}}
+                        </td>
+                        <td>
+                            <button (click)="editNotification(notif, i)" type="button"
+                            class="btn btn-warning action ml-2">
+                            <i class="fas fa-link"></i></button>
+                            <button *ngIf="notif.notification.creator == user.username" (click)="deleteNotification(notif, i)" type="button"
+                                class="btn btn-danger action ml-2">
+                                <i class="fas fa-trash-alt"></i></button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

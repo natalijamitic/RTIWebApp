@@ -100,6 +100,10 @@ const routes: Routes = [
     component: AddSubjectNotificationsComponent
   },
   {
+    path: 'vesti/obrada',
+    component: AddSubjectNotificationsComponent
+  },
+  {
     path: 'vesti/pregled',
     component: DisplaySubjectNotificationsComponent
   },

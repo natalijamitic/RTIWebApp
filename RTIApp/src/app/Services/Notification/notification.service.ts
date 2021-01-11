@@ -55,7 +55,7 @@ export class NotificationService {
   }
 
   deleteNotification(date: any) {
-    return this.http.post(`${environment.api}/notification/delete`, {date});
+    return this.http.delete(`${environment.api}/notification/delete/${date}`);
   }
 
   updateNotificationType(oldType: string, newType: string){
@@ -67,7 +67,7 @@ export class NotificationService {
   }
 
   deleteNotificationType(type: string) {
-    return this.http.post(`${environment.api}/notificationtypes/delete`, {type});
+    return this.http.delete(`${environment.api}/notificationtypes/delete/${type}`);
   }
 
   getAllNotificationTypes() {

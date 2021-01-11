@@ -121,6 +121,6 @@ export class EmployeesService {
     }
 
     deleteAssignment(subject: string) {
-        return this.http.post(`${environment.api}/assignments/delete`, {subject});
+        return this.http.delete(`${environment.api}/assignments/delete/${subject}`);
     }
 }
