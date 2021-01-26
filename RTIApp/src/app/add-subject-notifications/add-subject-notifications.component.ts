@@ -52,6 +52,8 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy, Afte
 
   public info: any = null;
 
+  public tinymceInit: any;
+
   @ViewChild('uploadFiles') uploadFiles: UploadFilesComponent;
 
   private sub1: Subscription;
@@ -70,6 +72,9 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy, Afte
         this.notifOld = JSON.parse(this.router.getCurrentNavigation().extras.state.notif);
         console.log(this.notif)
         if (this.notif) {
+          setTimeout(() => {
+            tinymce?.activeEditor.setContent(this.notif.notification.content)
+          }, 0);
           this.title = this.notif.notification.title;
           this.selectedSubjects.push(this.notif.code);
           if (this.notif.notification.files) {
@@ -78,12 +83,30 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy, Afte
             this.notif.notification.files = [];
           }
           this.dateCreation = (this.notif.notification.dateCreation as unknown as string).substr(0, 16);
+
         }
       }
     });
   }
 
   ngOnInit(): void {
+
+    this.tinymceInit = {
+      height: 250,
+      menubar: false,
+      dataSpecial: this.notif,
+      plugins: [
+        'advlist autolink lists link image charmap print',
+        'preview anchor searchreplace visualblocks code',
+        'fullscreen insertdatetime media table paste',
+        'help wordcount'
+      ],
+      toolbar:
+        'undo redo | formatselect | bold italic | \
+          alignleft aligncenter alignright alignjustify | \
+          bullist numlist outdent indent | help'
+
+    }
 
     this.sub1 = this.authService.isLoggedIn.subscribe((result: any) => {
       this.user = JSON.parse(result);
@@ -116,9 +139,17 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy, Afte
   }
 
   ngAfterViewInit(): void {
-    if (this.notif) {
 
-      tinymce.activeEditor.setContent(this.notif.notification.content);
+    if (this.notif) {
+      setTimeout(() => {
+        tinymce.activeEditor.setContent(this.notif.notification.content)
+      }, 0);
+      setTimeout(() => {
+        tinymce.activeEditor.setContent(this.notif.notification.content)
+      }, 500);
+      setTimeout(() => {
+        tinymce.activeEditor.setContent(this.notif.notification.content)
+      }, 800);
     }
   }
 
@@ -165,10 +196,13 @@ export class AddSubjectNotificationsComponent implements OnInit, OnDestroy, Afte
       this.notification.files = this.notification.files.concat(this.selectedFiles);
       this.subjectService.deleteNotification(this.notifOld.notification, this.notifOld.code).subscribe((result: any) => {
         this.subjectService.postNotification(this.notification, this.subjectsNotif).subscribe((result: any) => {
+          this.router.navigate(['vesti/pregled']);
         })
       });
     }
     else this.subjectService.postNotification(this.notification, this.subjectsNotif).subscribe((result: any) => {
+      this.router.navigate(['vesti/pregled']);
     })
   }
+
 }

@@ -56,7 +56,7 @@ export class UploadFilesComponent implements OnInit {
     formData.append('uploadedFile', this.fileUploadForm.get('uploadedFile').value);
     formData.append('additionalInfo', JSON.stringify(this.info));
 
-    this.uploadService.upload(formData).subscribe(
+    this.uploadService.uploadNotificationFile(formData).subscribe(
       event => {
 
         this.msg = `${this.msg}\tFile #${idx} posted.`

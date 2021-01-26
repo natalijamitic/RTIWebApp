@@ -131,7 +131,7 @@ export class SubjectsService {
                     content: n.content,
                     creator: n.creator,
                     files: n.files,
-                    dateCreation: n.dataCreation
+                    dateCreation: n.dateCreation
                 }
                 notifs.push(notif);
             }

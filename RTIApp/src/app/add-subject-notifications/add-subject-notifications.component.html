@@ -19,20 +19,7 @@
                     <span class="input-group-text"> <i class="fas fa-file-alt">*</i></span>
                 </div>
 
-                <editor [init]="{
-                height: 250,
-                menubar: false,
-                plugins: [
-                  'advlist autolink lists link image charmap print',
-                  'preview anchor searchreplace visualblocks code',
-                  'fullscreen insertdatetime media table paste',
-                  'help wordcount'
-                ],
-                toolbar:
-                  'undo redo | formatselect | bold italic | \
-                  alignleft aligncenter alignright alignjustify | \
-                  bullist numlist outdent indent | help'
-              }">
+                <editor style="width: 93%;" [init]="tinymceInit">
                 </editor>
             </div>
 

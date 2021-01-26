@@ -100,6 +100,9 @@ export class DisplaySubjectStudentInformationComponent implements OnInit {
     if (employee.subjects?.length > 0) {
       this.navigateToEmployee(employee);
     }
+    if (this.sub5) {
+      this.sub5.unsubscribe();
+    }
     this.sub5 = this.empService.getSubjectsForEmployee(employee.username).subscribe((subjects: string[]) => {
       employee.subjects = subjects;
       this.navigateToEmployee(employee);

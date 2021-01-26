@@ -1,0 +1,43 @@
+<div *ngIf="subject">
+    <div class="card bg-dark">
+        <div style="overflow-x:auto;" class="card-body mr-4 ml-4">
+
+            <table  class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" width="15%">Naslov</th>
+                        <th scope="col" width="15%">Autor</th>
+                        <th scope="col" width="15%">Datum</th>
+                        <th scope="col" width="40%">Sadrzaj</th>
+                        <th scope="col" width="15%">Fajlovi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let notif of subject.notifications; let i = index">
+                        <td [class.newNotif] = "isNewNotification(notif)">
+                            {{notif.title}}
+                        </td>
+                        <td [class.newNotif] = "isNewNotification(notif)">
+                            {{notif.creator}}
+                        </td>
+                        <td [class.newNotif] = "isNewNotification(notif)">
+                            {{notif.dateCreation | date}} &nbsp; {{notif.dateCreation | date:"HH:mm"}}
+                        </td>
+                        <td [class.newNotif] = "isNewNotification(notif)">
+                            <div [innerHTML]="notif.content"></div>
+                            <editor [init]="tinyMceInit"></editor>
+                        </td>
+                        <td>
+                            <div *ngFor="let file of notif.files">
+                                <a (click)="downloadFile(file)">{{file}}</a>
+                                <br> <br>
+                            </div>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

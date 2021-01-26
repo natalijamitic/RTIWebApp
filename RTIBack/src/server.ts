@@ -355,7 +355,7 @@ router.route('/notificationtypes/delete/:type').delete((request, response) => {
 /************SUBJECT *************/
 router.route('/subjects/insert/notification').post((request, response) => {
     subjectQueries.insertNotification(request.body.notif, request.body.subjects).then((result) => {
-        response.status(200);
+        response.status(200).json(result);
     })
 });
 router.route('/subjects/codes').post((request, response) => {
@@ -505,7 +505,20 @@ app.post('/upload/notification/file', uploadInfoFile.single('uploadedFile'), (re
     let oldFileUrl = file.destination + '/' + file.filename;
     let newFileUrl = file.destination + '/' + file.originalname + "-" + info.title + '-' + info.date + "." + fileExtension(file.originalname);
     fs.renameSync(oldFileUrl, newFileUrl);
-    res.status(200).json({fileName: newFileUrl});
+
+    // testiraj ovo dole!!
+    let dbName = file.originalname + "-" + info.title + '-'  + info.date + "." + fileExtension(file.originalname);
+    res.status(200).json({fileName: dbName});
+})
+
+app.get('/download/notification/file/:name', (request, response) => {
+    console.log("OVDE")
+    const name = request.params.name;
+    const file = `${subjectInfoFilesUrl}/${name}`;
+    console.log(file)
+    response.download(file, function (err) {
+        console.log(err);
+    });
 })
 
 

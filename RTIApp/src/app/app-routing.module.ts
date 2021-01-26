@@ -11,6 +11,7 @@ import { DisplayNotificationsComponent } from './display-notifications/display-n
 import { DisplayStudentComponent } from './display-student/display-student.component';
 import { DisplaySubjectNotificationsComponent } from './display-subject-notifications/display-subject-notifications.component';
 import { DisplaySubjectStudentInformationComponent } from './display-subject-student-information/display-subject-student-information.component';
+import { DisplaySubjectStudentNotificationsComponent } from './display-subject-student-notifications/display-subject-student-notifications.component';
 import { DisplaySubjectStudentComponent } from './display-subject-student/display-subject-student.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
@@ -118,7 +119,7 @@ const routes: Routes = [
     children: [
       {
         path: 'obavestenja',
-        component: DisplaySubjectStudentInformationComponent
+        component: DisplaySubjectStudentNotificationsComponent
       },
       {
         path: 'informacije',
