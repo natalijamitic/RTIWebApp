@@ -10,8 +10,13 @@ import { DisplayNotificationTypesComponent } from './display-notification-types/
 import { DisplayNotificationsComponent } from './display-notifications/display-notifications.component';
 import { DisplayStudentComponent } from './display-student/display-student.component';
 import { DisplaySubjectNotificationsComponent } from './display-subject-notifications/display-subject-notifications.component';
+import { DisplaySubjectStudentExamMaterialsComponent } from './display-subject-student-exam-materials/display-subject-student-exam-materials.component';
+import { DisplaySubjectStudentExerciseComponent } from './display-subject-student-exercise/display-subject-student-exercise.component';
 import { DisplaySubjectStudentInformationComponent } from './display-subject-student-information/display-subject-student-information.component';
+import { DisplaySubjectStudentLabComponent } from './display-subject-student-lab/display-subject-student-lab.component';
+import { DisplaySubjectStudentLectureComponent } from './display-subject-student-lecture/display-subject-student-lecture.component';
 import { DisplaySubjectStudentNotificationsComponent } from './display-subject-student-notifications/display-subject-student-notifications.component';
+import { DisplaySubjectStudentProjectComponent } from './display-subject-student-project/display-subject-student-project.component';
 import { DisplaySubjectStudentComponent } from './display-subject-student/display-subject-student.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
@@ -127,23 +132,23 @@ const routes: Routes = [
       },
       {
         path: 'predavanja',
-        component: DisplaySubjectStudentInformationComponent
+        component: DisplaySubjectStudentLectureComponent
       },
       {
         path: 'vezbe',
-        component: DisplaySubjectStudentInformationComponent
+        component: DisplaySubjectStudentExerciseComponent
       },
       {
         path: 'ispitna-pitanja',
-        component: DisplaySubjectStudentInformationComponent
+        component: DisplaySubjectStudentExamMaterialsComponent
       },
       {
         path: 'laboratorija',
-        component: DisplaySubjectStudentInformationComponent
+        component: DisplaySubjectStudentLabComponent
       },
       {
         path: 'projekti-domaci',
-        component: DisplaySubjectStudentInformationComponent
+        component: DisplaySubjectStudentProjectComponent
       }
     ]
   },

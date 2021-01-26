@@ -54,6 +54,11 @@ import { UploadFilesService } from './Services/UploadFiles/upload-files.service'
 import { NavigationSubjectComponent } from './navigation-subject/navigation-subject.component';
 import { DisplaySubjectStudentInformationComponent } from './display-subject-student-information/display-subject-student-information.component';
 import { DisplaySubjectStudentNotificationsComponent } from './display-subject-student-notifications/display-subject-student-notifications.component';
+import { DisplaySubjectStudentLectureComponent } from './display-subject-student-lecture/display-subject-student-lecture.component';
+import { DisplaySubjectStudentExerciseComponent } from './display-subject-student-exercise/display-subject-student-exercise.component';
+import { DisplaySubjectStudentExamMaterialsComponent } from './display-subject-student-exam-materials/display-subject-student-exam-materials.component';
+import { DisplaySubjectStudentLabComponent } from './display-subject-student-lab/display-subject-student-lab.component';
+import { DisplaySubjectStudentProjectComponent } from './display-subject-student-project/display-subject-student-project.component';
 @NgModule({
   declarations: [             //  all personal components
     AppComponent,
@@ -94,6 +99,11 @@ import { DisplaySubjectStudentNotificationsComponent } from './display-subject-s
      NavigationSubjectComponent,
      DisplaySubjectStudentInformationComponent,
      DisplaySubjectStudentNotificationsComponent,
+     DisplaySubjectStudentLectureComponent,
+     DisplaySubjectStudentExerciseComponent,
+     DisplaySubjectStudentExamMaterialsComponent,
+     DisplaySubjectStudentLabComponent,
+     DisplaySubjectStudentProjectComponent,
   ],
   imports: [                  //  foreign import components
     BrowserModule,

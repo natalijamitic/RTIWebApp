@@ -1,0 +1,41 @@
+<div *ngIf="subject && !subject.lab.isHidden">
+    <div class="card bg-dark">
+        <div class="card-header">
+            Broj Labova: &nbsp; {{subject.lab.numberOfLabs}}
+            <br>
+            {{subject.lab.basicInfo}}
+        </div>
+        <div style="overflow-x:auto;" class="card-body mr-4 ml-4">
+
+            <div *ngFor="let lab of subject.lab.labs">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" width="33%">Opis</th>
+                            <th scope="col">Materijali</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{lab.description}}
+                            </td>
+                            <td>
+                                <div *ngIf="lab.materials && lab.materials.length > 0">
+                                    <div *ngFor="let file of lab.materials">
+                                        <a class="linkColor" (click)="downloadFile(file)">{{file}}</a>
+                                        <br> <br>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br><br><br>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div *ngIf="subject && !subject.examMaterials.isHidden">
+    <div class="card bg-dark">
+        <div style="overflow-x:auto;" class="card-body mr-4 ml-4">
+
+            <table  class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Zadaci</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let file of subject.examMaterials.examples; let i = index">
+                        <td>
+                            <div>
+                                <a class="linkColor" (click)="downloadFile(file)">{{file}}</a>
+                                <br> <br>
+                            </div>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <br><br><br>
+
+            <table  class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Resenja</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let file of subject.examMaterials.solutions; let i = index">
+                        <td>
+                            <div>
+                                <a class="linkColor" (click)="downloadFile(file)">{{file}}</a>
+                                <br> <br>
+                            </div>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

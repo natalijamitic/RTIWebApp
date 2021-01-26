@@ -1,0 +1,40 @@
+<div *ngIf="subject && !subject.project.isHidden">
+    <div class="card bg-dark">
+        <div style="overflow-x:auto;" class="card-body mr-4 ml-4">
+
+            <div *ngFor="let proj of subject.project.projects">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" width="33%">Informacije</th>
+                            <th scope="col" width="33%">Ispitivanje</th>
+                            <th scope="col">Materijali</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {{proj.basicInfo}}
+                            </td>
+                            <td>
+                                {{proj.examinationProcess}}
+                            </td>
+                            <td>
+                                <div *ngIf="proj.projectMaterials && proj.projectMaterials.length > 0">
+                                    <div *ngFor="let file of proj.projectMaterials">
+                                        <a class="linkColor" (click)="downloadFile(file)">{{file}}</a>
+                                        <br> <br>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br><br><br>
+            </div>
+
+
+        </div>
+    </div>
+</div>

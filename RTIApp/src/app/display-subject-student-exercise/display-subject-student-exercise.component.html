@@ -1,0 +1,26 @@
+<div *ngIf="subject">
+    <div class="card bg-dark">
+        <div style="overflow-x:auto;" class="card-body mr-4 ml-4">
+
+            <table  class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Fajlovi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let file of subject.exercises; let i = index">
+                        <td>
+                            <div>
+                                <a class="linkColor" (click)="downloadFile(file)">{{file}}</a>
+                                <br> <br>
+                            </div>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
