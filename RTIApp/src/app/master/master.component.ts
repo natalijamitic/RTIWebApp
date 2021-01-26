@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { SubjectsService } from '../Services/Subjects/subjects.service';
 
 export interface IWeekly {
-  lecutre: number;
+  lecture: number;
   exercise: number;
   lab: number;
 }

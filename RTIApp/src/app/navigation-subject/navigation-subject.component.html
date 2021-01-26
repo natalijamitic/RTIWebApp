@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSubject"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSubject">
+        <ul class="navbar-nav ml-auto mr-auto">
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="obavestenja">Obavestenja</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="informacije">Informacije</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="predavanja">Predavanja</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="vezbe">Vezbe</a>
+            </li>
+            <li *ngIf="subject && !subject.examMaterials.isHidden" class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="ispitna-pitanja">Ispitna pitanja</a>
+            </li>
+            <li *ngIf="subject && !subject.lab.isHidden" class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="laboratorija">Laboratorija</a>
+            </li>
+            <li *ngIf="subject && !subject.project.isHidden" class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="projekti-domaci">Projekat/Domaci</a>
+            </li>
+        </ul>
+    </div>
+</nav>

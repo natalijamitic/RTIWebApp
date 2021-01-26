@@ -91,8 +91,8 @@ export class AssignmentConfigurationComponent implements OnInit, OnDestroy {
 
     this.dropdownSettings = {
       singleSelection: false,
-      idField: ' ',
-      textField: ' ',
+      idField: '',
+      textField: '',
       enableCheckAll: false,
       allowSearchFilter: false,
     };
@@ -114,15 +114,9 @@ export class AssignmentConfigurationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.sub1){
-      this.sub1.unsubscribe();
-    }
-
-    if (this.sub2) {
-      this.sub2.unsubscribe();
-    }
-    if (this.sub3){
-      this.sub3.unsubscribe();}
+    this.sub1?.unsubscribe();
+    this.sub2?.unsubscribe();
+    this.sub3?.unsubscribe();
   }
 
   public deleteAssignment(ass: IAssignmentFull, num: number) {

@@ -10,6 +10,7 @@ import { DisplayNotificationTypesComponent } from './display-notification-types/
 import { DisplayNotificationsComponent } from './display-notifications/display-notifications.component';
 import { DisplayStudentComponent } from './display-student/display-student.component';
 import { DisplaySubjectNotificationsComponent } from './display-subject-notifications/display-subject-notifications.component';
+import { DisplaySubjectStudentInformationComponent } from './display-subject-student-information/display-subject-student-information.component';
 import { DisplaySubjectStudentComponent } from './display-subject-student/display-subject-student.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
@@ -113,7 +114,37 @@ const routes: Routes = [
   },
   {
     path: 'listapredmeta/:code',
-    component: DisplaySubjectStudentComponent
+    component: DisplaySubjectStudentComponent,
+    children: [
+      {
+        path: 'obavestenja',
+        component: DisplaySubjectStudentInformationComponent
+      },
+      {
+        path: 'informacije',
+        component: DisplaySubjectStudentInformationComponent
+      },
+      {
+        path: 'predavanja',
+        component: DisplaySubjectStudentInformationComponent
+      },
+      {
+        path: 'vezbe',
+        component: DisplaySubjectStudentInformationComponent
+      },
+      {
+        path: 'ispitna-pitanja',
+        component: DisplaySubjectStudentInformationComponent
+      },
+      {
+        path: 'laboratorija',
+        component: DisplaySubjectStudentInformationComponent
+      },
+      {
+        path: 'projekti-domaci',
+        component: DisplaySubjectStudentInformationComponent
+      }
+    ]
   },
   {
     path: 'predmeti/:dept',

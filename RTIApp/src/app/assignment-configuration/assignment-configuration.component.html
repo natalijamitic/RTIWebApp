@@ -34,8 +34,9 @@
                         <td>
                             <div *ngFor="let lecture of assignments[i].group; let j=index">
                                 <div *ngIf="lecture.name[0].toLowerCase() == 'p'" class="form-group input-group">
-                                    <ng-multiselect-dropdown name="employeeP" [disabled]=true [data]="lecture.employees"
-                                        [settings]="dropdownSettings" [(ngModel)]="lecture.employees">
+                                    <ng-multiselect-dropdown name="employeeP" [disabled]=true
+                                        [settings]="dropdownSettings" [data]="lecture.employees"
+                                        [(ngModel)]="lecture.employees">
                                     </ng-multiselect-dropdown>
                                 </div>
 
@@ -45,8 +46,9 @@
                         <td>
                             <div *ngFor="let lecture of assignments[i].group; let j=index">
                                 <div *ngIf="lecture.name[0].toLowerCase() == 'v'" class="form-group input-group">
-                                    <ng-multiselect-dropdown name="employeeV" [disabled]=true [data]="lecture.employees"
-                                        [settings]="dropdownSettings" [(ngModel)]="lecture.employees">
+                                    <ng-multiselect-dropdown name="employeeV" [disabled]=true
+                                        [settings]="dropdownSettings" [data]="lecture.employees"
+                                        [(ngModel)]="lecture.employees">
                                     </ng-multiselect-dropdown>
                                 </div>
                             </div>
@@ -59,15 +61,15 @@
                         </td>
 
                     </tr>
-                    <tr>
+                    <tr *ngIf="subjects">
                         <td>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"> <i class="fa fa-tag"></i></span>
                                 </div>
-                                <ng-multiselect-dropdown class="input-multiselect" name="subject" [data]="subjects"
-                                    [placeholder]="'Izaberite predmet'" [settings]="dropdownSettingsSubject"
-                                    [(ngModel)]="selectedSubject">
+                                <ng-multiselect-dropdown class="input-multiselect" name="subject"
+                                    [settings]="dropdownSettingsSubject" [data]="subjects"
+                                    [placeholder]="'Izaberite predmet'" [(ngModel)]="selectedSubject">
                                 </ng-multiselect-dropdown>
                             </div>
                         </td>
@@ -82,8 +84,9 @@
                         <td>
                             <div *ngIf="selectedNumGroup">
                                 <div *ngFor="let i of counter(selectedNumGroup).fill(0); let j=index">
-                                    <ng-multiselect-dropdown class="max-width" [placeholder]="'Drzi predavanja'" name="employeePinsert" [data]="teachersNames"
-                                        [settings]="dropdownSettingsTeachers" [(ngModel)]="selectedTeachersP[j]">
+                                    <ng-multiselect-dropdown class="max-width" [placeholder]="'Drzi predavanja'"
+                                        name="employeePinsert" [settings]="dropdownSettingsTeachers"
+                                        [data]="teachersNames" [(ngModel)]="selectedTeachersP[j]">
                                     </ng-multiselect-dropdown>
                                 </div>
                             </div>
@@ -92,8 +95,9 @@
                         <td>
                             <div *ngIf="selectedNumGroup">
                                 <div *ngFor="let i of counter(selectedNumGroup).fill(0); let j=index">
-                                    <ng-multiselect-dropdown class="max-width" [placeholder]="'Drzi vezbe'" name="employeeVinsert" [data]="teachersNames"
-                                        [settings]="dropdownSettingsTeachers" [(ngModel)]="selectedTeachersV[j]">
+                                    <ng-multiselect-dropdown class="max-width" [placeholder]="'Drzi vezbe'"
+                                        name="employeeVinsert" [settings]="dropdownSettingsTeachers"
+                                        [data]="teachersNames" [(ngModel)]="selectedTeachersV[j]">
                                     </ng-multiselect-dropdown>
                                 </div>
                             </div>

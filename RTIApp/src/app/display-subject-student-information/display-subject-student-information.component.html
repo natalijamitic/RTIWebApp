@@ -1,0 +1,86 @@
+<div class="card bg-dark">
+    <div class="card-body mr-4 ml-4">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="5">Specifikacija predmeta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th colspan="2">Naziv</th>
+                    <td colspan="3">{{subject?.title}}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Akronim</th>
+                    <td colspan="3">{{subject?.code}}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Studijski program</th>
+                    <td colspan="3">{{subject?.department}}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Tip</th>
+                    <td colspan="3">{{subject?.type}}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Semestar</th>
+                    <td colspan="3">{{subject?.semestar}}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Nastavnici</th>
+                    <td colspan="3">
+                        <ul *ngIf="employees">
+                            <li *ngFor="let emp of employees"><a class="link-color" (click)="openEmployee(emp)">{{emp.lastName}} &nbsp; {{emp.firstName}}</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">Broj ESPB</th>
+                    <td><strong>{{subject?.espb}}</strong></td>
+                    <th>Status predmeta</th>
+                    <td><strong>{{subject?.type}}</strong></td>
+                </tr>
+                <tr>
+                    <th colspan="2">Cilj i ishod</th>
+                    <td colspan="3">{{subject?.subjectGoal}}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Dodatni komentar</th>
+                    <td colspan="3">{{subject?.comment}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br><br>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="5">Broj casova i termini
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Predavanja</th>
+                    <th>Vezbe</th>
+                    <th>Labovi</th>
+                    <th colspan="2">Termini</th>
+                </tr>
+                <tr>
+                    <td>{{subject?.weekly.lecture}}</td>
+                    <td>{{subject?.weekly.exercise}}</td>
+                    <td>{{subject?.weekly.lab}}</td>
+                    <td colspan="2" style="text-align:center font-weight:bold">
+                        <div *ngIf="subject">
+                            <div *ngFor="let time of subject.classTime">{{time}}</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

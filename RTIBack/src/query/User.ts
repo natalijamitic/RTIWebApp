@@ -216,6 +216,15 @@ export function getStudentByUsername(username: string): any {
 }
 
 
+export function getAssignment(code: string): any {
+    return Assignment.findOne({subject: code}).then((a: any) => a);
+}
+
+export async function getAllEmployeesForAssignment(code: string): Promise<any> {
+    let assignment = await getAssignment(code);
+    return Employee.find({ username: { $in: assignment.employees } }).then((r: any) => r);
+}
+
 export function getAllAssignmentsForEmployee(username: string) {
     return Assignment.find({employees: username}).then((emp: any) => emp);
 }

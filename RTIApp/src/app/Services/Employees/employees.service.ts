@@ -116,6 +116,32 @@ export class EmployeesService {
         );
     }
 
+    getEmpoloyeesForSubject(code: string) {
+        return this.http.get(`${environment.api}/assignments/code/${code}`).pipe(
+            map((e: any) => {
+                let employees: Array<IEmployee> = [];
+                for (let emp of e) {
+                    employees.push({
+                        username: emp.username,
+                        firstName: emp.firstName,
+                        lastName: emp.lastName,
+                        address: emp.address,
+                        phoneNumber: emp.phoneNumber,
+                        webpage: emp.webpage,
+                        personalInfo: emp.personalInfo,
+                        title: emp.title,
+                        roomNumber: emp.roomNumber,
+                        status: emp.status,
+                        type: emp.type,
+                        subjects: [] as string[],
+                        profilePicture: emp.profilePicture
+                    });
+                }
+                return employees;
+            })
+        );
+    }
+
     insertAssignment(ass: IAssignmentFull) {
         return this.http.post(`${environment.api}/assignments/insert`, {ass});
     }

@@ -1,41 +1,44 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ISubjNotif } from '../display-subject-notifications/display-subject-notifications.component';
-import { IWeekly } from '../master/master.component';
+import { IEmployee } from '../employees/employees.component';
 import { IStudent, IUser } from '../registration/registration.component';
 import { AuthenticationService } from '../Services/Authentication/authentication.service';
+import { EmployeesService } from '../Services/Employees/employees.service';
 import { StudentService } from '../Services/Students/student.service';
 import { ISubjectFull, SubjectsService } from '../Services/Subjects/subjects.service';
+
 @Component({
-  selector: 'display-subject-student',
-  templateUrl: './display-subject-student.component.html',
-  styleUrls: ['./display-subject-student.component.scss']
+  selector: 'display-subject-student-information',
+  templateUrl: './display-subject-student-information.component.html',
+  styleUrls: ['./display-subject-student-information.component.scss']
 })
-export class DisplaySubjectStudentComponent implements OnInit, OnDestroy {
+export class DisplaySubjectStudentInformationComponent implements OnInit {
 
   public loggedInUser: IUser = null;
   public loggedInStudent: IStudent = null;
 
   public code: string;
   public subject: ISubjectFull = null;
+  public employees: IEmployee[] = [];
 
   private sub1: Subscription;
   private sub2: Subscription;
   private sub3: Subscription;
   private sub4: Subscription;
+  private sub5: Subscription;
 
   constructor(private authService: AuthenticationService,
     private studService: StudentService,
     private subjService: SubjectsService,
+    private empService: EmployeesService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.sub1 = this.activatedRoute.params.subscribe(params => {
-      this.initComponent(params['code']);
-    });
+    this.initComponent(this.activatedRoute.parent.snapshot.url[1].path);
+
   }
 
   ngOnDestroy(): void {
@@ -43,6 +46,7 @@ export class DisplaySubjectStudentComponent implements OnInit, OnDestroy {
     this.sub2?.unsubscribe();
     this.sub3?.unsubscribe();
     this.sub4?.unsubscribe();
+    this.sub5?.unsubscribe();
   }
 
   public initComponent(code: string): void {
@@ -53,7 +57,6 @@ export class DisplaySubjectStudentComponent implements OnInit, OnDestroy {
       if (!subject) {
         this.router.navigate(["/error"]);
       }
-
 
       this.subject = subject;
       console.log(this.subject);
@@ -74,6 +77,33 @@ export class DisplaySubjectStudentComponent implements OnInit, OnDestroy {
     (error: HttpErrorResponse) => {
       this.router.navigate(["/error"]);
     });
+
+    this.sub1 = this.empService.getEmpoloyeesForSubject(this.code).subscribe((result: IEmployee[]) => {
+      this.employees = result;
+    },
+    (error: HttpErrorResponse) => {
+      this.router.navigate(["/error"]);
+    });
+
   }
 
+  public navigateToEmployee(employee: IEmployee) {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        employee: JSON.stringify(employee)
+      }
+    }
+    this.router.navigate(['zaposlen'], navigationExtras);
+  }
+
+  public openEmployee(employee: IEmployee) {
+    if (employee.subjects?.length > 0) {
+      this.navigateToEmployee(employee);
+    }
+    this.sub5 = this.empService.getSubjectsForEmployee(employee.username).subscribe((subjects: string[]) => {
+      employee.subjects = subjects;
+      this.navigateToEmployee(employee);
+    });
+
+  }
 }

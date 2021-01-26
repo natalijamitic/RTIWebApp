@@ -229,7 +229,6 @@ router.route('/assignments').get((_request, response) => {
     userQueries.getAllAssignments().then((result: any) => {
         response.json(result)
     })
-
 });
 // DELETE Assignments
 router.route('/assignments/delete/:subject').delete((request, response) => {
@@ -244,6 +243,12 @@ router.route('/assignments/insert').post((request, response) => {
         response.json(result)
     })
 
+});
+// Get Employees for Assignemnt Subject
+router.route('/assignments/code/:code').get((request, response) => {
+    userQueries.getAllEmployeesForAssignment(request.params.code).then((result: any) => {
+        response.json(result);
+    });
 });
 // GET Assignments For Employee
 router.route('/assignments/:username').get((request, response) => {
@@ -355,6 +360,11 @@ router.route('/subjects/insert/notification').post((request, response) => {
 });
 router.route('/subjects/codes').post((request, response) => {
     subjectQueries.getSubjectsByCodes(request.body.codes).then((result: any) => {
+        response.status(200).json(result);
+    })
+})
+router.route('/subjects/code/:code').get((request, response) => {
+    subjectQueries.getSubjectByCode(request.params.code).then((result: any) => {
         response.status(200).json(result);
     })
 })

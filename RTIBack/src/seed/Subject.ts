@@ -11,7 +11,7 @@ const subjects = [
         title: "Programiranje 1",
         code: "13S111P1",
         weekly: {
-            lecutre: 3,
+            lecture: 3,
             exercise: 2,
             lab: 0
         },
@@ -20,18 +20,23 @@ const subjects = [
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
         subjectGoal: "Cilj je nauciti osnove programiranja.",
         haveLab: false,
-        project: [{
+        project: {
             isHidden: true,
-            basicInfo: "Projekat Crazy Snake - zmijica kao na nokiji",
-            examinationProcess: "Pokrece se igrica na racunaru u paviljonu i objasnjava se ukratko kako je implementirana."
-        }],
+            projects: [{
+                basicInfo: "Projekat Crazy Snake - zmijica kao na nokiji",
+                examinationProcess: "Pokrece se igrica na racunaru u paviljonu i objasnjava se ukratko kako je implementirana."
+            }]
+        },
         notifications: [
             {
                 title: "Obavestenje 1",
                 content: "Obavezno prijvate ovaj predmete kako biste bili u toku s informacijama.",
                 creator: "pera@etf.rs"
             }
-        ]
+        ],
+        examMaterials: {
+            isExamExamplesHidden: false
+        }
     },
     {
         type: "obavezni",
@@ -40,7 +45,7 @@ const subjects = [
         code: "13S081M2",
         department: 'si',
         weekly: {
-            lecutre: 3,
+            lecture: 3,
             exercise: 2,
             lab: 0
         },
@@ -48,7 +53,10 @@ const subjects = [
         classTime: ["Ponedeljak 18", "Sreda 14"],
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
         subjectGoal: "Cilj je nauciti osnove matematike 2.",
-        haveLab: false
+        haveLab: false,
+        examMaterials: {
+            isExamExamplesHidden: false
+        }
     },
     {
         type: "izborni",
@@ -57,7 +65,7 @@ const subjects = [
         code: "13S112VD",
         department: 'si',
         weekly: {
-            lecutre: 2,
+            lecture: 2,
             exercise: 2,
             lab: 1
         },
@@ -72,17 +80,19 @@ const subjects = [
             basicInfo: "Lab se radi u paviljonu.",
             labs: [{
                 labDescription: "Prva lab vezba zahteva poznavanje gradiva od 10-120 strane"
-            },{
+            }, {
                 labDescription: "Druga lab vezba zahteva poznavanje gradiva od 120-220 strane"
-            },{
+            }, {
                 labDescription: "Treca lab vezba zahteva poznavanje gradiva od 220-260 strane"
             }]
         },
-        project: [{
+        project: {
             isHidden: true,
-            basicInfo: "Projekat - Sajt za teretanu",
-            examinationProcess: "Pokrece se na racunaru u paviljonu i objasnjava se ukratko kako je implementiran."
-        }]
+            projects: [{
+                basicInfo: "Projekat - Sajt za teretanu",
+                examinationProcess: "Pokrece se na racunaru u paviljonu i objasnjava se ukratko kako je implementiran."
+            }]
+        }
     },
     {
         type: "obavezni",
@@ -91,7 +101,7 @@ const subjects = [
         title: "Operativni sistemi 1",
         department: 'si',
         weekly: {
-            lecutre: 2,
+            lecture: 2,
             exercise: 2,
             lab: 1
         },
@@ -100,11 +110,13 @@ const subjects = [
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
         subjectGoal: "Cilj je nauciti osnove operativnih sistema.",
         haveLab: false,
-        project: [{
+        project: {
             isHidden: true,
-            basicInfo: "Visenitni OS",
-            examinationProcess: "Pokrece se na racunaru u paviljonu i objasnjava se ukratko kako je implementiran."
-        }]
+            projects: [{
+                basicInfo: "Visenitni OS",
+                examinationProcess: "Pokrece se na racunaru u paviljonu i objasnjava se ukratko kako je implementiran."
+            }]
+        }
     },
     {
         type: "obavezni",
@@ -113,7 +125,7 @@ const subjects = [
         code: "13М111ЕС",
         department: 'master',
         weekly: {
-            lecutre: 2,
+            lecture: 2,
             exercise: 2,
             lab: 0
         },
@@ -121,7 +133,10 @@ const subjects = [
         classTime: ["Ponedeljak 18", "Sreda 14"],
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
         subjectGoal: "Cilj je nauciti osnove.",
-        haveLab: false
+        haveLab: false,
+        examMaterials: {
+            isExamExamplesHidden: false
+        }
     },
     {
         type: "obavezni",
@@ -130,7 +145,7 @@ const subjects = [
         code: "13М111ТА",
         department: 'master',
         weekly: {
-            lecutre: 2,
+            lecture: 2,
             exercise: 2,
             lab: 0
         },

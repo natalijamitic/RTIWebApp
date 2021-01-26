@@ -58,26 +58,26 @@ export class AppComponent {
             break;
 
           case "/profil/obrada/zaposlen":
-          // case "/vesti/dodaj":
-          // case "/vesti/pregled":
-          // case "/vesti/obrada":
+          case "/vesti/dodaj":
+          case "/vesti/pregled":
+          case "/vesti/obrada":
             if (!this.loggedInUser || this.loggedInUser.type != 'zaposlen') {
               forbid = true;
             }
             break;
           case "/profil/obrada/student":
-          case "/listapredmeta":
+          //case "/listapredmeta":
             if (!this.loggedInUser || this.loggedInUser.type != 'student') {
               forbid = true;
             }
             break;
 
           default:
-            if (event.url.match(/^\/listapredmeta/)) {
-              if (!this.loggedInUser || this.loggedInUser.type != 'student') {
-                forbid = true;
-              }
-            }
+            // if (event.url.match(/^\/listapredmeta/)) {
+            //   if (!this.loggedInUser || this.loggedInUser.type != 'student') {
+            //     forbid = true;
+            //   }
+            // }
             break;
         }
 

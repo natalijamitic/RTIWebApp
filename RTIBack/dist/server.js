@@ -239,6 +239,12 @@ router.route('/assignments/insert').post((request, response) => {
         response.json(result);
     });
 });
+// Get Employees for Assignemnt Subject
+router.route('/assignments/code/:code').get((request, response) => {
+    userQueries.getAllEmployeesForAssignment(request.params.code).then((result) => {
+        response.json(result);
+    });
+});
 // GET Assignments For Employee
 router.route('/assignments/:username').get((request, response) => {
     userQueries.getAllAssignmentsForEmployee(request.params.username).then((result) => {
@@ -337,6 +343,11 @@ router.route('/subjects/insert/notification').post((request, response) => {
 });
 router.route('/subjects/codes').post((request, response) => {
     subjectQueries.getSubjectsByCodes(request.body.codes).then((result) => {
+        response.status(200).json(result);
+    });
+});
+router.route('/subjects/code/:code').get((request, response) => {
+    subjectQueries.getSubjectByCode(request.params.code).then((result) => {
         response.status(200).json(result);
     });
 });

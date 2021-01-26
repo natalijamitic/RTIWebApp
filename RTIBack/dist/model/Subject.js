@@ -74,10 +74,15 @@ const SubjectModel = new Schema({
             isExamExamplesHidden: {
                 type: Boolean,
                 required: true,
-                default: false
+                default: true
             }
         },
-        required: false
+        required: true,
+        default: {
+            isExamExamplesHidden: true,
+            examExamples: [],
+            examSolutions: []
+        }
     },
     lectures: {
         type: [String],
@@ -99,11 +104,12 @@ const SubjectModel = new Schema({
             },
             numberOfLabs: {
                 type: Number,
-                required: true
+                required: true,
+                default: 0
             },
             basicInfo: {
                 type: String,
-                required: true
+                required: false
             },
             labs: {
                 type: [{
@@ -112,14 +118,19 @@ const SubjectModel = new Schema({
                             required: true
                         },
                         labMaterials: {
-                            type: Array,
+                            type: [String],
                             required: false
                         }
                     }],
-                required: true
+                required: false
             }
         },
-        required: false
+        required: true,
+        default: {
+            isHidden: true,
+            numberOfLabs: 0,
+            labs: []
+        }
     },
     project: {
         type: {
@@ -138,12 +149,17 @@ const SubjectModel = new Schema({
                             required: true
                         },
                         projectMaterials: {
-                            type: String,
+                            type: [String],
                             required: false
                         }
-                    }]
-            },
-            required: false
+                    }],
+                required: false
+            }
+        },
+        required: true,
+        default: {
+            isHidden: false,
+            projects: []
         }
     },
     notifications: {
@@ -171,6 +187,11 @@ const SubjectModel = new Schema({
                 }
             }],
         required: false
+    },
+    comment: {
+        type: String,
+        required: false,
+        default: ''
     }
 });
 exports.default = mongoose_1.default.model('Subject', SubjectModel, 'Subject');
