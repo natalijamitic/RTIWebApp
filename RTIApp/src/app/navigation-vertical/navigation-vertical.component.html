@@ -43,6 +43,7 @@
 
 
 
+
         <li [routerLinkActive]="['active']" *ngIf="emp && emp.type=='nastavnik'">
             <a href="#vestiSubmenuZap" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fas fa-bell"></i>
@@ -57,6 +58,15 @@
                 </li>
             </ul>
         </li>
+
+        <li [routerLinkActive]="['active']" *ngIf="emp && emp.type=='nastavnik'">
+            <a routerLink="zaposlen/predmeti">
+                <i class="far fa-list-alt"></i>
+                Predmeti
+            </a>
+        </li>
+
+
 
 
 

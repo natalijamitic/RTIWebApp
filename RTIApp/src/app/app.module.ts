@@ -59,6 +59,11 @@ import { DisplaySubjectStudentExerciseComponent } from './display-subject-studen
 import { DisplaySubjectStudentExamMaterialsComponent } from './display-subject-student-exam-materials/display-subject-student-exam-materials.component';
 import { DisplaySubjectStudentLabComponent } from './display-subject-student-lab/display-subject-student-lab.component';
 import { DisplaySubjectStudentProjectComponent } from './display-subject-student-project/display-subject-student-project.component';
+import { DisplaySubjectsEmployeeComponent } from './display-subjects-employee/display-subjects-employee.component';
+import { DisplaySubjectEmployeeComponent } from './display-subject-employee/display-subject-employee.component';
+import { NavigationSubjectEmployeeComponent } from './navigation-subject-employee/navigation-subject-employee.component';
+import { DisplaySubjectEmployeeInformationComponent } from './display-subject-employee-information/display-subject-employee-information.component';
+
 @NgModule({
   declarations: [             //  all personal components
     AppComponent,
@@ -94,16 +99,20 @@ import { DisplaySubjectStudentProjectComponent } from './display-subject-student
     SubjectListComponent,
     DisplaySubjectStudentComponent,
     DisplaySubjectNotificationsComponent,
-     AddSubjectNotificationsComponent,
-     UploadFilesComponent,
-     NavigationSubjectComponent,
-     DisplaySubjectStudentInformationComponent,
-     DisplaySubjectStudentNotificationsComponent,
-     DisplaySubjectStudentLectureComponent,
-     DisplaySubjectStudentExerciseComponent,
-     DisplaySubjectStudentExamMaterialsComponent,
-     DisplaySubjectStudentLabComponent,
-     DisplaySubjectStudentProjectComponent,
+    AddSubjectNotificationsComponent,
+    UploadFilesComponent,
+    NavigationSubjectComponent,
+    DisplaySubjectStudentInformationComponent,
+    DisplaySubjectStudentNotificationsComponent,
+    DisplaySubjectStudentLectureComponent,
+    DisplaySubjectStudentExerciseComponent,
+    DisplaySubjectStudentExamMaterialsComponent,
+    DisplaySubjectStudentLabComponent,
+    DisplaySubjectStudentProjectComponent,
+    DisplaySubjectsEmployeeComponent,
+    DisplaySubjectEmployeeComponent,
+    NavigationSubjectEmployeeComponent,
+    DisplaySubjectEmployeeInformationComponent,
   ],
   imports: [                  //  foreign import components
     BrowserModule,

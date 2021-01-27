@@ -9,6 +9,8 @@ import { DisplayEmployeeComponent } from './display-employee/display-employee.co
 import { DisplayNotificationTypesComponent } from './display-notification-types/display-notification-types.component';
 import { DisplayNotificationsComponent } from './display-notifications/display-notifications.component';
 import { DisplayStudentComponent } from './display-student/display-student.component';
+import { DisplaySubjectEmployeeInformationComponent } from './display-subject-employee-information/display-subject-employee-information.component';
+import { DisplaySubjectEmployeeComponent } from './display-subject-employee/display-subject-employee.component';
 import { DisplaySubjectNotificationsComponent } from './display-subject-notifications/display-subject-notifications.component';
 import { DisplaySubjectStudentExamMaterialsComponent } from './display-subject-student-exam-materials/display-subject-student-exam-materials.component';
 import { DisplaySubjectStudentExerciseComponent } from './display-subject-student-exercise/display-subject-student-exercise.component';
@@ -18,6 +20,7 @@ import { DisplaySubjectStudentLectureComponent } from './display-subject-student
 import { DisplaySubjectStudentNotificationsComponent } from './display-subject-student-notifications/display-subject-student-notifications.component';
 import { DisplaySubjectStudentProjectComponent } from './display-subject-student-project/display-subject-student-project.component';
 import { DisplaySubjectStudentComponent } from './display-subject-student/display-subject-student.component';
+import { DisplaySubjectsEmployeeComponent } from './display-subjects-employee/display-subjects-employee.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { ErrorRoutePageComponent } from './error-route-page/error-route-page.component';
@@ -152,6 +155,68 @@ const routes: Routes = [
       }
     ]
   },
+
+  {
+    path: 'zaposlen/predmeti',
+    component: DisplaySubjectsEmployeeComponent,
+    children: [
+      {
+        path: 'informacije',
+        component: DisplaySubjectEmployeeInformationComponent
+      },
+      {
+        path: 'predavanja',
+        component: DisplaySubjectStudentLectureComponent
+      },
+      {
+        path: 'vezbe',
+        component: DisplaySubjectStudentExerciseComponent
+      },
+      {
+        path: 'ispitna-pitanja',
+        component: DisplaySubjectStudentExamMaterialsComponent
+      },
+      {
+        path: 'laboratorija',
+        component: DisplaySubjectStudentLabComponent
+      },
+      {
+        path: 'projekti-domaci',
+        component: DisplaySubjectStudentProjectComponent
+      }
+    ]
+  },
+  {
+    path: 'zaposlen/predmeti/:code',
+    component: DisplaySubjectEmployeeComponent,
+    children: [
+      {
+        path: 'informacije',
+        component: DisplaySubjectEmployeeInformationComponent
+      },
+      {
+        path: 'predavanja',
+        component: DisplaySubjectStudentLectureComponent
+      },
+      {
+        path: 'vezbe',
+        component: DisplaySubjectStudentExerciseComponent
+      },
+      {
+        path: 'ispitna-pitanja',
+        component: DisplaySubjectStudentExamMaterialsComponent
+      },
+      {
+        path: 'laboratorija',
+        component: DisplaySubjectStudentLabComponent
+      },
+      {
+        path: 'projekti-domaci',
+        component: DisplaySubjectStudentProjectComponent
+      }
+    ]
+  },
+
   {
     path: 'predmeti/:dept',
     component: MasterComponent

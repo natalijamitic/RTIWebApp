@@ -74,8 +74,14 @@
                     <td>{{subject?.weekly.exercise}}</td>
                     <td>{{subject?.weekly.lab}}</td>
                     <td colspan="2" style="text-align:center font-weight:bold">
+                        Predavanja:
                         <div *ngIf="subject">
                             <div *ngFor="let time of subject.classTime">{{time}}</div>
+                        </div>
+                        <br>
+                        Vezbe:
+                        <div *ngIf="subject">
+                            <div *ngFor="let time of subject.excerTime">{{time}}</div>
                         </div>
                     </td>
                 </tr>

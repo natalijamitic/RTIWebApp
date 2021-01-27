@@ -33,6 +33,7 @@ export interface ISubjProjectMaterials {
 }
 export interface ISubjectFull {
     classTime: string[];
+    excerTime: string[]
     code: string;
     department: string;
     espb: number;
@@ -145,6 +146,7 @@ export class SubjectsService {
                 weekly: s.weekly,
                 espb: s.espb,
                 classTime: s.classTime,
+                excerTime: s.excerTime,
                 propositions: s.propositions,
                 subjectGoal: s.subjectGoal,
                 examMaterials: {
@@ -170,6 +172,10 @@ export class SubjectsService {
             }
             return subject;
         }));
+    }
+
+    updateSubject(code: string, subject: ISubjectFull) {
+        return this.http.post(`${environment.api}/subjects/update`, {code, subject});
     }
 
     deleteNotification(notif: INotification, code: string) {

@@ -169,6 +169,13 @@ router.route('/subjects/:dept').get((request, response) => {
         response.json(result);
     });
 });
+router.route('/subjects/update').post((request, response) => {
+    const code = request.body.code;
+    const subject = request.body.subject;
+    subjectQueries.updateSubject(code, subject).then((result) => {
+        response.json(result);
+    });
+});
 /******** STUDENTS ROUTES  *********/
 // GET Student By Username
 router.route('/students/:username').get((request, response) => {

@@ -1,0 +1,27 @@
+<div>
+    <div class="card bg-dark">
+
+        <div *ngIf="subjects && subjects.length > 0" class="card-header">
+            <div class="form-group">
+                <div class="input-group-prepend">
+                    <select name="type" [(ngModel)]="selectedSubject" class="form-control select">
+                        <option *ngFor="let subj of subjects" value="{{subj.code}}">{{subj.title}} &nbsp; - &nbsp;
+                            {{subj.code}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="selectedSubject" style="overflow-x:auto;" class="card-body mr-4 ml-4">
+
+            <div class="text-center">
+                <navigation-subject-employee></navigation-subject-employee>
+
+                <div class="container mt-5">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

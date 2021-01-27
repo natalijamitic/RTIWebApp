@@ -1,0 +1,156 @@
+<div class="card bg-dark">
+    <div class="card-body mx-auto">
+
+        <h4 class="card-title mt-3 text-center">Izmenite predmet</h4>
+
+        <br>
+            <form *ngIf="subject" name="subject-form" class="mt-3">
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="5">Specifikacija predmeta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Naziv</th>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="title" onkeypress="return /[- 0-9a-zA-Z]/i.test(event.key)" class="form-control"
+                                        placeholder="Naziv" type="text" [(ngModel)]="subject.title">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Akronim</th>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input disabled name="code" class="form-control"
+                                        placeholder="Akronim" type="text" [(ngModel)]="subject.code">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Semestar</th>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="semestar" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
+                                        placeholder="Semestar" type="text" [(ngModel)]="subject.semestar">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Broj ESPB</th>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="espb" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
+                                        placeholder="Espb" type="text" [(ngModel)]="subject.espb">
+                                </div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th>Tip</th>
+                            <td>
+                                <div class="form-group input-group">
+                                    <select name="type" [(ngModel)]="subject.type" class="form-control select"
+                                        oninput="style.color='black'">
+                                        <option value="obavezni">obavezni</option>
+                                        <option value="izborni">izborni</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Cilj i ishod</th>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="goal" class="form-control"
+                                        placeholder="Cilj i ishod" type="text" [(ngModel)]="subject.subjectGoal">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Dodatni komentar</th>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="comment" class="form-control"
+                                        placeholder="Komentar" type="text" [(ngModel)]="subject.comment">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="5">Broj casova i termini
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Predavanja</th>
+                            <th>Vezbe</th>
+                            <th>Labovi</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="lecture" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
+                                        placeholder="Predavanja" type="text" [(ngModel)]="subject.weekly.lecture">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="lecture2" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
+                                        placeholder="Vezbe" type="text" [(ngModel)]="subject.weekly.exercise">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="lecture3" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
+                                        placeholder="Labovi" type="text" [(ngModel)]="subject.weekly.lab">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Termini Predavanja</th>
+                            <th>Termini Vezbi</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="classTime" class="form-control"
+                                        placeholder="Razdvojiti ;" type="text" [(ngModel)]="classTime">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group input-group">
+                                    <input name="classTime2" class="form-control"
+                                        placeholder="Razdvojiti ;" type="text" [(ngModel)]="excerTime">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+                <div class="form-group">
+                    <input (click)="update()" type="submit" class="btn btn-primary btn-block"
+                        value="Azuriraj">
+                </div> <!-- form-group// -->
+
+            </form>
+
+            <div class="text-center text-warning">
+                <p>{{msg}}</p>
+            </div>
+
+    </div>
+</div>

@@ -50,6 +50,10 @@ const SubjectModel = new Schema({
         type: [String],
         required: true
     },
+    excerTime: {
+        type: [String],
+        required: true
+    },
     propositions: {
         type: String,
         required: true
