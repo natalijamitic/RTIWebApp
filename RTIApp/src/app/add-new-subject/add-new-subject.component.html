@@ -1,10 +1,10 @@
 <div class="card bg-dark">
     <div class="card-body mx-auto">
 
-        <h4 class="card-title mt-3 text-center">Izmenite predmet</h4>
+        <h4 class="card-title mt-3 text-center">Dodajte predmet</h4>
 
         <br>
-            <form *ngIf="subject" name="subject-form" class="mt-3">
+            <form name="subject-form" class="mt-3">
 
                 <table class="table table-bordered">
                     <thead>
@@ -26,7 +26,7 @@
                             <th>Akronim</th>
                             <td>
                                 <div class="form-group input-group">
-                                    <input disabled name="code" class="form-control"
+                                    <input name="code" class="form-control"
                                         placeholder="Akronim" type="text" [(ngModel)]="subject.code">
                                 </div>
                             </td>
@@ -35,7 +35,7 @@
                             <th>Semestar</th>
                             <td>
                                 <div class="form-group input-group">
-                                    <input min='1' name="semestar" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
+                                    <input min="1" name="semestar" class="form-control"
                                         placeholder="Semestar" type="number" [(ngModel)]="subject.semestar">
                                 </div>
                             </td>
@@ -44,7 +44,7 @@
                             <th>Broj ESPB</th>
                             <td>
                                 <div class="form-group input-group">
-                                    <input min='0' name="espb" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
+                                    <input min="0" name="espb" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
                                         placeholder="Espb" type="number" [(ngModel)]="subject.espb">
                                 </div>
                             </td>
@@ -58,6 +58,20 @@
                                         oninput="style.color='black'">
                                         <option value="obavezni">obavezni</option>
                                         <option value="izborni">izborni</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Smer</th>
+                            <td>
+                                <div class="form-group input-group">
+                                    <select name="type" [(ngModel)]="subject.department" class="form-control select"
+                                        oninput="style.color='black'">
+                                        <option value="si">si</option>
+                                        <option value="rti">rti</option>
+                                        <option value="ostali">ostali</option>
+                                        <option value="master">master</option>
                                     </select>
                                 </div>
                             </td>
@@ -147,7 +161,7 @@
 
                 <div class="form-group">
                     <input (click)="update()" type="submit" class="btn btn-primary btn-block"
-                        value="Azuriraj">
+                        value="Dodaj">
                 </div> <!-- form-group// -->
 
             </form>

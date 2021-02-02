@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddNewSubjectComponent } from './add-new-subject/add-new-subject.component';
 import { AddSubjectNotificationsComponent } from './add-subject-notifications/add-subject-notifications.component';
 import { AppComponent } from './app.component';
 import { AssignmentConfigurationComponent } from './assignment-configuration/assignment-configuration.component';
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: 'planangazovanja',
     component: AssignmentConfigurationComponent
+  },
+  {
+    path: 'napravipredmet',
+    component: AddNewSubjectComponent
   },
   {
     path: 'korisnici/registracija',

@@ -71,6 +71,7 @@ import { DisplaySubjectEmployeeLabMaterialsComponent } from './display-subject-e
 import { DisplaySubjectEmployeeProjectMaterialsComponent } from './display-subject-employee-project-materials/display-subject-employee-project-materials.component';
 import { DisplaySubjectEmployeeLabMaterialsLabSingleComponent } from './display-subject-employee-lab-materials-lab-single/display-subject-employee-lab-materials-lab-single.component';
 import { DisplaySubjectEmployeeProjectMaterialsProjectSingleComponent } from './display-subject-employee-project-materials-project-single/display-subject-employee-project-materials-project-single.component';
+import { AddNewSubjectComponent } from './add-new-subject/add-new-subject.component';
 
 @NgModule({
   declarations: [             //  all personal components
@@ -128,6 +129,7 @@ import { DisplaySubjectEmployeeProjectMaterialsProjectSingleComponent } from './
     DisplaySubjectEmployeeProjectMaterialsComponent,
     DisplaySubjectEmployeeLabMaterialsLabSingleComponent,
     DisplaySubjectEmployeeProjectMaterialsProjectSingleComponent,
+    AddNewSubjectComponent,
   ],
   imports: [                  //  foreign import components
     BrowserModule,

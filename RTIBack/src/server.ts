@@ -173,6 +173,16 @@ router.route('/subjects/update').post((request, response) => {
         response.json(result);
     })
 });
+router.route('/subjects/insert').post((request, response) => {
+    const subject = request.body.subject;
+    subjectQueries.insertSubject(subject).then((result: any) => {
+        if (result.status == 0) {
+            response.status(200).json({ msg: result.msg });
+        } else {
+            response.status(400).json({ msg: result.msg })
+        }
+    })
+});
 
 
 /******** STUDENTS ROUTES  *********/

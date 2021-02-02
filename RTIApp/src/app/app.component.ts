@@ -40,6 +40,7 @@ export class AppComponent {
           case "/profil/obrada/admin":
           case "/admin/obavestenja/pregled":
           case "/admin/obavestenja/tipovi":
+          case "/napravipredmet":
             if (!this.loggedInUser || this.loggedInUser.type != 'admin') {
               forbid = true;
             }

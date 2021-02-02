@@ -97,7 +97,8 @@ const SubjectModel = new Schema({
     },
     haveLab: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     },
     lab: {
         type: {

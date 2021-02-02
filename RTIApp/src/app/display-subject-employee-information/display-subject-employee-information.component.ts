@@ -80,17 +80,15 @@ export class DisplaySubjectEmployeeInformationComponent implements OnInit {
   }
 
   public update() {
-    if (!this.subject || !this.subject.title || !this.subject.semestar || !this.subject.espb
-      || !this.subject.type || !this.subject.subjectGoal || !this.subject.weekly.exercise || !this.subject.weekly.lab ||
-      !this.subject.weekly.lecture || !this.classTime || !this.excerTime) {
+    if (!this.subject || !this.subject.title || !this.subject.type || !this.subject.subjectGoal || !this.subject.propositions ||
+       !this.classTime || !this.excerTime) {
       this.msg = "Popunite sva obavezna polja.";
       return;
     }
     this.msg = "";
     this.subject.classTime = this.classTime.split(';');
     this.subject.excerTime = this.excerTime.split(";");
-    console.log(this.subjectOld);
-    console.log(this.subject);
+
     this.subjService.updateSubject(this.subjectOld.code, this.subject).subscribe((result: any) => {
       console.log(result);
       this.msg = "Uspesno";

@@ -16,15 +16,30 @@ export function getSubjectByCode(code: string) {
     return Subject.findOne({ code: code }).then((r: any) => r);
 }
 
-export function insertSubject(subj: any) {
-    let subject = new Subject(subj);
-    return subject.save().then(u => {
-            //ok
+export async function insertSubject(subj: any) {
+    let s = await getSubjectByCode(subj.code);
+    console.log(s);
+    if (s != null) {
+        return new Promise(resolve => {
+            resolve({ status: -1, msg: "Predmet sa takvim akronimom vec postoji." });
         });
+    } else {
+        let subject = new Subject(subj);
+        await subject.save();
+    //     return subject.save().then(u => {
+    //         //ok
+    //     });
+    // }
+        return new Promise(resolve => {
+            resolve({ status: 0, msg: "Predmet uspesno dodat." });
+        });
+    }
+
 }
 
+
 export function deleteSubjectByCode(code: string) {
-    return Subject.deleteOne({code: code}).then((r: any) => r);
+    return Subject.deleteOne({ code: code }).then((r: any) => r);
 }
 
 export async function updateSubject(code: string, subj: any) {

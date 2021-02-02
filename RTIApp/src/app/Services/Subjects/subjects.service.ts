@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgbButtonLabel } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
+import { ISubjectNew } from 'src/app/add-new-subject/add-new-subject.component';
 import { INotification } from 'src/app/add-subject-notifications/add-subject-notifications.component';
 import { ISubjNotif } from 'src/app/display-subject-notifications/display-subject-notifications.component';
 import { ISubjectShort, IWeekly } from 'src/app/master/master.component';
@@ -176,6 +177,10 @@ export class SubjectsService {
 
     updateSubject(code: string, subject: ISubjectFull) {
         return this.http.post(`${environment.api}/subjects/update`, {code, subject});
+    }
+
+    insertSubject(subject: ISubjectNew) {
+        return this.http.post(`${environment.api}/subjects/insert`, {subject});
     }
 
     deleteNotification(notif: INotification, code: string) {
