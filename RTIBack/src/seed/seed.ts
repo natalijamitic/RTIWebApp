@@ -4,6 +4,7 @@ import {seedAllNotifications} from './Notification'
 import {seedAllDoneProjects} from './DoneProject'
 import {seedAllOfferedProjects} from './OfferedProject'
 import { seedAllSubjects } from './Subject'
+import { seedAllLists } from './List'
 
 function seed(): void {
     seedAllUsers();
@@ -11,7 +12,8 @@ function seed(): void {
     seedAllNotifications();
     seedAllDoneProjects();
     seedAllOfferedProjects();
-    seedAllSubjects()
+    seedAllSubjects();
+    seedAllLists();
 }
 
 export default seed;

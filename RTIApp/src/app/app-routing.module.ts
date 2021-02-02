@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddNewListComponent } from './add-new-list/add-new-list.component';
 import { AddNewSubjectComponent } from './add-new-subject/add-new-subject.component';
 import { AddSubjectNotificationsComponent } from './add-subject-notifications/add-subject-notifications.component';
 import { AppComponent } from './app.component';
@@ -164,6 +165,11 @@ const routes: Routes = [
         component: DisplaySubjectStudentProjectComponent
       }
     ]
+  },
+
+  {
+    path: 'zaposlen/spiskovi',
+    component: AddNewListComponent
   },
 
   {

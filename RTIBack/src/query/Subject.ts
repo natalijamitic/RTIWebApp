@@ -1,3 +1,4 @@
+import List from '../model/List';
 import Subject from '../model/Subject';
 
 export function getAllSubjects() {
@@ -61,4 +62,33 @@ export function insertNotification(notif: any, subjects: string[]) {
             notifications: notif
         }
     }).then((r: any) => r);
+}
+
+
+
+
+export function getAllListsBySubject(code: string) {
+    return List.find({ code: code }).then((result: any) => result);
+}
+
+export function getAllListsByAuthor(author: string) {
+    return List.find({ author: author }).then((result: any) => result);
+}
+
+export async function updateList(lOld, lNew) {
+    await deleteList(lOld);
+    return insertList(lNew);
+}
+
+export function insertList(l) {
+    let list = new List(l);
+    return list.save().then(u => {
+        // saved
+     }).catch(err => {
+         console.log("Error, couldn't save a list type in db.");
+     })
+}
+
+export function deleteList(date) {
+    return List.deleteOne({created: date}).then((r: any) => r);
 }

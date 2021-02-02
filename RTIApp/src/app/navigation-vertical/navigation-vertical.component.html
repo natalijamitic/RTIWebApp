@@ -72,6 +72,13 @@
             </a>
         </li>
 
+        <li [routerLinkActive]="['active']" *ngIf="user?.type=='zaposlen' && emp && emp.type=='nastavnik'">
+            <a routerLink="zaposlen/spiskovi">
+                <i class="fa fa-plus"></i>
+                Spiskovi
+            </a>
+        </li>
+
 
 
 

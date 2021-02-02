@@ -54,6 +54,24 @@ export interface ISubjectFull {
     comment: string;
 }
 
+export interface IStudentList {
+    student: string,
+    file: string
+}
+
+export interface IList {
+    code: string;
+    author: string;
+    deadline: Date;
+    title: string;
+    time: string;
+    place: string;
+    limit: number;
+    valid: boolean;
+    created: Date;
+    files: IStudentList[]
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -176,11 +194,11 @@ export class SubjectsService {
     }
 
     updateSubject(code: string, subject: ISubjectFull) {
-        return this.http.post(`${environment.api}/subjects/update`, {code, subject});
+        return this.http.post(`${environment.api}/subjects/update`, { code, subject });
     }
 
     insertSubject(subject: ISubjectNew) {
-        return this.http.post(`${environment.api}/subjects/insert`, {subject});
+        return this.http.post(`${environment.api}/subjects/insert`, { subject });
     }
 
     deleteNotification(notif: INotification, code: string) {
@@ -189,5 +207,73 @@ export class SubjectsService {
 
     postNotification(notif: INotification, subjects: string[]) {
         return this.http.post(`${environment.api}/subjects/insert/notification`, { notif, subjects });
+    }
+
+    getAllListsByAuthor(author: string) {
+        return this.http.get(`${environment.api}/lists/author/${author}`).pipe(map((l: any) => {
+            let lists: Array<IList> = [];
+            for (let list of l) {
+                let files: Array<IStudentList> = [];
+                if (list.files) {
+                    for (let f of list.files) {
+                        files.push({
+                            student: f.student,
+                            file: f.file
+                        })
+                    }
+                }
+                lists.push({
+                    author: list.author,
+                    code: list.code,
+                    deadline: list.deadline,
+                    place: list.place,
+                    time: list.time,
+                    valid: list.valid,
+                    title: list.title,
+                    limit: list.limit,
+                    created: list.created,
+                    files: files
+                });
+            }
+            return lists;
+        }))
+    }
+
+    getAllListsBySubject(code: string) {
+        return this.http.get(`${environment.api}/lists/code/${code}`).pipe(map((l: any) => {
+            let lists: Array<IList> = [];
+            for (let list of l) {
+                let files: Array<IStudentList> = [];
+                if (list.files) {
+                    for (let f of list.files) {
+                        files.push({
+                            student: f.student,
+                            file: f.file
+                        })
+                    }
+                }
+                lists.push({
+                    author: list.author,
+                    code: list.code,
+                    deadline: list.deadline,
+                    place: list.place,
+                    time: list.time,
+                    valid: list.valid,
+                    title: list.title,
+                    limit: list.limit,
+                    created: list.created,
+                    files: files
+                });
+            }
+            return lists;
+        }))
+    }
+
+    updateList(listOld: Date, listNew: IList) {
+        return this.http.post(`${environment.api}/list/update`, { listOld, listNew });
+    }
+
+    insertList(listNew: IList) {
+        return this.http.post(`${environment.api}/list/insert`, { listNew });
     }
 }

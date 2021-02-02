@@ -63,6 +63,7 @@ export class AppComponent {
           case "/vesti/pregled":
           case "/vesti/obrada":
           case "/zaposlen/predmeti":
+          case "/zaposlen/spiskovi":
             if (!this.loggedInUser || this.loggedInUser.type != 'zaposlen') {
               forbid = true;
             }

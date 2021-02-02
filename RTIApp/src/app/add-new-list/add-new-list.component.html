@@ -1,0 +1,132 @@
+<div *ngIf="empl">
+    <div class="card bg-dark">
+
+        <div style="overflow-x:auto;" class="card-body mr-4 ml-4">
+            <form>
+                <table class="table table-bordered" width='100%'>
+                    <thead>
+                        <tr>
+                            <th>Validna</th>
+                            <th scope="col" width='15'>Predmet</th>
+                            <th scope="col" widht='35%'>Fajlovi</th>
+                            <th scope="col" widht='15%'>Naziv</th>
+                            <th scope="col" widht='10%'>Termin</th>
+                            <th scope="col" width='5%'>Mesto</th>
+                            <th scope="col" width='5%'>Limit</th>
+                            <th scope="col" widht='10%'>Deadline</th>
+                            <th scope="col" width='5%'>Akcija</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let list of lists; let i = index">
+                            <td>
+                                {{list.valid ? 'Da' : 'Ne'}}
+                            </td>
+
+                            <td>
+                                {{list.code}}
+                            </td>
+                            <td>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Student</th>
+                                            <th>Fajl</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let f of list.files">
+                                            <td>
+                                                {{f.student}}
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <a class="linkColor"
+                                                        (click)="downloadFile(f.file)">{{f.file}}</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>
+                                {{list.title}}
+                            </td>
+                            <td>
+                                {{list.time}}
+                            </td>
+                            <td>
+                                {{list.place}}
+                            </td>
+                            <td>
+                                {{list.limit}}
+                            </td>
+                            <td>
+                                {{list.deadline| date}} &nbsp; {{list.deadline | date:"HH:mm"}}
+                            </td>
+                            <td>
+                                <button *ngIf='list.valid' (click)="lockList(i)" type="button" class="btn btn-danger action ml-2">
+                                    <i class="fas fa-lock"></i></button>
+                            </td>
+                        </tr>
+
+                        <tr *ngIf="this.subjects.length > 0">
+
+                            <td colspan='3'>
+                                <div class="form-group">
+                                    <select name="code" [(ngModel)]="newList.code" class="form-control select"
+                                        oninput="style.color='black'">
+                                        <option *ngFor="let s of subjects" value="{{s.code}}">{{s.code}} - {{s.title}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" name="text" [(ngModel)]="newList.title">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" name="text2" [(ngModel)]="newList.time">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" name="text3" [(ngModel)]="newList.place">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="number" min="0" name="text4" [(ngModel)]="newList.limit">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input name="date" class="form-control" placeholder="Vreme" type="datetime-local"
+                                        [(ngModel)]="newList.deadline">
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="form-group">
+                                    <input type="submit" (click)="addList()" class="btn greenColor btn-block"
+                                        value="Dodaj">
+                                </div>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+
+            <div>
+                {{msg}}
+            </div>
+        </div>
+
+
+    </div>
+</div>

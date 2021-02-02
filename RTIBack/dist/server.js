@@ -187,6 +187,30 @@ router.route('/subjects/insert').post((request, response) => {
         }
     });
 });
+/******** LIST ROUTES **************/
+router.route('/lists/author/:author').get((request, response) => {
+    subjectQueries.getAllListsByAuthor(request.params.author).then((result) => {
+        response.json(result);
+    });
+});
+router.route('/lists/code/:code').get((request, response) => {
+    subjectQueries.getAllListsBySubject(request.params.code).then((result) => {
+        response.json(result);
+    });
+});
+router.route('/list/update').post((request, response) => {
+    const listOld = request.body.listOld;
+    const listNew = request.body.listNew;
+    subjectQueries.updateList(listOld, listNew).then((result) => {
+        response.json(result);
+    });
+});
+router.route('/list/insert').post((request, response) => {
+    const listNew = request.body.listNew;
+    subjectQueries.insertList(listNew).then((result) => {
+        response.json(result);
+    });
+});
 /******** STUDENTS ROUTES  *********/
 // GET Student By Username
 router.route('/students/:username').get((request, response) => {

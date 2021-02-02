@@ -6,6 +6,7 @@ const Notification_1 = require("./Notification");
 const DoneProject_1 = require("./DoneProject");
 const OfferedProject_1 = require("./OfferedProject");
 const Subject_1 = require("./Subject");
+const List_1 = require("./List");
 function seed() {
     User_1.seedAllUsers();
     Assignment_1.seedAllAssignments();
@@ -13,6 +14,7 @@ function seed() {
     DoneProject_1.seedAllDoneProjects();
     OfferedProject_1.seedAllOfferedProjects();
     Subject_1.seedAllSubjects();
+    List_1.seedAllLists();
 }
 exports.default = seed;
 //# sourceMappingURL=seed.js.map
