@@ -1,0 +1,50 @@
+<div *ngIf="subject">
+    <div class="card bg-dark">
+
+        <div style="overflow-x:auto;" class="card-body mr-4 ml-4">
+            <form>
+                <div class="form-group">
+                    Sakrij ovu stranu studentima:
+                    <input type="checkbox" name="checkbox" [(ngModel)]="subject.project.isHidden">
+                </div>
+
+                <input type="submit" (click)="update()" class="btn greenColor btn-block" value="Azuriraj">
+            </form>
+
+            <br><br>
+
+            <div>
+                <h4>Dodaj novi projekat</h4>
+                <form>
+                    <div class="form-group">
+                        Opis projekta:
+                        <input type="text" name="text" [(ngModel)]="newProject.basicInfo">
+                    </div>
+                    <div class="form-group">
+                        Opis odbrane:
+                        <input type="text" name="text" [(ngModel)]="newProject.examinationProcess">
+                    </div>
+
+                    <input type="submit" (click)="addNewProject()" class="btn greenColor btn-block" value="Dodaj">
+                </form>
+            </div>
+
+            <br><br>
+
+            <div *ngFor="let proj of subject.project.projects; let num=index">
+
+                <display-subject-employee-project-materials-project-single (onUpdateSubject)="newSubject($event)" (onDeleteProj)="deleteProject(num)"
+                    [proj]="proj" [projF]="files[num]" [projNum]="num" [subject]="subject" [fullName]="fullName">
+                </display-subject-employee-project-materials-project-single>
+                <br><br>
+            </div>
+
+
+            <div>
+                {{msg}}
+            </div>
+        </div>
+
+
+    </div>
+</div>

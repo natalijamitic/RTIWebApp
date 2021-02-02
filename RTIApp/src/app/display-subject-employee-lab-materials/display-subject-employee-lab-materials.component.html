@@ -1,0 +1,53 @@
+<div *ngIf="subject">
+    <div class="card bg-dark">
+
+        <div style="overflow-x:auto;" class="card-body mr-4 ml-4">
+            <form>
+                <div class="form-group">
+                    Sakrij ovu stranu studentima:
+                    <input type="checkbox" name="checkbox" [(ngModel)]="subject.lab.isHidden">
+                </div>
+                <div class="form-group">
+                    Ukupan broj labova:
+                    <input type="number" name="num" [(ngModel)]="subject.lab.numberOfLabs">
+                </div>
+                <div class="form-group">
+                    Ukratko o labovima:
+                    <input type="text" name="text" [(ngModel)]="subject.lab.basicInfo">
+                </div>
+
+                <input type="submit" (click)="update()" class="btn greenColor btn-block" value="Azuriraj">
+            </form>
+
+            <br><br>
+
+            <div>
+                <h4>Dodaj novi lab</h4>
+                <form>
+                    <div class="form-group">
+                        Opis laba:
+                        <input type="text" name="text" [(ngModel)]="newLab.labDescription">
+                    </div>
+
+                    <input type="submit" (click)="addNewLab()" class="btn greenColor btn-block" value="Dodaj">
+                </form>
+            </div>
+
+            <br><br>
+
+            <div *ngFor="let lab of subject.lab.labs; let num=index">
+                <display-subject-employee-lab-materials-lab-single (onUpdateSubject)="newSubject($event)" (onDeleteLab)="deleteLab(num)"
+                    [lab]="lab" [labF]="files[num]" [labNum]="num" [subject]="subject" [fullName]="fullName">
+                </display-subject-employee-lab-materials-lab-single>
+                <br><br>
+            </div>
+
+
+            <div>
+                {{msg}}
+            </div>
+        </div>
+
+
+    </div>
+</div>

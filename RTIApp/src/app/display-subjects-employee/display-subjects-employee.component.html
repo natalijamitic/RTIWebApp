@@ -15,7 +15,7 @@
         <div *ngIf="selectedSubject" style="overflow-x:auto;" class="card-body mr-4 ml-4">
 
             <div class="text-center">
-                <navigation-subject-employee></navigation-subject-employee>
+                <navigation-subject-employee [subject]="selectedSubject"></navigation-subject-employee>
 
                 <div class="container mt-5">
                     <router-outlet></router-outlet>

@@ -63,6 +63,14 @@ import { DisplaySubjectsEmployeeComponent } from './display-subjects-employee/di
 import { DisplaySubjectEmployeeComponent } from './display-subject-employee/display-subject-employee.component';
 import { NavigationSubjectEmployeeComponent } from './navigation-subject-employee/navigation-subject-employee.component';
 import { DisplaySubjectEmployeeInformationComponent } from './display-subject-employee-information/display-subject-employee-information.component';
+import { DisplaySubjectEmployeeLectureComponent } from './display-subject-employee-lecture/display-subject-employee-lecture.component';
+import { SortablejsModule } from 'ngx-sortablejs';
+import { DisplaySubjectEmployeeExerciseComponent } from './display-subject-employee-exercise/display-subject-employee-exercise.component';
+import { DisplaySubjectEmployeeExamMaterialsComponent } from './display-subject-employee-exam-materials/display-subject-employee-exam-materials.component';
+import { DisplaySubjectEmployeeLabMaterialsComponent } from './display-subject-employee-lab-materials/display-subject-employee-lab-materials.component';
+import { DisplaySubjectEmployeeProjectMaterialsComponent } from './display-subject-employee-project-materials/display-subject-employee-project-materials.component';
+import { DisplaySubjectEmployeeLabMaterialsLabSingleComponent } from './display-subject-employee-lab-materials-lab-single/display-subject-employee-lab-materials-lab-single.component';
+import { DisplaySubjectEmployeeProjectMaterialsProjectSingleComponent } from './display-subject-employee-project-materials-project-single/display-subject-employee-project-materials-project-single.component';
 
 @NgModule({
   declarations: [             //  all personal components
@@ -113,6 +121,13 @@ import { DisplaySubjectEmployeeInformationComponent } from './display-subject-em
     DisplaySubjectEmployeeComponent,
     NavigationSubjectEmployeeComponent,
     DisplaySubjectEmployeeInformationComponent,
+    DisplaySubjectEmployeeLectureComponent,
+    DisplaySubjectEmployeeExerciseComponent,
+    DisplaySubjectEmployeeExamMaterialsComponent,
+    DisplaySubjectEmployeeLabMaterialsComponent,
+    DisplaySubjectEmployeeProjectMaterialsComponent,
+    DisplaySubjectEmployeeLabMaterialsLabSingleComponent,
+    DisplaySubjectEmployeeProjectMaterialsProjectSingleComponent,
   ],
   imports: [                  //  foreign import components
     BrowserModule,
@@ -120,7 +135,8 @@ import { DisplaySubjectEmployeeInformationComponent } from './display-subject-em
     FormsModule,
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),
-    EditorModule
+    EditorModule,
+    SortablejsModule.forRoot({ animation: 150, easing: "cubic-bezier(1, 0, 0, 1)", handle: '.handle', ghostClass: 'red-background-class' }),
   ],
   providers: [
     {

@@ -75,12 +75,11 @@ const SubjectModel = new Schema({
             isExamExamplesHidden: {
                 type: Boolean,
                 required: true,
-                default: true
             }
         },
         required: true,
         default: {
-            isExamExamplesHidden: true,
+            isExamExamplesHidden: false,
             examExamples: [],
             examSolutions: []
         }
@@ -120,15 +119,20 @@ const SubjectModel = new Schema({
                     },
                     labMaterials: {
                         type: [String],
-                        required: false
+                        required: true,
+                        default: []
                     }
                 }],
-                required: false
+                required: true,
+                default: {
+                    labDescription: '',
+                    labMaterials: new Array()
+                }
             }
         },
         required: true,
         default: {
-            isHidden: true,
+            isHidden: false,
             numberOfLabs: 0,
             labs: []
         }
@@ -154,7 +158,12 @@ const SubjectModel = new Schema({
                         required: false
                     }
                 }],
-                required: false
+                required: true,
+                default: {
+                    basicInfo: '',
+                    examinationProcess: '',
+                    projectMaterials: new Array()
+                }
             }
         },
         required: true,

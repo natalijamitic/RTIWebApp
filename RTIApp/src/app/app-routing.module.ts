@@ -9,7 +9,12 @@ import { DisplayEmployeeComponent } from './display-employee/display-employee.co
 import { DisplayNotificationTypesComponent } from './display-notification-types/display-notification-types.component';
 import { DisplayNotificationsComponent } from './display-notifications/display-notifications.component';
 import { DisplayStudentComponent } from './display-student/display-student.component';
+import { DisplaySubjectEmployeeExamMaterialsComponent } from './display-subject-employee-exam-materials/display-subject-employee-exam-materials.component';
+import { DisplaySubjectEmployeeExerciseComponent } from './display-subject-employee-exercise/display-subject-employee-exercise.component';
 import { DisplaySubjectEmployeeInformationComponent } from './display-subject-employee-information/display-subject-employee-information.component';
+import { DisplaySubjectEmployeeLabMaterialsComponent } from './display-subject-employee-lab-materials/display-subject-employee-lab-materials.component';
+import { DisplaySubjectEmployeeLectureComponent } from './display-subject-employee-lecture/display-subject-employee-lecture.component';
+import { DisplaySubjectEmployeeProjectMaterialsComponent } from './display-subject-employee-project-materials/display-subject-employee-project-materials.component';
 import { DisplaySubjectEmployeeComponent } from './display-subject-employee/display-subject-employee.component';
 import { DisplaySubjectNotificationsComponent } from './display-subject-notifications/display-subject-notifications.component';
 import { DisplaySubjectStudentExamMaterialsComponent } from './display-subject-student-exam-materials/display-subject-student-exam-materials.component';
@@ -161,58 +166,28 @@ const routes: Routes = [
     component: DisplaySubjectsEmployeeComponent,
     children: [
       {
-        path: 'informacije',
+        path: 'informacije/:code',
         component: DisplaySubjectEmployeeInformationComponent
       },
       {
-        path: 'predavanja',
-        component: DisplaySubjectStudentLectureComponent
+        path: 'predavanja/:code',
+        component: DisplaySubjectEmployeeLectureComponent
       },
       {
-        path: 'vezbe',
-        component: DisplaySubjectStudentExerciseComponent
+        path: 'vezbe/:code',
+        component: DisplaySubjectEmployeeExerciseComponent
       },
       {
-        path: 'ispitna-pitanja',
-        component: DisplaySubjectStudentExamMaterialsComponent
+        path: 'ispitna-pitanja/:code',
+        component: DisplaySubjectEmployeeExamMaterialsComponent
       },
       {
-        path: 'laboratorija',
-        component: DisplaySubjectStudentLabComponent
+        path: 'laboratorija/:code',
+        component: DisplaySubjectEmployeeLabMaterialsComponent
       },
       {
-        path: 'projekti-domaci',
-        component: DisplaySubjectStudentProjectComponent
-      }
-    ]
-  },
-  {
-    path: 'zaposlen/predmeti/:code',
-    component: DisplaySubjectEmployeeComponent,
-    children: [
-      {
-        path: 'informacije',
-        component: DisplaySubjectEmployeeInformationComponent
-      },
-      {
-        path: 'predavanja',
-        component: DisplaySubjectStudentLectureComponent
-      },
-      {
-        path: 'vezbe',
-        component: DisplaySubjectStudentExerciseComponent
-      },
-      {
-        path: 'ispitna-pitanja',
-        component: DisplaySubjectStudentExamMaterialsComponent
-      },
-      {
-        path: 'laboratorija',
-        component: DisplaySubjectStudentLabComponent
-      },
-      {
-        path: 'projekti-domaci',
-        component: DisplaySubjectStudentProjectComponent
+        path: 'projekti-domaci/:code',
+        component: DisplaySubjectEmployeeProjectMaterialsComponent
       }
     ]
   },

@@ -25,7 +25,8 @@ const subjects = [
             isHidden: true,
             projects: [{
                 basicInfo: "Projekat Crazy Snake - zmijica kao na nokiji",
-                examinationProcess: "Pokrece se igrica na racunaru u paviljonu i objasnjava se ukratko kako je implementirana."
+                examinationProcess: "Pokrece se igrica na racunaru u paviljonu i objasnjava se ukratko kako je implementirana.",
+                projectMaterials: new Array()
             }]
         },
         notifications: [
@@ -35,9 +36,6 @@ const subjects = [
                 creator: "pera@etf.rs"
             }
         ],
-        examMaterials: {
-            isExamExamplesHidden: false
-        }
     },
     {
         type: "obavezni",
@@ -56,9 +54,6 @@ const subjects = [
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
         subjectGoal: "Cilj je nauciti osnove matematike 2.",
         haveLab: false,
-        examMaterials: {
-            isExamExamplesHidden: false
-        }
     },
     {
         type: "izborni",
@@ -82,18 +77,22 @@ const subjects = [
             numberOfLabs: 3,
             basicInfo: "Lab se radi u paviljonu.",
             labs: [{
-                labDescription: "Prva lab vezba zahteva poznavanje gradiva od 10-120 strane"
+                labDescription: "Prva lab vezba zahteva poznavanje gradiva od 10-120 strane",
+                labMaterials: new Array()
             }, {
-                labDescription: "Druga lab vezba zahteva poznavanje gradiva od 120-220 strane"
+                labDescription: "Druga lab vezba zahteva poznavanje gradiva od 120-220 strane",
+                labMaterials: new Array()
             }, {
-                labDescription: "Treca lab vezba zahteva poznavanje gradiva od 220-260 strane"
+                labDescription: "Treca lab vezba zahteva poznavanje gradiva od 220-260 strane",
+                labMaterials: new Array()
             }]
         },
         project: {
             isHidden: true,
             projects: [{
                 basicInfo: "Projekat - Sajt za teretanu",
-                examinationProcess: "Pokrece se na racunaru u paviljonu i objasnjava se ukratko kako je implementiran."
+                examinationProcess: "Pokrece se na racunaru u paviljonu i objasnjava se ukratko kako je implementiran.",
+                projectMaterials: new Array()
             }]
         }
     },
@@ -118,9 +117,10 @@ const subjects = [
             isHidden: true,
             projects: [{
                 basicInfo: "Visenitni OS",
-                examinationProcess: "Pokrece se na racunaru u paviljonu i objasnjava se ukratko kako je implementiran."
+                examinationProcess: "Pokrece se na racunaru u paviljonu i objasnjava se ukratko kako je implementiran.",
+                projectMaterials: new Array()
             }]
-        }
+        },
     },
     {
         type: "obavezni",
@@ -139,9 +139,6 @@ const subjects = [
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
         subjectGoal: "Cilj je nauciti osnove.",
         haveLab: false,
-        examMaterials: {
-            isExamExamplesHidden: false
-        }
     },
     {
         type: "obavezni",

@@ -8,13 +8,13 @@ import { ISubjectShort, IWeekly } from 'src/app/master/master.component';
 import { environment } from 'src/environments/environment';
 
 export interface ISubjExamMaterials {
-    examples: string[];
-    solutions: string[];
-    isHidden: boolean;
+    examExamples: string[];
+    examSolutions: string[];
+    isExamExamplesHidden: boolean;
 }
 export interface ISubjLab {
-    description: string;
-    materials: string[];
+    labDescription: string;
+    labMaterials: string[];
 }
 export interface ISubjLabMaterials {
     isHidden: boolean;
@@ -25,7 +25,7 @@ export interface ISubjLabMaterials {
 export interface ISubjProject {
     basicInfo: string;
     examinationProcess: string;
-    projectMaterials: string;
+    projectMaterials: string[];
 }
 export interface ISubjProjectMaterials {
     isHidden: boolean;
@@ -111,8 +111,8 @@ export class SubjectsService {
             let labs: ISubjLab[] = [];
             for (let l of s.lab.labs) {
                 let lab: ISubjLab = {
-                    description: l.labDescription,
-                    materials: l.labMaterials
+                    labDescription: l.labDescription,
+                    labMaterials: l.labMaterials
                 }
                 labs.push(lab);
             }
@@ -150,9 +150,9 @@ export class SubjectsService {
                 propositions: s.propositions,
                 subjectGoal: s.subjectGoal,
                 examMaterials: {
-                    examples: s.examMaterials.examExamples,
-                    solutions: s.examMaterials.examSolutions,
-                    isHidden: s.examMaterials.isExamExamplesHidden
+                    examExamples: s.examMaterials.examExamples,
+                    examSolutions: s.examMaterials.examSolutions,
+                    isExamExamplesHidden: s.examMaterials.isExamExamplesHidden
                 },
                 lectures: s.lectures,
                 exercises: s.exercises,

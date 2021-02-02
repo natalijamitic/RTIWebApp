@@ -17,6 +17,10 @@ table .link-color {
     color: var(--green);
 }
 
+.card .btn.greenColor {
+    background-color: var(--green);
+}
+
 .card .table .btn.greenColor {
     background-color: var(--green);
 }

@@ -1,0 +1,76 @@
+<div *ngIf="subject">
+    <div class="card bg-dark">
+
+        <div style="overflow-x:auto;" class="card-body mr-4 ml-4">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Fajl</th>
+                        <th scope="col">Tip</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Velicina (KB)</th>
+                        <th scope="col">Nastavnik</th>
+                        <th scope="col">Akcija</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div style="display: contents;" [sortablejs]="files">
+                        <tr *ngFor="let file of files; let i = index">
+                            <td>
+                                <i class="fas fa-arrows-alt handle"></i>
+                            </td>
+                            <td>
+                                <div>
+                                    <a class="linkColor" (click)="downloadFile(subject.exercises[i])">{{file.title}}</a>
+                                </div>
+                            </td>
+                            <td>
+                                {{file.type}}
+                            </td>
+                            <td>
+                                {{file.date}}
+                            </td>
+                            <td>
+                                {{file.size}}
+                            </td>
+                            <td>
+                                {{file.author}}
+                            </td>
+                            <td>
+                                <button (click)="deleteFile(subject.exercises[i])" type="button"
+                                    class="btn btn-danger action ml-2">
+                                    <i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    </div>
+
+                    <tr>
+                        <td colspan="6">
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <upload-files #uploadFiles (onFileUpload)="filesUploaded($event)"></upload-files>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="submit" (click)="add()" class="btn greenColor btn-block" value="Dodaj">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button *ngIf="subject.exercises.length > 0" style="width:150px" (click)="sortFiles()" type="button"
+                class="btn greenColor action">
+                <i class="fas fa-sort-numeric-down"></i>Sort files</button>
+
+            <div>
+                {{msg}}
+            </div>
+        </div>
+
+
+    </div>
+</div>

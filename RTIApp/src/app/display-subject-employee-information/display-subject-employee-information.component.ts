@@ -36,7 +36,9 @@ export class DisplaySubjectEmployeeInformationComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.initComponent(this.activatedRoute.parent.snapshot.url[2].path);
+    this.activatedRoute.url.subscribe((value: any) => {
+      this.initComponent(value[1].path);
+    })
   }
 
   ngOnDestroy(): void {

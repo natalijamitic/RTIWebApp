@@ -510,11 +510,18 @@ app.post('/upload/notification/file', uploadInfoFile.single('uploadedFile'), (re
     }
 
     let oldFileUrl = file.destination + '/' + file.filename;
-    let newFileUrl = file.destination + '/' + file.originalname + "-" + info.title + '-' + info.date + "." + fileExtension(file.originalname);
+
+    console.log("ULAZAK3");
+    var stats = fs.statSync(oldFileUrl);
+    console.log("ULAZAK4");
+    var fileSizeInKiloBytes = stats.size / 1024;
+    console.log(fileSizeInKiloBytes);
+
+    let newFileUrl = file.destination + '/' + file.originalname + "`" + info.title + '`' + info.username + '`' + fileSizeInKiloBytes + "`"+ info.date + "." + fileExtension(file.originalname);
     fs.renameSync(oldFileUrl, newFileUrl);
 
     // testiraj ovo dole!!
-    let dbName = file.originalname + "-" + info.title + '-'  + info.date + "." + fileExtension(file.originalname);
+    let dbName = file.originalname +"`" + info.title + "`" + info.username + "`" + fileSizeInKiloBytes + "`" + info.date  + "." + fileExtension(file.originalname);
     res.status(200).json({fileName: dbName});
 })
 
