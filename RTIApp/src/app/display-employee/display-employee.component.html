@@ -9,7 +9,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i></span>
                     </div>
-                    <input name="username" class="form-control"
+                    <input disabled name="username" class="form-control"
                         placeholder="Username" type="text" [(ngModel)]="employee.username">
                 </div> <!-- form-group// -->
 
@@ -102,7 +102,7 @@
                         [(ngModel)]="employee.roomNumber">
                 </div> <!-- form-group// -->
 
-                <div class="form-group input-group">
+                <div class="form-group input-group" *ngIf="user && user.type=='admin'">
                     <div class="input-group-prepend profile-pic-logo">
                         <span class="input-group-text"><i class="far fa-image"></i></span>
                     </div>
