@@ -89,6 +89,12 @@
                 Lista predmeta
             </a>
         </li>
+        <li [routerLinkActive]="['active']" *ngIf="user?.type == 'student'">
+            <a routerLink="student/spiskovi">
+                <i class="far fa-list-alt"></i>
+                Spiskovi
+            </a>
+        </li>
 
     </ul>
 

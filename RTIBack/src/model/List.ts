@@ -47,7 +47,8 @@ const ListModel = new Schema({
                 type: String
             },
             file: {
-                type: String
+                type: String,
+                required: false
             }
         }],
         required: true,

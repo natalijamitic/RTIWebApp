@@ -56,7 +56,7 @@ export interface ISubjectFull {
 
 export interface IStudentList {
     student: string,
-    file: string
+    file?: string
 }
 
 export interface IList {
@@ -239,7 +239,7 @@ export class SubjectsService {
         }))
     }
 
-    getAllListsBySubject(code: string) {
+    getAllListsBySubjects(code: string[]) {
         return this.http.get(`${environment.api}/lists/code/${code}`).pipe(map((l: any) => {
             let lists: Array<IList> = [];
             for (let list of l) {

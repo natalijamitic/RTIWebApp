@@ -1,0 +1,9 @@
+<div class="form-group">
+    <div class="input-group-prepend">
+        <upload-files #uploadFiles [single]='true'
+            (onFileUpload)="filesUploaded($event)">
+        </upload-files>
+    </div>
+</div>
+<button *ngIf='canRegister()' (click)="addFile()" type="button" class="btn greenColor action ml-2">
+    <i class="fa fa-plus"></i></button>

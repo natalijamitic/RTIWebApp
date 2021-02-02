@@ -44,6 +44,9 @@ export class AppComponent {
             if (!this.loggedInUser || this.loggedInUser.type != 'admin') {
               forbid = true;
             }
+            if (this.loggedInUser.firstLogin == 'yes') {
+              forbid = true;
+            }
             break;
 
           case "/profil":
@@ -67,10 +70,17 @@ export class AppComponent {
             if (!this.loggedInUser || this.loggedInUser.type != 'zaposlen') {
               forbid = true;
             }
+            if (this.loggedInUser.firstLogin == 'yes') {
+              forbid = true;
+            }
             break;
           case "/profil/obrada/student":
           case "/listapredmeta":
+          case "/student/spiskovi":
             if (!this.loggedInUser || this.loggedInUser.type != 'student') {
+              forbid = true;
+            }
+            if (this.loggedInUser.firstLogin == 'yes') {
               forbid = true;
             }
             break;
@@ -80,9 +90,15 @@ export class AppComponent {
               if (!this.loggedInUser || this.loggedInUser.type != 'student') {
                 forbid = true;
               }
+              if (this.loggedInUser.firstLogin == 'yes') {
+                forbid = true;
+              }
             }
             if (event.url.match(/^\/zaposlen\/predmeti/)) {
               if (!this.loggedInUser || this.loggedInUser.type != 'zaposlen') {
+                forbid = true;
+              }
+              if (this.loggedInUser.firstLogin == 'yes') {
                 forbid = true;
               }
             }

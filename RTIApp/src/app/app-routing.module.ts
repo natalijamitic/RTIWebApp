@@ -8,6 +8,7 @@ import { AssignmentConfigurationComponent } from './assignment-configuration/ass
 import { ContactComponent } from './contact/contact.component';
 import { DisplayAdminComponent } from './display-admin/display-admin.component';
 import { DisplayEmployeeComponent } from './display-employee/display-employee.component';
+import { DisplayListsStudentComponent } from './display-lists-student/display-lists-student.component';
 import { DisplayNotificationTypesComponent } from './display-notification-types/display-notification-types.component';
 import { DisplayNotificationsComponent } from './display-notifications/display-notifications.component';
 import { DisplayStudentComponent } from './display-student/display-student.component';
@@ -165,6 +166,11 @@ const routes: Routes = [
         component: DisplaySubjectStudentProjectComponent
       }
     ]
+  },
+
+  {
+    path: 'student/spiskovi',
+    component: DisplayListsStudentComponent
   },
 
   {

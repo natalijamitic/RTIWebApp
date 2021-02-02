@@ -9,7 +9,7 @@ const lists = [
         title: 'Spisak 1',
         time: '28.12.2020. 15:00',
         place: '26B',
-        limit: '1'
+        limit: '1',
     },
     {
         code: "13S112OS1",
@@ -18,7 +18,7 @@ const lists = [
         title: 'Spisak 2',
         time: '8.2.2022. 15:00',
         place: '26B',
-        limit: '1'
+        limit: '1',
     },
     {
         code: "13S112OS1",
@@ -27,7 +27,7 @@ const lists = [
         title: 'Spisak 3',
         time: '28.12.2021. 15:00',
         place: '26B',
-        limit: '0'
+        limit: '0',
     }
 ]
 

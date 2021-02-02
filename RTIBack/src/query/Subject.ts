@@ -67,8 +67,8 @@ export function insertNotification(notif: any, subjects: string[]) {
 
 
 
-export function getAllListsBySubject(code: string) {
-    return List.find({ code: code }).then((result: any) => result);
+export function getAllListsBySubject(codes: string[]) {
+    return List.find({ code: { $in: codes }  }).then((result: any) => result);
 }
 
 export function getAllListsByAuthor(author: string) {
@@ -76,7 +76,7 @@ export function getAllListsByAuthor(author: string) {
 }
 
 export async function updateList(lOld, lNew) {
-    await deleteList(lOld);
+    await deleteList(lOld, lNew.title, lNew.author);
     return insertList(lNew);
 }
 
@@ -89,6 +89,8 @@ export function insertList(l) {
      })
 }
 
-export function deleteList(date) {
-    return List.deleteOne({created: date}).then((r: any) => r);
+export function deleteList(date, title, author) {
+    return List.deleteOne({created: date, title: title, author: author}).then((r: any) => {
+        return(r);
+    });
 }

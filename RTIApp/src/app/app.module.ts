@@ -73,6 +73,8 @@ import { DisplaySubjectEmployeeLabMaterialsLabSingleComponent } from './display-
 import { DisplaySubjectEmployeeProjectMaterialsProjectSingleComponent } from './display-subject-employee-project-materials-project-single/display-subject-employee-project-materials-project-single.component';
 import { AddNewSubjectComponent } from './add-new-subject/add-new-subject.component';
 import { AddNewListComponent } from './add-new-list/add-new-list.component';
+import { DisplayListsStudentComponent } from './display-lists-student/display-lists-student.component';
+import { DisplayListsStudentFileComponent } from './display-lists-student-file/display-lists-student-file.component';
 
 @NgModule({
   declarations: [             //  all personal components
@@ -132,6 +134,8 @@ import { AddNewListComponent } from './add-new-list/add-new-list.component';
     DisplaySubjectEmployeeProjectMaterialsProjectSingleComponent,
     AddNewSubjectComponent,
     AddNewListComponent,
+    DisplayListsStudentComponent,
+    DisplayListsStudentFileComponent,
   ],
   imports: [                  //  foreign import components
     BrowserModule,

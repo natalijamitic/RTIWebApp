@@ -194,13 +194,16 @@ router.route('/lists/author/:author').get((request, response) => {
     });
 });
 router.route('/lists/code/:code').get((request, response) => {
-    subjectQueries.getAllListsBySubject(request.params.code).then((result) => {
+    let codes = request.params.code.split(',');
+    subjectQueries.getAllListsBySubject(codes).then((result) => {
         response.json(result);
     });
 });
 router.route('/list/update').post((request, response) => {
     const listOld = request.body.listOld;
     const listNew = request.body.listNew;
+    console.log(listOld);
+    console.log("update");
     subjectQueries.updateList(listOld, listNew).then((result) => {
         response.json(result);
     });
@@ -477,7 +480,7 @@ var uploadInfoFile = multer({
         fileSize: 10000000 //2MBs
     },
     fileFilter(req, file, cb) {
-        if (!file.originalname.match(/\.(pdf|pptx|zip)$/)) {
+        if (!file.originalname.match(/\.(pdf|pptx|zip|7z)$/)) {
             //Error
             cb(new Error('Please upload PDF files only!'));
         }

@@ -6,7 +6,7 @@
                 <table class="table table-bordered" width='100%'>
                     <thead>
                         <tr>
-                            <th>Validna</th>
+                            <th>Validan</th>
                             <th scope="col" width='15'>Predmet</th>
                             <th scope="col" widht='35%'>Fajlovi</th>
                             <th scope="col" widht='15%'>Naziv</th>
@@ -59,7 +59,7 @@
                                 {{list.place}}
                             </td>
                             <td>
-                                {{list.limit}}
+                                {{list.files.length}} / {{list.limit}}
                             </td>
                             <td>
                                 {{list.deadline| date}} &nbsp; {{list.deadline | date:"HH:mm"}}

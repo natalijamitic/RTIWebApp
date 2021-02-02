@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UploadFilesService } from '../Services/UploadFiles/upload-files.service';
 
@@ -16,6 +16,9 @@ export class UploadFilesComponent implements OnInit {
 
   current: number = 0;
 
+  @Input()
+  single: boolean = false;
+
   @Output()
   onFileUpload: EventEmitter<any> = new EventEmitter<any>();
 
@@ -29,6 +32,14 @@ export class UploadFilesComponent implements OnInit {
   }
 
   public selectFiles(event): void {
+    if (this.single) {
+      let type = event.target.files[0].name.substr(event.target.files[0].name.lastIndexOf('.') + 1);
+      type = type.toLowerCase();
+      if (type !== 'zip' && type !== '7z') {
+        this.msg="Samo .zip ili .7z sme";
+        return;
+      }
+    }
     this.selectedFiles = event.target.files;
     this.msg = "";
   }

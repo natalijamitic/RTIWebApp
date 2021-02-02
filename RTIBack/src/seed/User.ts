@@ -126,7 +126,7 @@ const students = [
         firstName: "Manja",
         lastName: "Marjanov",
         status: "aktivan",
-        subjects: ["13S112OS1", "13S112VD"]
+        subjects: ["13S112OS1", "13S112VD", "13S111P1"]
     },
     {
         username: "nn180018d@student.etf.rs",

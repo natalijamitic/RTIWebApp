@@ -1,0 +1,74 @@
+<div *ngIf="stud">
+    <div class="card bg-dark">
+
+        <div style="overflow-x:auto;" class="card-body mr-4 ml-4">
+            <form>
+                <table class="table table-bordered" width='100%'>
+                    <thead>
+                        <tr>
+                            <th>Validan</th>
+                            <th scope="col" width='15'>Predmet</th>
+                            <th scope="col" widht='35%'>Fajl</th>
+                            <th scope="col" widht='15%'>Naziv</th>
+                            <th scope="col" widht='10%'>Termin</th>
+                            <th scope="col" width='5%'>Mesto</th>
+                            <th scope="col" width='5%'>Limit</th>
+                            <th scope="col" widht='10%'>Deadline</th>
+                            <th scope="col" width='5%'>Akcija</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let list of lists; let i = index">
+                            <td>
+                                {{list.valid ? 'Da' : 'Ne'}}
+                            </td>
+
+                            <td>
+                                {{list.code}}
+                            </td>
+                            <td>
+                                <div *ngIf="showFile(i)">
+                                    <a class="linkColor"
+                                        (click)="downloadFile(getFile(i))">{{getFile(i)}}</a>
+                                </div>
+                                <display-lists-student-file *ngIf="!showFile(i) && canPostFile(i)" [list]="list" [student]="stud"
+                                 (onUpdateList)='listUpdated($event, i)'>
+                                </display-lists-student-file>
+                            </td>
+                            <td>
+                                {{list.title}}
+                            </td>
+                            <td>
+                                {{list.time}}
+                            </td>
+                            <td>
+                                {{list.place}}
+                            </td>
+                            <td>
+                                {{list.files.length}} / {{list.limit}}
+                            </td>
+                            <td>
+                                {{list.deadline| date}} &nbsp; {{list.deadline | date:"HH:mm"}}
+                            </td>
+                            <td>
+                                <button *ngIf='canRegister(i)' (click)="register(i)" type="button"
+                                    class="btn greenColor action">
+                                    <i class="fa fa-plus"></i></button>
+                                <button *ngIf='canRemove(i)' (click)="remove(i)" type="button"
+                                    class="btn btn-danger action">
+                                    <i class="fa fa-minus"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+
+            <div>
+                {{msg}}
+            </div>
+        </div>
+
+
+    </div>
+</div>
