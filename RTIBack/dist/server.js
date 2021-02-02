@@ -442,7 +442,7 @@ var uploadInfoFile = multer({
         fileSize: 10000000 //2MBs
     },
     fileFilter(req, file, cb) {
-        if (!file.originalname.match(/\.(pdf)$/)) {
+        if (!file.originalname.match(/\.(pdf|pptx|zip)$/)) {
             //Error
             cb(new Error('Please upload PDF files only!'));
         }
