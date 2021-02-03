@@ -102,7 +102,7 @@
                         [(ngModel)]="employee.roomNumber">
                 </div> <!-- form-group// -->
 
-                <div class="form-group input-group" *ngIf="user && user.type=='admin'">
+                <div class="form-group input-group" *ngIf="loggedInUser && loggedInUser.type=='admin'">
                     <div class="input-group-prepend profile-pic-logo">
                         <span class="input-group-text"><i class="far fa-image"></i></span>
                     </div>

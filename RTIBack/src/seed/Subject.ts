@@ -16,11 +16,54 @@ const subjects = [
             lab: 0
         },
         espb: 5,
+        examMaterials : {
+            examExamples : [
+                "PIA_Lekcija1_Uvod.zip``Petar`Petrovic`2614.7763671875`1612380803288.zip"
+            ],
+            examSolutions : [
+                "PIA_Lekcija1_Uvod.zip``Petar`Petrovic`2614.7763671875`1612380814674.zip"
+            ],
+            isExamExamplesHidden: false
+        },
         classTime: ["Ponedeljak 8", "Sreda 10"],
         excerTime: ["Ponedeljak 8", "Sreda 10"],
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
         subjectGoal: "Cilj je nauciti osnove programiranja.",
         haveLab: false,
+        lab : {
+            isHidden : false,
+            numberOfLabs : 3,
+            basicInfo: "Lab se radi u paviljonu.",
+            labs : [
+                {
+                    labDescription : "Prva lab vezba zahteva poznavanje gradiva od 10-120 strane",
+                    labMaterials : [
+                        "PIA_Lekcija3_JSP.pdf``Petar`Petrovic`1153.5576171875`1612380829225.pdf"
+                    ]
+                },
+                {
+                    labDescription : "Druga lab vezba zahteva poznavanje gradiva od 120-220 strane",
+                    labMaterials : [
+                        "PIA_Lekcija3_JSP.pdf``Petar`Petrovic`1153.5576171875`1612380829225.pdf"
+                    ]
+                },
+                {
+                    labDescription : "Treca lab vezba zahteva poznavanje gradiva od 220-260 strane",
+                    labMaterials : [
+                        "PIA_Lekcija3_JSP.pdf``Petar`Petrovic`1153.5576171875`1612380829225.pdf"
+                    ]
+                }
+            ]
+        },
+        lectures : [
+            "PIA_Lekcija1_Uvod.pdf``Petar`Petrovic`2874.3115234375`1612380773696.pdf",
+            "PIA_Lekcija3_JSP.pdf``Petar`Petrovic`1153.5576171875`1612380783831.pdf",
+            "PIA_Lekcija4_JSF.pdf``Petar`Petrovic`1929.515625`1612380783850.pdf"
+        ],
+        exercises : [
+            "PIA_Lekcija3_JSP.pdf``Petar`Petrovic`1153.5576171875`1612380791666.pdf",
+            "PIA_Lekcija4_JSF.pdf``Petar`Petrovic`1929.515625`1612380791697.pdf"
+        ],
         project: {
             isHidden: true,
             projects: [{
@@ -32,8 +75,17 @@ const subjects = [
         notifications: [
             {
                 title: "Obavestenje 1",
-                content: "Obavezno prijvate ovaj predmete kako biste bili u toku s informacijama.",
-                creator: "pera@etf.rs"
+                content: "Obavezno prijavite ovaj predmet kako biste bili u toku s informacijama.1",
+                creator: "pera@etf.bg.ac.rs",
+                dateCreation: '2021-01-02 16:40:32.690Z',
+                files : [
+                    "PIA_Lekcija4_JSF.pdf`Obavestenje 2`pera@etf.bg.ac.rs`1929.515625`1612381719031.pdf"
+                ]
+            },
+            {
+                title: "Obavestenje 2",
+                content: "Obavezno prijavite ovaj predmet kako biste bili u toku s informacijama.2",
+                creator: "pera@etf.bg.ac.rs"
             }
         ],
     },

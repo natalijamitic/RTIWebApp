@@ -30,12 +30,12 @@ mongoose.set('useFindAndModify', false);
 
 
 
-/************* ROUTES ***************/
-
 connection.once('open', () => {
     //seed();
     console.log('mongo connected');
 })
+
+/************* ROUTES ***************/
 
 const router = express.Router();
 

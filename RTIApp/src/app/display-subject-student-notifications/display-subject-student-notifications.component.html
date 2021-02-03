@@ -24,7 +24,7 @@
                             {{notif.dateCreation | date}} &nbsp; {{notif.dateCreation | date:"HH:mm"}}
                         </td>
                         <td [class.newNotif] = "isNewNotification(notif)">
-                            <div [innerHTML]="notif.content"></div>
+                            <!-- <div [innerHTML]="notif.content"></div> -->
                             <editor [init]="tinyMceInit"></editor>
                         </td>
                         <td>

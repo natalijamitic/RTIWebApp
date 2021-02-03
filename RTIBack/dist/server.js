@@ -45,11 +45,11 @@ app.use(body_parser_1.default.urlencoded({ extended: true }));
 mongoose_1.default.connect('mongodb://localhost:27017/rti_katedra', { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose_1.default.connection;
 mongoose_1.default.set('useFindAndModify', false);
-/************* ROUTES ***************/
 connection.once('open', () => {
     //seed();
     console.log('mongo connected');
 });
+/************* ROUTES ***************/
 const router = express_1.default.Router();
 app.get('/', (request, response) => {
     response.status(200).json({ msg: "OK" });

@@ -19,6 +19,7 @@ export class DisplayEmployeeComponent implements OnInit, OnDestroy {
   public employeeTitles = ["istrazivac", "laboratorijski inzenjer", "laboratorijski tehnicar", "redovni profesor", "vanredni profesor", "docent", "asistent", "saradnik u nastavi"];
 
   public user: IUser = null;
+  public loggedInUser: IUser = null;
 
   public employeeOld: IEmployee = null;
   public employee: IEmployee = {
@@ -79,6 +80,13 @@ export class DisplayEmployeeComponent implements OnInit, OnDestroy {
             (document.getElementById("selectTitleBox") as HTMLInputElement).value = this.employee.title;
           });
         })
+      }
+    });
+
+    this.authService.isLoggedIn.subscribe((result: any) => {
+      this.loggedInUser = JSON.parse(result);
+      if (!this.loggedInUser) {
+        this.router.navigate(['error']);
       }
     });
 

@@ -5,20 +5,32 @@ const lists = [
     {
         code: "13S112OS1",
         author: 'pera@etf.bg.ac.rs',
-        deadline: '2021-02-02 16:40:32.690Z',
+        deadline: '2022-02-02 16:40:32.690Z',
         title: 'Spisak 1',
         time: '28.12.2020. 15:00',
         place: '26B',
-        limit: '1',
+        limit: '2',
+        files : [
+            {
+                student : "mm170017d@student.etf.rs",
+                file : "PIA_Lekcija1_Uvod.zip``mm170017d@student.etf.rs`2614.7763671875`1612381208636.zip"
+            }
+        ]
     },
     {
         code: "13S112OS1",
         author: 'pera@etf.bg.ac.rs',
-        deadline: '2021-02-03 16:40:32.690Z',
+        deadline: '2021-02-04 16:40:32.690Z',
         title: 'Spisak 2',
         time: '8.2.2022. 15:00',
         place: '26B',
         limit: '1',
+        files : [
+            {
+                student : "mm170017d@student.etf.rs",
+                file : "PIA_Lekcija1_Uvod.zip``mm170017d@student.etf.rs`2614.7763671875`1612381208636.zip"
+            }
+        ]
     },
     {
         code: "13S112OS1",

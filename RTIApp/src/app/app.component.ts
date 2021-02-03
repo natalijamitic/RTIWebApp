@@ -27,7 +27,6 @@ export class AppComponent {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        console.log("AL(OO")
         console.log(event)
         let forbid: boolean = false;
         switch (event.url) {
@@ -41,10 +40,7 @@ export class AppComponent {
           case "/admin/obavestenja/pregled":
           case "/admin/obavestenja/tipovi":
           case "/napravipredmet":
-            if (!this.loggedInUser || this.loggedInUser.type != 'admin') {
-              forbid = true;
-            }
-            if (this.loggedInUser.firstLogin == 'yes') {
+            if (!this.loggedInUser || this.loggedInUser.type != 'admin' || this.loggedInUser.firstLogin == 'yes') {
               forbid = true;
             }
             break;
@@ -67,38 +63,26 @@ export class AppComponent {
           case "/vesti/obrada":
           case "/zaposlen/predmeti":
           case "/zaposlen/spiskovi":
-            if (!this.loggedInUser || this.loggedInUser.type != 'zaposlen') {
-              forbid = true;
-            }
-            if (this.loggedInUser.firstLogin == 'yes') {
+            if (!this.loggedInUser || this.loggedInUser.type != 'zaposlen' || this.loggedInUser.firstLogin == 'yes') {
               forbid = true;
             }
             break;
           case "/profil/obrada/student":
           case "/listapredmeta":
           case "/student/spiskovi":
-            if (!this.loggedInUser || this.loggedInUser.type != 'student') {
-              forbid = true;
-            }
-            if (this.loggedInUser.firstLogin == 'yes') {
+            if (!this.loggedInUser || this.loggedInUser.type != 'student' || this.loggedInUser.firstLogin == 'yes') {
               forbid = true;
             }
             break;
 
           default:
             if (event.url.match(/^\/listapredmeta/)) {
-              if (!this.loggedInUser || this.loggedInUser.type != 'student') {
-                forbid = true;
-              }
-              if (this.loggedInUser.firstLogin == 'yes') {
+              if (!this.loggedInUser || this.loggedInUser.type != 'student' || this.loggedInUser.firstLogin == 'yes') {
                 forbid = true;
               }
             }
             if (event.url.match(/^\/zaposlen\/predmeti/)) {
-              if (!this.loggedInUser || this.loggedInUser.type != 'zaposlen') {
-                forbid = true;
-              }
-              if (this.loggedInUser.firstLogin == 'yes') {
+              if (!this.loggedInUser || this.loggedInUser.type != 'zaposlen' || this.loggedInUser.firstLogin == 'yes') {
                 forbid = true;
               }
             }
@@ -106,7 +90,6 @@ export class AppComponent {
         }
 
         if (forbid) {
-          console.log("FORBID")
           this.router.navigate(["error"]);
         }
       });

@@ -18,11 +18,11 @@
                     <tbody>
                         <tr>
                             <td>
-                                {{lab.description}}
+                                {{lab.labDescription}}
                             </td>
                             <td>
-                                <div *ngIf="lab.materials && lab.materials.length > 0">
-                                    <div *ngFor="let file of lab.materials">
+                                <div *ngIf="lab.labMaterials  && lab.labMaterials.length > 0">
+                                    <div *ngFor="let file of lab.labMaterials">
                                         <a class="linkColor" (click)="downloadFile(file)">{{file}}</a>
                                         <br> <br>
                                     </div>
