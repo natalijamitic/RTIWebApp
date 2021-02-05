@@ -27,8 +27,8 @@ const subjects = [
         },
         propositions: "Barem 50 poena da bi se polozio ispit.",
         goal: "Cilj je nauciti osnove programiranja.",
-        classTime: ["Ponedeljak 18", "Cetvrtak 11"],
-        excerTime: ["Ponedeljak 18", "Cetvrtak 11"],
+        classTime: ["Utorak 18", "Cetvrtak 11"],
+        excerTime: ["Utorak 18", "Cetvrtak 11"],
         bLab: true,
         lab : {
             isHidden : false,
@@ -67,7 +67,7 @@ const subjects = [
         project: {
             isHidden: false,
             projects: [{
-                basicInfo: "Projekat Crazy Snake - zmijica kao na nokiji",
+                basicInfo: "Projekat Tetris igrica",
                 examinationProcess: "Potrebno je pokrenuti igricu u paviljonu i objasniti implementaciju.",
                 projectMaterials: new Array()
             }]
@@ -86,6 +86,11 @@ const subjects = [
                 title: "Obavestenje 2",
                 content: "Obavezno prijavite ovaj predmet kako biste bili u toku s informacijama.2",
                 creator: "pera@etf.bg.ac.rs"
+            },
+            {
+                title: "Obavestenje 3",
+                content: "Obavezno prijavite ovaj predmet kako biste bili u toku s informacijama.3",
+                creator: "mika@etf.bg.ac.rs"
             }
         ],
     },
@@ -103,7 +108,7 @@ const subjects = [
         espb: 5,
         classTime: ["Cetvrta 18", "Petak 8"],
         excerTime: ["Petak 8", "Petak 10"],
-        propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
+        propositions: "Propozicije tek treba da budu odbjavljene.",
         goal: "Cilj je nauciti osnove matematike 2.",
         bLab: false,
     },
@@ -119,9 +124,9 @@ const subjects = [
             lab: 1
         },
         espb: 6,
-        classTime: ["Ponedeljak 8", "Sreda 10"],
-        excerTime: ["Ponedeljak 8", "Sreda 10"],
-        propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
+        classTime: ["Utorak 8", "Cetvrtak 10"],
+        excerTime: ["Utorak 8", "Cetvrtak 10"],
+        propositions: "Propozicije tek treba da budu odbjavljene.",
         goal: "Cilj je nauciti osnove veb programiranja.",
         bLab: true,
         lab: {
@@ -146,7 +151,14 @@ const subjects = [
                 examinationProcess: "Pokrece se na racunaru u paviljonu i objasnjava se ukratko kako je implementiran.",
                 projectMaterials: new Array()
             }]
-        }
+        },
+        notifications: [
+            {
+                title: "Obavestenje 43",
+                content: "Obavezno prijavite ovaj predmet kako biste bili u toku s informacijama.43",
+                creator: "mika@etf.bg.ac.rs"
+            }
+        ]
     },
     {
         type: "obavezni",
@@ -160,9 +172,9 @@ const subjects = [
             lab: 1
         },
         espb: 6,
-        classTime: ["Ponedeljak 8", "Sreda 10"],
-        excerTime: ["Ponedeljak 8", "Sreda 10"],
-        propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
+        classTime: ["Utorak 8", "Cetvrtak 10"],
+        excerTime: ["Utorak 8", "Cetvrtak 10"],
+        propositions: "Propozicije tek treba da budu odbjavljene.",
         goal: "Cilj je nauciti osnove operativnih sistema.",
         bLab: false,
         project: {
@@ -186,9 +198,9 @@ const subjects = [
             lab: 0
         },
         espb: 6,
-        classTime: ["Ponedeljak 18", "Sreda 14"],
-        excerTime: ["Ponedeljak 8", "Sreda 10"],
-        propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
+        classTime: ["Utorak 18", "Cetvrtak 14"],
+        excerTime: ["Utorak 8", "Cetvrtak 10"],
+        propositions: "Propozicije tek treba da budu odbjavljene.",
         goal: "Cilj je nauciti osnove.",
         bLab: false,
     },
@@ -204,9 +216,9 @@ const subjects = [
             lab: 0
         },
         espb: 6,
-        classTime: ["Ponedeljak 18", "Sreda 14"],
-        excerTime: ["Ponedeljak 8", "Sreda 10"],
-        propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
+        classTime: ["Utorak 18", "Cetvrtak 14"],
+        excerTime: ["Utorak 8", "Cetvrtak 10"],
+        propositions: "Propozicije tek treba da budu odbjavljene.",
         goal: "Cilj je nauciti osnove.",
         bLab: false
     }
