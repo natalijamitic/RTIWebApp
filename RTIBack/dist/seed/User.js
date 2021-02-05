@@ -30,22 +30,22 @@ const users = [
         firstLogin: "no"
     },
     {
-        username: "zika@etf.bg.ac.rs",
+        username: "mika@etf.bg.ac.rs",
         password: "zap123",
         type: "zaposlen"
     },
     {
-        username: "vesna@etf.bg.ac.rs",
+        username: "veki@etf.bg.ac.rs",
         password: "zap123",
         type: "zaposlen"
     },
     {
-        username: "rada@etf.bg.ac.rs",
+        username: "radmila@etf.bg.ac.rs",
         password: "zap123",
         type: "zaposlen"
     },
     {
-        username: "neca@etf.bg.ac.rs",
+        username: "peca@etf.bg.ac.rs",
         password: "zap123",
         type: "zaposlen"
     },
@@ -61,7 +61,7 @@ const users = [
         type: "student"
     },
     {
-        username: "aa190019d@student.etf.rs",
+        username: "rr190019d@student.etf.rs",
         password: "stud123",
         type: "student"
     },
@@ -80,13 +80,13 @@ const employees = [
     {
         username: "pera@etf.bg.ac.rs",
         firstName: "Petar",
-        lastName: "Petrovic",
-        address: "Vojvode Petra Petrovica 15, Petrovgrad",
-        phoneNumber: "065/44-30-121",
-        webpage: "www.google.com",
+        lastName: "Puzovic",
+        address: "Patrijarha Varnave 20, stan 2",
+        phoneNumber: "064/189-00-99",
+        webpage: "www.facebook.com",
         personalInfo: "Ja sam vaga u horoskopu.",
         title: "redovni profesor",
-        roomNumber: 16,
+        room: 16,
         status: "aktivan",
         type: "nastavnik",
         profilePicture: {
@@ -95,39 +95,39 @@ const employees = [
         }
     },
     {
-        username: "zika@etf.bg.ac.rs",
-        firstName: "Zivojin",
-        lastName: "Zivkovic",
-        address: "Vojvode Zivojina Zivkovica 15, Zivkovgrad",
+        username: "mika@etf.bg.ac.rs",
+        firstName: "Miroslav",
+        lastName: "Markovic",
+        address: "Vladike Nikolaja Velimirovica 4, 34300 Arandjelovac",
         title: "vanredni profesor",
-        roomNumber: 36,
+        room: 36,
         status: "aktivan",
         type: "nastavnik"
     },
     {
-        username: "vesna@etf.bg.ac.rs",
-        firstName: "Vesno",
-        lastName: "Vesovic",
-        address: "Vojvotkinje Vesne Vesovic 15, Vesnograd",
+        username: "veki@etf.bg.ac.rs",
+        firstName: "Vesna",
+        lastName: "Vejkovic Markovic",
+        address: "Vladike Nikolaja Velimirovica 4, 34300 Arandjelovac",
         title: "asistent",
-        roomNumber: 416,
+        room: 416,
         status: "neaktivan",
         type: "nastavnik"
     },
     {
-        username: "rada@etf.bg.ac.rs",
+        username: "radmila@etf.bg.ac.rs",
         firstName: "Radmila",
-        lastName: "Radmilovic",
-        address: "Vojvotkinje Radmile Radmilovic 15, Radmilovgrad",
+        lastName: "Rad",
+        address: "Svetozara Markovica 78, 34000 Kragujevac",
         title: "laboratorijski inzenjer",
         status: "aktivan",
         type: "laborant"
     },
     {
-        username: "neca@etf.bg.ac.rs",
-        firstName: "Nemanja",
-        lastName: "Nemanjic",
-        address: "Vojvode Nemanje Nemanjica 15, Nemanjingrad",
+        username: "peca@etf.bg.ac.rs",
+        firstName: "Pet",
+        lastName: "Prsko",
+        address: "Svetozara Markovica 78, 34000 Kragujevac",
         title: "laboratorijski tehnicar",
         status: "aktivan",
         type: "laborant"
@@ -137,7 +137,7 @@ const students = [
     {
         username: "mm170017d@student.etf.rs",
         index: "2017/0017",
-        studyType: "d",
+        type: "d",
         firstName: "Manja",
         lastName: "Marjanov",
         status: "aktivan",
@@ -146,23 +146,23 @@ const students = [
     {
         username: "nn180018d@student.etf.rs",
         index: "2018/0018",
-        studyType: "d",
+        type: "d",
         firstName: "Nikola",
         lastName: "Nikolic",
         status: "aktivan"
     },
     {
-        username: "aa190019d@student.etf.rs",
-        index: "2019/0019",
-        studyType: "d",
-        firstName: "Aleksandra",
-        lastName: "Aleksandrovic",
+        username: "rr190119d@student.etf.rs",
+        index: "2019/0119",
+        type: "d",
+        firstName: "Ranko",
+        lastName: "Rankovic",
         status: "neaktivan"
     },
     {
         username: "bb124578m@student.etf.rs",
         index: "2012/4578",
-        studyType: "m",
+        type: "m",
         firstName: "Bojan",
         lastName: "Bojovic",
         status: "aktivan"
@@ -170,7 +170,7 @@ const students = [
     {
         username: "zn123456p@student.etf.rs",
         index: "2012/3456",
-        studyType: "p",
+        type: "p",
         firstName: "Nikola",
         lastName: "Zigic",
         status: "aktivan"

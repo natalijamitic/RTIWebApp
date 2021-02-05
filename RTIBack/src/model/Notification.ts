@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const NotificationsTypeModel = new Schema({
-    typeName:{
+    name:{
         type: String,
         required: true
     }

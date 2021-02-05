@@ -110,8 +110,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-door-closed"></i>*</span>
                         </div>
-                        <input name="roomNumber" class="form-control" placeholder="Broj kabineta" type="text"
-                            [(ngModel)]="employee.roomNumber">
+                        <input name="room" class="form-control" placeholder="Broj kabineta" type="text"
+                            [(ngModel)]="employee.room">
                     </div> <!-- form-group// -->
 
                     <div class="form-group input-group" *ngIf="loggedUser?.type == 'admin'">
@@ -195,7 +195,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fas fa-graduation-cap"></i>*</span>
                         </div>
-                        <select name="type" [(ngModel)]="student.studyType" class="form-control select"
+                        <select name="type" [(ngModel)]="student.type" class="form-control select"
                             oninput="style.color='black'">
                             <option disabled selected class="select-placeholder">Tip studija</option>
                             <option value='d'>Osnovne akademske</option>

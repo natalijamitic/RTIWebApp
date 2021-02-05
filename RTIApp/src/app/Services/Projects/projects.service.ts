@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { INotification } from 'src/app/notification/notification.component';
-import { IOfferedProject } from 'src/app/projects/projects.component';
+import { IEndProject } from 'src/app/projects/projects.component';
 import { IDoneProject } from 'src/app/research-projects/research-projects.component';
 
 
@@ -16,11 +16,11 @@ export class ProjectsService {
 
   }
 
-  getAllOfferedProjects() {
-    return this.http.get(`${environment.api}/projects/offered`)
+  getAllEndProjects() {
+    return this.http.get(`${environment.api}/projects/end`)
       .pipe(
         map((p: any) => {
-          let projects: Array<IOfferedProject> = [];
+          let projects: Array<IEndProject> = [];
           for (let proj of p) {
             projects.push({
               title: proj.title,

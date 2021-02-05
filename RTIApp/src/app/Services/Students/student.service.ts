@@ -24,7 +24,7 @@ export class StudentService {
                         firstName: stud.firstName,
                         lastName: stud.lastName,
                         index: stud.index,
-                        studyType: stud.studyType,
+                        type: stud.type,
                         status: stud.status,
                         subjects: stud.subjects,
                     };

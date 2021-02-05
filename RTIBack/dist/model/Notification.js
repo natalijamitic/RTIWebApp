@@ -7,7 +7,7 @@ exports.NotificationType = exports.Notification = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 const NotificationsTypeModel = new Schema({
-    typeName: {
+    name: {
         type: String,
         required: true
     }

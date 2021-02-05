@@ -3,16 +3,16 @@ import { Notification, NotificationType } from '../model/Notification';
 
 const notificationTypes = [
     {
-        typeName: "Pozivi za studentska takmicenja"
+        name: "Pozivi za studentska takmicenja"
     },
     {
-        typeName: "Obavestenja o konferencijama"
+        name: "Obavestenja o konferencijama"
     },
     {
-        typeName: "Ponude za prakse"
+        name: "Ponude za prakse"
     },
     {
-        typeName: "Ponude za posao"
+        name: "Ponude za posao"
     }
 ];
 

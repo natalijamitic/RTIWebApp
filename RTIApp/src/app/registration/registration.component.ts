@@ -15,7 +15,7 @@ export interface IUser {
 export interface IStudent {
   username: string;
   index: string;
-  studyType: string;
+  type: string;
   firstName: string;
   lastName: string;
   status: string;
@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   private _studentUsername = "piGGBBBBx";
 
   public get studentUsername(): string {
-    this._studentUsername = `${this.student.lastName ? this.student.lastName[0].toLowerCase() : 'p'}${this.student.firstName ? this.student.firstName[0].toLowerCase() : 'i'}${this.student.index?.length > 2 ? this.student.index[2] : 'G'}${this.student.index?.length > 3 ? this.student.index[3] : 'G'}${this.student.index?.length > 8 ? this.student.index.substr(5, 4) : 'BBBB'}${this.student.studyType !== 'Tip studija' ? this.student.studyType : 'x'}`;
+    this._studentUsername = `${this.student.lastName ? this.student.lastName[0].toLowerCase() : 'p'}${this.student.firstName ? this.student.firstName[0].toLowerCase() : 'i'}${this.student.index?.length > 2 ? this.student.index[2] : 'G'}${this.student.index?.length > 3 ? this.student.index[3] : 'G'}${this.student.index?.length > 8 ? this.student.index.substr(5, 4) : 'BBBB'}${this.student.type !== 'Tip studija' ? this.student.type : 'x'}`;
     return this._studentUsername;
   }
 
@@ -48,7 +48,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     webpage: null,
     personalInfo: null,
     title: "Zvanje",
-    roomNumber: null,
+    room: null,
     status: null,
     type: null,
     subjects: null,
@@ -65,7 +65,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   public student: IStudent = {
     username: null,
     index: null,
-    studyType: "Tip studija",
+    type: "Tip studija",
     firstName: null,
     lastName: null,
     status: null,
@@ -129,7 +129,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   public registerStudent(): void {
     // All mandatory fields typed in.
-    if (!this.student.firstName || !this.student.lastName || !this.studPass1 || !this.studPass2 || !this.student.index || this.student.studyType === "Tip studija") {
+    if (!this.student.firstName || !this.student.lastName || !this.studPass1 || !this.studPass2 || !this.student.index || this.student.type === "Tip studija") {
       this.msgStud = "Unesite sva obavezna polja.";
       return;
     }
@@ -169,7 +169,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   public registerEmployee(): void {
 
-    if (!this.employeeUsername || !this.employee.firstName || !this.employee.lastName || this.employee.title == "Zvanje" || !this.employee.address || !this.emplPass1 || !this.emplPass2 || (this.isTeacher() && !this.employee.roomNumber)) {
+    if (!this.employeeUsername || !this.employee.firstName || !this.employee.lastName || this.employee.title == "Zvanje" || !this.employee.address || !this.emplPass1 || !this.emplPass2 || (this.isTeacher() && !this.employee.room)) {
       this.msgEmpl = "Unesite sva obavezna polja.";
       return;
     }
@@ -185,7 +185,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
     this.employee.username = `${this.employeeUsername}@etf.bg.ac.rs`;
     if (!this.isTeacher()) {
-      this.employee.roomNumber = null;
+      this.employee.room = null;
       this.employee.type = 'laborant';
     } else {
       this.employee.type = 'nastavnik';
@@ -281,7 +281,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.student = {
       username: null,
       index: null,
-      studyType: "Tip studija",
+      type: "Tip studija",
       firstName: null,
       lastName: null,
       status: null,
@@ -306,7 +306,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       webpage: null,
       personalInfo: null,
       title: "Zvanje",
-      roomNumber: null,
+      room: null,
       status: null,
       type: null,
       subjects: null,

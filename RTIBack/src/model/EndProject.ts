@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const OfferedProjectModel = new Schema({
+const EndProjectModel = new Schema({
     title:{
         type: String
     },
@@ -14,4 +14,4 @@ const OfferedProjectModel = new Schema({
     }
 });
 
-export default mongoose.model("OfferedProject", OfferedProjectModel, "OfferedProject" )
+export default mongoose.model("EndProject", EndProjectModel, "EndProject" )

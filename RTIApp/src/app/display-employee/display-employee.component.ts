@@ -31,7 +31,7 @@ export class DisplayEmployeeComponent implements OnInit, OnDestroy {
     webpage: null,
     personalInfo: null,
     title: "Zvanje",
-    roomNumber: null,
+    room: null,
     status: "Status",
     type: null,
     subjects: null
@@ -70,7 +70,7 @@ export class DisplayEmployeeComponent implements OnInit, OnDestroy {
             webpage: this.employeeOld.webpage,
             personalInfo: this.employeeOld.personalInfo,
             title: this.employeeOld.title,
-            roomNumber: this.employeeOld.roomNumber,
+            room: this.employeeOld.room,
             status: this.employeeOld.status,
             type: this.employeeOld.type,
             subjects: this.employeeOld.subjects
@@ -134,7 +134,7 @@ export class DisplayEmployeeComponent implements OnInit, OnDestroy {
     }
 
     if (!this.isTeacher()) {
-      this.employee.roomNumber = null;
+      this.employee.room = null;
       this.employee.type = 'laborant';
     } else {
       this.employee.type = 'nastavnik';
@@ -149,7 +149,7 @@ export class DisplayEmployeeComponent implements OnInit, OnDestroy {
       webpage: this.employee.webpage ? this.employee.webpage : null,
       personalInfo: this.employee.personalInfo ? this.employee.personalInfo : null,
       title: this.employee.title,
-      roomNumber: this.employee.roomNumber ? this.employee.roomNumber : null,
+      room: this.employee.room ? this.employee.room : null,
       status: this.employee.status,
       type: this.employee.type,
       subjects: this.employeeOld.subjects

@@ -21,13 +21,13 @@ export class DisplayStudentComponent implements OnInit, OnDestroy {
     firstName: null,
     lastName: null,
     index: null,
-    studyType: null,
+    type: null,
     status: null
   };
   private _studentUsername = "piGGBBBBx";
 
   public get studentUsername(): string {
-    this._studentUsername = `${this.student.lastName ? this.student.lastName[0].toLowerCase() : this.studentOld?.lastName[0]?.toLowerCase()}${this.student.firstName ? this.student.firstName[0].toLowerCase() : this.studentOld?.firstName[0]?.toLowerCase()}${this.student.index?.length > 2 ? this.student.index[2] : this.studentOld?.index[2]}${this.student.index?.length > 3 ? this.student.index[3] : this.studentOld?.index[3]}${this.student.index?.length > 8 ? this.student.index.substr(5, 4) : this.studentOld?.index.substr(5, 4)}${this.student.studyType !== 'Tip studija' ? this.student.studyType : 'x'}`;
+    this._studentUsername = `${this.student.lastName ? this.student.lastName[0].toLowerCase() : this.studentOld?.lastName[0]?.toLowerCase()}${this.student.firstName ? this.student.firstName[0].toLowerCase() : this.studentOld?.firstName[0]?.toLowerCase()}${this.student.index?.length > 2 ? this.student.index[2] : this.studentOld?.index[2]}${this.student.index?.length > 3 ? this.student.index[3] : this.studentOld?.index[3]}${this.student.index?.length > 8 ? this.student.index.substr(5, 4) : this.studentOld?.index.substr(5, 4)}${this.student.type !== 'Tip studija' ? this.student.type : 'x'}`;
     return this._studentUsername;
   }
 
@@ -55,7 +55,7 @@ export class DisplayStudentComponent implements OnInit, OnDestroy {
             firstName: this.studentOld.firstName,
             lastName: this.studentOld.lastName,
             index: this.studentOld.index,
-            studyType: this.studentOld.studyType,
+            type: this.studentOld.type,
             status: this.studentOld.status
           };
 
@@ -87,7 +87,7 @@ export class DisplayStudentComponent implements OnInit, OnDestroy {
       firstName: this.student.firstName ? this.student.firstName : this.studentOld.firstName,
       lastName: this.student.lastName ? this.student.lastName : this.studentOld.lastName,
       index: this.student.index ? this.student.index : this.studentOld.index,
-      studyType: this.student.studyType ? this.student.studyType : this.studentOld.studyType,
+      type: this.student.type ? this.student.type : this.studentOld.type,
       status: this.student.status,
     };
 
@@ -101,7 +101,7 @@ export class DisplayStudentComponent implements OnInit, OnDestroy {
     this.msg = '';
     console.log(studentNew);
 
-    if (studentNew.index == this.studentOld.index && studentNew.studyType == this.studentOld.studyType) {
+    if (studentNew.index == this.studentOld.index && studentNew.type == this.studentOld.type) {
       this.updateStudent(studentNew, newUser);
     } else {
       this.studentsService.existsStudent(studentNew).subscribe((result: any) => {

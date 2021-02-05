@@ -31,7 +31,8 @@ mongoose.set('useFindAndModify', false);
 
 
 connection.once('open', () => {
-    //seed();
+    // SEED DATABASE LINE 35
+    seed();
     console.log('mongo connected');
 })
 
@@ -319,19 +320,13 @@ router.route('/employees/update').post((request, response) => {
 })
 
 //******* PROJECTS ROUTES     *******/
-// GET Offered Projects
-router.route('/projects/offered').get((_request, response) => {
-    console.log("Offered proj route");
-
-    projectQueries.getOfferedProjects().then((result: any) => {
+router.route('/projects/end').get((_request, response) => {
+    projectQueries.getEndProjects().then((result: any) => {
         response.json(result)
     })
 
 });
-// GET Done Projects
 router.route('/projects/done').get((_request, response) => {
-    console.log("Done proj route");
-
     projectQueries.getDoneProjects().then((result: any) => {
         response.json(result)
     })

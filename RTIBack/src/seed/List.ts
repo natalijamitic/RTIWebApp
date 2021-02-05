@@ -34,7 +34,7 @@ const lists = [
     },
     {
         code: "13S112OS1",
-        author: 'zika@etf.bg.ac.rs',
+        author: 'mika@etf.bg.ac.rs',
         deadline: '2021-02-20 16:40:32.690Z',
         title: 'Spisak 3',
         time: '28.12.2021. 15:00',

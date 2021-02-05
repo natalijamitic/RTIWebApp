@@ -8,15 +8,15 @@ const assignments = [
         group: [
             {
                 name: "P1",
-                employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"]
+                employees: ["pera@etf.bg.ac.rs", "mika@etf.bg.ac.rs"]
             },
             {
                 name: "P2",
-                employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"]
+                employees: ["pera@etf.bg.ac.rs", "mika@etf.bg.ac.rs"]
             },
             {
                 name: "P3",
-                employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"]
+                employees: ["pera@etf.bg.ac.rs", "mika@etf.bg.ac.rs"]
             },
             {
                 name: "V1",
@@ -24,32 +24,18 @@ const assignments = [
             },
             {
                 name: "V2",
-                employees: ["zika@etf.bg.ac.rs"]
+                employees: ["mika@etf.bg.ac.rs"]
             },
             {
                 name: "V3",
-                employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"]
+                employees: ["pera@etf.bg.ac.rs", "mika@etf.bg.ac.rs"]
             },
         ],
-        employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"],
-    },
-    {
-        subject: "13S081M2",
-        employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"],
-        group: [
-            {
-                name: "P1",
-                employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"]
-            },
-            {
-                name: "V1",
-                employees: ["pera@etf.bg.ac.rs"]
-            }
-        ]
+        employees: ["pera@etf.bg.ac.rs", "mika@etf.bg.ac.rs"],
     },
     {
         subject: "13S112OS1",
-        employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"],
+        employees: ["pera@etf.bg.ac.rs", "mika@etf.bg.ac.rs"],
         group: [
             {
                 name: "P1",
@@ -57,7 +43,7 @@ const assignments = [
             },
             {
                 name: "P2",
-                employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"]
+                employees: ["pera@etf.bg.ac.rs", "mika@etf.bg.ac.rs"]
             },
             {
                 name: "V1",
@@ -65,21 +51,21 @@ const assignments = [
             },
             {
                 name: "V2",
-                employees: ["zika@etf.bg.ac.rs"]
+                employees: ["mika@etf.bg.ac.rs"]
             }
         ]
     },
     {
         subject: "13S112VD",
-        employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"],
+        employees: ["pera@etf.bg.ac.rs", "mika@etf.bg.ac.rs"],
         group: [
             {
                 name: "P1",
-                employees: ["pera@etf.bg.ac.rs", "zika@etf.bg.ac.rs"]
+                employees: ["pera@etf.bg.ac.rs", "mika@etf.bg.ac.rs"]
             },
             {
                 name: "V1",
-                employees: ["zika@etf.bg.ac.rs"]
+                employees: ["mika@etf.bg.ac.rs"]
             }
         ]
     }

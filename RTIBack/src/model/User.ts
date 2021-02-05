@@ -64,7 +64,7 @@ const EmployeeModel = new Schema({
         required: true,
         enum: ["redovni profesor", "vanredni profesor", "docent", "asistent", "saradnik u nastavi", "istrazivac", "laboratorijski inzenjer", "laboratorijski tehnicar"]
     },
-    roomNumber: {
+    room: {
         type: String,
         required: false
     },
@@ -90,7 +90,7 @@ const StudentModel = new Schema({
         type: String,
         required: true
     },
-    studyType: {
+    type: {
         type: String,
         required: true,
         enum: ["d", "m", "p"]

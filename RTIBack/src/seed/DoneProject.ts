@@ -3,29 +3,29 @@ import DoneProject from '../model/DoneProject'
 
 const projects = [
     {
-        title: "Projekat 1",
-        members: ["Dr.Vet.Med", "Zarko Marjanov", "Prof Ninoslav Kovelja"],
-        description: "Za opis ovog projekta kontaktirajte stud sluzbu."
+        title: "Projekat Tastatura Za Mikrotalasnu",
+        members: ["Zarko Marjanov", "Prof Ninoslav Kovelja"],
+        description: "Realizacija 64 tastature 0x832 za mikrotalasnu."
     },
     {
-        title: "Projekat 2",
-        members: ["Aleksa Zdravkovic", "Nikolina Jovanovic"],
-        description: "Za opis ovog projekta kontaktirajte stud sluzbu."
+        title: "Projekat Stampac",
+        members: ["Arnaut Janko", "Relja Vukic"],
+        description: "Realizacija stampaca bez papira i bez tonera."
     },
     {
-        title: "Projekat 3",
-        members: ["Grupa anonimnih autora"],
-        description: "Za opis ovog projekta kontaktirajte stud sluzbu."
+        title: "Projekat Punjac",
+        members: ["Ognjen Ilic", "Ognjen Misic"],
+        description: "Punjac koji se napaja putem solarne energije."
     },
     {
-        title: "Projekat 4",
-        members: ["Vlastelin Duhovlatic", "Ozbek Urgundi"],
-        description: "Za opis ovog projekta kontaktirajte stud sluzbu."
+        title: "Projekat Zdravstvene Kartice",
+        members: ["Thomas Filippo Tavares Marinho", "Izmir Klazur"],
+        description: "Zdravstvene kartice za drzavljane Belgije."
     },
     {
-        title: "Projekat 5",
-        members: ["Nada Stosic", "Brankica Doric", "Kata Manojlovic", "Igor Trubar"],
-        description: "Za opis ovog projekta kontaktirajte stud sluzbu."
+        title: "Projekat Monitor",
+        members: ["Marina Djurisic", "Snezana Cosic", "Dusica Todorovic"],
+        description: "Nema opisa."
     }
 ]
 

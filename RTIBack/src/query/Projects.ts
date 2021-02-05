@@ -1,10 +1,10 @@
 import DoneProject from '../model/DoneProject'
-import OfferedProject from '../model/OfferedProject'
+import EndProject from '../model/EndProject'
 
 export function getDoneProjects() {
     return DoneProject.find({}).then((result: any) => result);
 }
 
-export function getOfferedProjects() {
-    return OfferedProject.find({}).then((result: any) => result);
+export function getEndProjects() {
+    return EndProject.find({}).then((result: any) => result);
 }

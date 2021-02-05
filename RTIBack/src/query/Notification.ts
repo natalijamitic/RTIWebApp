@@ -20,7 +20,7 @@ export function getNotificationTypes() {
 }
 
 export function getNotificationType(type: string) {
-    return NotificationType.find({typeName: type}).then((result: any) => result);
+    return NotificationType.find({name: type}).then((result: any) => result);
 }
 
 
@@ -39,18 +39,18 @@ export function deleteNotification(date: any) {
 }
 
 export async function insertNotificationType(newType: string) {
-    let type = new NotificationType({typeName: newType});
+    let type = new NotificationType({name: newType});
     return type.save().then((t: any) => t);
 }
 
 export async function deleteNotificationType(type: string) {
     let T = await getNotificationType(type);
     await  Notification.deleteMany({type: T[0]}).then((r: any) => r);
-    return NotificationType.deleteOne({typeName: type}).then((r: any) => r)
+    return NotificationType.deleteOne({name: type}).then((r: any) => r)
 }
 
 export function updateNotificationType(oldType: string, newType: string) {
-    return NotificationType.findOneAndUpdate({typeName: oldType}, {typeName: newType}).then((r: any) => r);
+    return NotificationType.findOneAndUpdate({name: oldType}, {name: newType}).then((r: any) => r);
 }
 
 export async function updateNotificationTypes(oldType: string, newType: string) {

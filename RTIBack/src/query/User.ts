@@ -41,7 +41,7 @@ export async function firstLoginPassChange(username: string, oldPass: string, pa
 
 
 export function existsStudent(student: any): any {
-    return Student.findOne({ index: student.index, studyType: student.studyType })
+    return Student.findOne({ index: student.index, type: student.type })
         .then((user: any) => user);
 }
 
@@ -162,7 +162,7 @@ export function updateStudent(oldUser: any, newUser: any) {
       firstName: newUser.firstName,
       lastName: newUser.lastName,
       index: newUser.index,
-      studyType: newUser.studyType,
+      type: newUser.type,
       status: newUser.status
     }).then((u: any) => u);
 }
@@ -176,7 +176,7 @@ export function updateEmployee(oldUser: any, newUser: any) {
       webpage: newUser.webpage,
       personalInfo: newUser.personalInfo,
       title: newUser.title,
-      roomNumber: newUser.roomNumber,
+      room: newUser.room,
       status: newUser.status,
       type: newUser.type,
     }).then((u: any) => u);

@@ -24,7 +24,7 @@ export class NotificationService {
               title: notification.title,
               content: notification.content,
               dateCreation: notification.dateCreation,
-              type: notification.type.typeName
+              type: notification.type.name
             });
           }
           return notifications;
@@ -42,7 +42,7 @@ export class NotificationService {
             title: notification.title,
             content: notification.content,
             dateCreation: notification.dateCreation,
-            type: notification.type.typeName
+            type: notification.type.name
           });
         }
         return notifications;
@@ -76,7 +76,7 @@ export class NotificationService {
         map((n: any) => {
           let types: Array<String> = [];
           for (let t of n) {
-            types.push(t.typeName);
+            types.push(t.name);
           }
           return types;
         })

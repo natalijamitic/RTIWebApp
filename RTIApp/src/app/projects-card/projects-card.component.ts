@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import uuid from 'uuid';
-import { IOfferedProject } from '../projects/projects.component';
+import { IEndProject } from '../projects/projects.component';
 
 @Component({
   selector: 'projects-card',
@@ -10,7 +10,7 @@ import { IOfferedProject } from '../projects/projects.component';
 })
 export class ProjectsCardComponent implements OnInit {
 
-  @Input() project: IOfferedProject;
+  @Input() project: IEndProject;
 
   public id = `collapse${uuid.v4()}`;
 

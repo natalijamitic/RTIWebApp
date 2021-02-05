@@ -16,7 +16,7 @@ export interface IEmployee {
   webpage: string;
   personalInfo: string;
   title: string;
-  roomNumber: string;
+  room: string;
   status: string;
   type: string;
   subjects: string[];

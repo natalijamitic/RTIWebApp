@@ -26,6 +26,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const seed_1 = __importDefault(require("./seed/seed"));
 const fs = __importStar(require("fs"));
 const middleware = __importStar(require("./middleware"));
 const userQueries = __importStar(require("./query/User"));
@@ -46,7 +47,8 @@ mongoose_1.default.connect('mongodb://localhost:27017/rti_katedra', { useNewUrlP
 const connection = mongoose_1.default.connection;
 mongoose_1.default.set('useFindAndModify', false);
 connection.once('open', () => {
-    //seed();
+    // SEED DATABASE LINE 35
+    seed_1.default();
     console.log('mongo connected');
 });
 /************* ROUTES ***************/
@@ -311,16 +313,12 @@ router.route('/employees/update').post((request, response) => {
     });
 });
 //******* PROJECTS ROUTES     *******/
-// GET Offered Projects
-router.route('/projects/offered').get((_request, response) => {
-    console.log("Offered proj route");
-    projectQueries.getOfferedProjects().then((result) => {
+router.route('/projects/end').get((_request, response) => {
+    projectQueries.getEndProjects().then((result) => {
         response.json(result);
     });
 });
-// GET Done Projects
 router.route('/projects/done').get((_request, response) => {
-    console.log("Done proj route");
     projectQueries.getDoneProjects().then((result) => {
         response.json(result);
     });
