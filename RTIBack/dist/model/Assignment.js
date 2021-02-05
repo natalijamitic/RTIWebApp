@@ -7,6 +7,10 @@ exports.Assignment = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 const AssignmentModel = new Schema({
+    employees: {
+        type: [String],
+        required: true
+    },
     subject: {
         type: String,
         required: true
@@ -22,10 +26,6 @@ const AssignmentModel = new Schema({
                 required: true
             }
         },
-        required: true
-    },
-    employees: {
-        type: [String],
         required: true
     }
 });

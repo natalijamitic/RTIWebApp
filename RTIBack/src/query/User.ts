@@ -120,14 +120,14 @@ export async function registerEmployee(user: any, employee: any): Promise<any> {
 }
 
 export async function changeUsernameEmployee(oldUsername: string, newUsername: string) {
-    return Employee.findOneAndUpdate({ username: oldUsername }, { username: newUsername }).then(u => u);
+    return Employee.findOneAndUpdate({ username: oldUsername }, { username: newUsername }).then((u: any) => u);
 }
 export async function changeUsernameStudent(oldUsername: string, newUsername: string) {
-    return Student.findOneAndUpdate({ username: oldUsername }, { username: newUsername }).then(u => u);
+    return Student.findOneAndUpdate({ username: oldUsername }, { username: newUsername }).then((u: any) => u);
 }
 
 export function setNewUser(oldUser: any, newUser: any) {
-    User.findOneAndUpdate({ username: oldUser.username }, { username: newUser.username, password: newUser.password, firstLogin: newUser.firstLogin }).then(u => u);
+    User.findOneAndUpdate({ username: oldUser.username }, { username: newUser.username, password: newUser.password, firstLogin: newUser.firstLogin }).then((u: any) => u);
 }
 
 export async function updateUser(oldUser: any, newUser: any) {

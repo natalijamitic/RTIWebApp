@@ -10,45 +10,45 @@ const subjects = [
         department: 'si',
         title: "Programiranje 1",
         code: "13S111P1",
-        weekly: {
-            lecture: 3,
+        timetable: {
+            lecture: 2,
             exercise: 2,
-            lab: 0
+            lab: 1
         },
         espb: 5,
         examMaterials : {
-            examExamples : [
+            examples : [
                 "PIA_Lekcija1_Uvod.zip``Petar`Petrovic`2614.7763671875`1612380803288.zip"
             ],
-            examSolutions : [
+            solutions : [
                 "PIA_Lekcija1_Uvod.zip``Petar`Petrovic`2614.7763671875`1612380814674.zip"
             ],
-            isExamExamplesHidden: false
+            isHidden: false
         },
-        classTime: ["Ponedeljak 8", "Sreda 10"],
-        excerTime: ["Ponedeljak 8", "Sreda 10"],
-        propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
-        subjectGoal: "Cilj je nauciti osnove programiranja.",
-        haveLab: false,
+        propositions: "Barem 50 poena da bi se polozio ispit.",
+        goal: "Cilj je nauciti osnove programiranja.",
+        classTime: ["Ponedeljak 18", "Cetvrtak 11"],
+        excerTime: ["Ponedeljak 18", "Cetvrtak 11"],
+        bLab: true,
         lab : {
             isHidden : false,
             numberOfLabs : 3,
             basicInfo: "Lab se radi u paviljonu.",
             labs : [
                 {
-                    labDescription : "Prva lab vezba zahteva poznavanje gradiva od 10-120 strane",
+                    labDescription : "Prva lab vezba obuhvata pptx 1-5",
                     labMaterials : [
                         "PIA_Lekcija3_JSP.pdf``Petar`Petrovic`1153.5576171875`1612380829225.pdf"
                     ]
                 },
                 {
-                    labDescription : "Druga lab vezba zahteva poznavanje gradiva od 120-220 strane",
+                    labDescription : "Druga lab vezba obuhvata pttx 6-10",
                     labMaterials : [
                         "PIA_Lekcija3_JSP.pdf``Petar`Petrovic`1153.5576171875`1612380829225.pdf"
                     ]
                 },
                 {
-                    labDescription : "Treca lab vezba zahteva poznavanje gradiva od 220-260 strane",
+                    labDescription : "Treca lab vezba obuhvata pptx 11-15",
                     labMaterials : [
                         "PIA_Lekcija3_JSP.pdf``Petar`Petrovic`1153.5576171875`1612380829225.pdf"
                     ]
@@ -65,10 +65,10 @@ const subjects = [
             "PIA_Lekcija4_JSF.pdf``Petar`Petrovic`1929.515625`1612380791697.pdf"
         ],
         project: {
-            isHidden: true,
+            isHidden: false,
             projects: [{
                 basicInfo: "Projekat Crazy Snake - zmijica kao na nokiji",
-                examinationProcess: "Pokrece se igrica na racunaru u paviljonu i objasnjava se ukratko kako je implementirana.",
+                examinationProcess: "Potrebno je pokrenuti igricu u paviljonu i objasniti implementaciju.",
                 projectMaterials: new Array()
             }]
         },
@@ -95,17 +95,17 @@ const subjects = [
         title: "Matematika 2",
         code: "13S081M2",
         department: 'si',
-        weekly: {
-            lecture: 3,
-            exercise: 2,
+        timetable: {
+            lecture: 1,
+            exercise: 1,
             lab: 0
         },
         espb: 5,
-        classTime: ["Ponedeljak 18", "Sreda 14"],
-        excerTime: ["Ponedeljak 8", "Sreda 10"],
+        classTime: ["Cetvrta 18", "Petak 8"],
+        excerTime: ["Petak 8", "Petak 10"],
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
-        subjectGoal: "Cilj je nauciti osnove matematike 2.",
-        haveLab: false,
+        goal: "Cilj je nauciti osnove matematike 2.",
+        bLab: false,
     },
     {
         type: "izborni",
@@ -113,7 +113,7 @@ const subjects = [
         title: "Veb Dizajn",
         code: "13S112VD",
         department: 'si',
-        weekly: {
+        timetable: {
             lecture: 2,
             exercise: 2,
             lab: 1
@@ -122,8 +122,8 @@ const subjects = [
         classTime: ["Ponedeljak 8", "Sreda 10"],
         excerTime: ["Ponedeljak 8", "Sreda 10"],
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
-        subjectGoal: "Cilj je nauciti osnove veb programiranja.",
-        haveLab: true,
+        goal: "Cilj je nauciti osnove veb programiranja.",
+        bLab: true,
         lab: {
             isHidden: false,
             numberOfLabs: 3,
@@ -154,7 +154,7 @@ const subjects = [
         code: "13S112OS1",
         title: "Operativni sistemi 1",
         department: 'si',
-        weekly: {
+        timetable: {
             lecture: 2,
             exercise: 2,
             lab: 1
@@ -163,8 +163,8 @@ const subjects = [
         classTime: ["Ponedeljak 8", "Sreda 10"],
         excerTime: ["Ponedeljak 8", "Sreda 10"],
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
-        subjectGoal: "Cilj je nauciti osnove operativnih sistema.",
-        haveLab: false,
+        goal: "Cilj je nauciti osnove operativnih sistema.",
+        bLab: false,
         project: {
             isHidden: true,
             projects: [{
@@ -180,7 +180,7 @@ const subjects = [
         title: "Evolucija softvera",
         code: "13М111ЕС",
         department: 'master',
-        weekly: {
+        timetable: {
             lecture: 2,
             exercise: 2,
             lab: 0
@@ -189,8 +189,8 @@ const subjects = [
         classTime: ["Ponedeljak 18", "Sreda 14"],
         excerTime: ["Ponedeljak 8", "Sreda 10"],
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
-        subjectGoal: "Cilj je nauciti osnove.",
-        haveLab: false,
+        goal: "Cilj je nauciti osnove.",
+        bLab: false,
     },
     {
         type: "obavezni",
@@ -198,7 +198,7 @@ const subjects = [
         title: "Teorija algoritama",
         code: "13М111ТА",
         department: 'master',
-        weekly: {
+        timetable: {
             lecture: 2,
             exercise: 2,
             lab: 0
@@ -207,8 +207,8 @@ const subjects = [
         classTime: ["Ponedeljak 18", "Sreda 14"],
         excerTime: ["Ponedeljak 8", "Sreda 10"],
         propositions: "Propozicije su okacene na oglasnoj tabli u holu fakulteta.",
-        subjectGoal: "Cilj je nauciti osnove.",
-        haveLab: false
+        goal: "Cilj je nauciti osnove.",
+        bLab: false
     }
 ];
 

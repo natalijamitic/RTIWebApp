@@ -110,7 +110,7 @@ export class DisplaySubjectEmployeeExamMaterialsComponent implements OnInit {
 
   public initSolutions(): void {
     this.solutions = [];
-    for (let file of this.subject.examMaterials.examSolutions) {
+    for (let file of this.subject.examMaterials.solutions) {
       let info: string[] = file.split('`');
       console.log(file.lastIndexOf("."))
       console.log(file.substr(file.lastIndexOf(".")))
@@ -127,7 +127,7 @@ export class DisplaySubjectEmployeeExamMaterialsComponent implements OnInit {
 
   public initFiles(): void {
     this.files = [];
-    for (let file of this.subject.examMaterials.examExamples) {
+    for (let file of this.subject.examMaterials.examples) {
       let info: string[] = file.split('`');
       console.log(file.lastIndexOf("."))
       console.log(file.substr(file.lastIndexOf(".")))
@@ -143,29 +143,29 @@ export class DisplaySubjectEmployeeExamMaterialsComponent implements OnInit {
   }
 
   public deleteFile(file): void {
-    this.subject.examMaterials.examExamples = this.subject.examMaterials.examExamples.filter((f: string) => f != file);
+    this.subject.examMaterials.examples = this.subject.examMaterials.examples.filter((f: string) => f != file);
     this.initFiles();
     this.updateSubject();
   }
 
   public sortFiles(): void {
-    this.subject.examMaterials.examExamples = [];
+    this.subject.examMaterials.examples = [];
     for (let file of this.files) {
-      this.subject.examMaterials.examExamples.push(file.original);
+      this.subject.examMaterials.examples.push(file.original);
     }
     this.updateSubject();
   }
 
   public deleteFile2(file): void {
-    this.subject.examMaterials.examSolutions = this.subject.examMaterials.examSolutions.filter((f: string) => f != file);
+    this.subject.examMaterials.solutions = this.subject.examMaterials.solutions.filter((f: string) => f != file);
     this.initSolutions();
     this.updateSubject();
   }
 
   public sortFiles2(): void {
-    this.subject.examMaterials.examSolutions = [];
+    this.subject.examMaterials.solutions = [];
     for (let file of this.solutions) {
-      this.subject.examMaterials.examSolutions.push(file.original);
+      this.subject.examMaterials.solutions.push(file.original);
     }
     this.updateSubject();
   }
@@ -180,7 +180,7 @@ export class DisplaySubjectEmployeeExamMaterialsComponent implements OnInit {
 
   public filesUploaded2($event): void {
     for (let file of $event.fileNames) {
-      this.subject.examMaterials.examSolutions.push(file);
+      this.subject.examMaterials.solutions.push(file);
     }
     this.initSolutions();
     this.updateSubject();
@@ -188,7 +188,7 @@ export class DisplaySubjectEmployeeExamMaterialsComponent implements OnInit {
 
   public filesUploaded($event): void {
     for (let file of $event.fileNames) {
-      this.subject.examMaterials.examExamples.push(file);
+      this.subject.examMaterials.examples.push(file);
     }
     this.initFiles();
     this.updateSubject();

@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <th colspan="2">Cilj i propozicije</th>
-                    <td colspan="3">{{subject?.subjectGoal}} <br> {{subject?.propositions}}</td>
+                    <td colspan="3">{{subject?.goal}} <br> {{subject?.propositions}}</td>
                 </tr>
                 <tr>
                     <th colspan="2">Dodatni komentar</th>
@@ -70,10 +70,10 @@
                     <th colspan="2">Termini</th>
                 </tr>
                 <tr>
-                    <td>{{subject?.weekly.lecture}}</td>
-                    <td>{{subject?.weekly.exercise}}</td>
-                    <td>{{subject?.weekly.lab}}</td>
-                    <td colspan="2" style="text-align:center font-weight:bold">
+                    <td>{{subject?.timetable.lecture}}</td>
+                    <td>{{subject?.timetable.exercise}}</td>
+                    <td>{{subject?.timetable.lab}}</td>
+                    <td colspan="2" style="text-align:center; font-weight:bold">
                         Predavanja:
                         <div *ngIf="subject">
                             <div *ngFor="let time of subject.classTime">{{time}}</div>

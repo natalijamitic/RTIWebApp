@@ -6,29 +6,54 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 const SubjectModel = new Schema({
-    type: {
+    code: {
         type: String,
-        required: true,
-        enum: ["izborni", "obavezni"]
+        required: true
+    },
+    title: {
+        type: String,
+        required: true
     },
     department: {
         type: String,
         required: true,
         enum: ['si', 'rti', 'ostali', 'master']
     },
+    type: {
+        type: String,
+        required: true,
+        enum: ["izborni", "obavezni"]
+    },
     semestar: {
         type: Number,
         required: true,
     },
-    title: {
+    espb: {
+        type: Number,
+        required: true
+    },
+    propositions: {
         type: String,
         required: true
     },
-    code: {
+    comment: {
+        type: String,
+        required: false,
+        default: ''
+    },
+    goal: {
         type: String,
         required: true
     },
-    weekly: {
+    classTime: {
+        type: [String],
+        required: true
+    },
+    excerTime: {
+        type: [String],
+        required: true
+    },
+    timetable: {
         type: {
             lecture: {
                 type: Number,
@@ -45,48 +70,6 @@ const SubjectModel = new Schema({
         },
         required: true
     },
-    espb: {
-        type: Number,
-        required: true
-    },
-    classTime: {
-        type: [String],
-        required: true
-    },
-    excerTime: {
-        type: [String],
-        required: true
-    },
-    propositions: {
-        type: String,
-        required: true
-    },
-    subjectGoal: {
-        type: String,
-        required: true
-    },
-    examMaterials: {
-        type: {
-            examExamples: {
-                type: [String],
-                required: false
-            },
-            examSolutions: {
-                type: [String],
-                required: false
-            },
-            isExamExamplesHidden: {
-                type: Boolean,
-                required: true,
-            }
-        },
-        required: true,
-        default: {
-            isExamExamplesHidden: false,
-            examExamples: [],
-            examSolutions: []
-        }
-    },
     lectures: {
         type: [String],
         required: false
@@ -95,7 +78,55 @@ const SubjectModel = new Schema({
         type: [String],
         required: false
     },
-    haveLab: {
+    notifications: {
+        type: [{
+                title: {
+                    type: String,
+                    required: true
+                },
+                dateCreation: {
+                    type: Date,
+                    required: true,
+                    default: Date.now()
+                },
+                content: {
+                    type: String,
+                    required: true
+                },
+                creator: {
+                    type: String,
+                    required: true
+                },
+                files: {
+                    type: [String],
+                    required: false
+                }
+            }],
+        required: false
+    },
+    examMaterials: {
+        type: {
+            examples: {
+                type: [String],
+                required: false
+            },
+            solutions: {
+                type: [String],
+                required: false
+            },
+            isHidden: {
+                type: Boolean,
+                required: true,
+            }
+        },
+        required: true,
+        default: {
+            isHidden: false,
+            examples: [],
+            solutions: []
+        }
+    },
+    bLab: {
         type: Boolean,
         required: true,
         default: false
@@ -106,14 +137,14 @@ const SubjectModel = new Schema({
                 type: Boolean,
                 required: true
             },
+            basicInfo: {
+                type: String,
+                required: false
+            },
             numberOfLabs: {
                 type: Number,
                 required: true,
                 default: 0
-            },
-            basicInfo: {
-                type: String,
-                required: false
             },
             labs: {
                 type: [{
@@ -175,37 +206,6 @@ const SubjectModel = new Schema({
             isHidden: false,
             projects: []
         }
-    },
-    notifications: {
-        type: [{
-                title: {
-                    type: String,
-                    required: true
-                },
-                dateCreation: {
-                    type: Date,
-                    required: true,
-                    default: Date.now()
-                },
-                content: {
-                    type: String,
-                    required: true
-                },
-                creator: {
-                    type: String,
-                    required: true
-                },
-                files: {
-                    type: [String],
-                    required: false
-                }
-            }],
-        required: false
-    },
-    comment: {
-        type: String,
-        required: false,
-        default: ''
     }
 });
 exports.default = mongoose_1.default.model('Subject', SubjectModel, 'Subject');

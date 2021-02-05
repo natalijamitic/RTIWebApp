@@ -6,10 +6,10 @@ const EndProjectModel = new Schema({
     title:{
         type: String
     },
-    purpose: {
+    description:{
         type: String
     },
-    description:{
+    purpose: {
         type: String
     }
 });

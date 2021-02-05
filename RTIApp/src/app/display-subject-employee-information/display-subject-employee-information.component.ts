@@ -80,7 +80,7 @@ export class DisplaySubjectEmployeeInformationComponent implements OnInit {
   }
 
   public update() {
-    if (!this.subject || !this.subject.title || !this.subject.type || !this.subject.subjectGoal || !this.subject.propositions ||
+    if (!this.subject || !this.subject.title || !this.subject.type || !this.subject.goal || !this.subject.propositions ||
        !this.classTime || !this.excerTime) {
       this.msg = "Popunite sva obavezna polja.";
       return;

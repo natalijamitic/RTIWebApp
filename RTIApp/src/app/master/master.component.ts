@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SubjectsService } from '../Services/Subjects/subjects.service';
 
-export interface IWeekly {
+export interface Itimetable {
   lecture: number;
   exercise: number;
   lab: number;
@@ -15,7 +15,7 @@ export interface ISubjectShort {
   semestar: number;
   code: string;
   title: string;
-  weekly: IWeekly;
+  timetable: Itimetable;
   espb: Number;
 }
 

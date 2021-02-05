@@ -61,7 +61,7 @@ export class AddNewListComponent implements OnInit {
                 code: subj.code,
                 title: subj.title,
                 type: subj.type,
-                weekly: subj.weekly,
+                timetable: subj.timetable,
                 semestar: subj.semestar,
                 espb: subj.espb
               });

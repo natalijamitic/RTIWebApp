@@ -12,7 +12,7 @@ export interface ISubjectNew {
   semestar: number;
   title: string;
   code: string;
-  weekly: {
+  timetable: {
     lecture: number,
     exercise: number,
     lab: number,
@@ -21,7 +21,7 @@ export interface ISubjectNew {
   classTime: string[];
   excerTime: string[];
   propositions: string;
-  subjectGoal: string;
+  goal: string;
   comment: string;
 }
 
@@ -71,7 +71,7 @@ export class AddNewSubjectComponent implements OnInit {
       semestar: 1,
       title: '',
       code: '',
-      weekly: {
+      timetable: {
         lecture: 0,
         exercise: 0,
         lab: 0,
@@ -80,13 +80,13 @@ export class AddNewSubjectComponent implements OnInit {
       classTime: [],
       excerTime: [],
       propositions: '',
-      subjectGoal: '',
+      goal: '',
       comment: '',
     }
   }
 
   public update() {
-    if (!this.subject || !this.subject.title || !this.subject.type || !this.subject.subjectGoal || !this.subject.propositions ||
+    if (!this.subject || !this.subject.title || !this.subject.type || !this.subject.goal || !this.subject.propositions ||
         !this.classTime || !this.subject.department || !this.excerTime) {
       this.msg = "Popunite sva obavezna polja.";
       return;

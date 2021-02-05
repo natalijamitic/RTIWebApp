@@ -480,7 +480,7 @@ var uploadInfoFile = multer({
     fileFilter(req, file, cb) {
         if (!file.originalname.match(/\.(pdf|pptx|zip|7z)$/)) {
             //Error
-            cb(new Error('Please upload PDF files only!'));
+            cb(new Error('Please upload PDF, PPTX, ZIP, 7Z files only!'));
         }
         //Success
         cb(undefined, true);

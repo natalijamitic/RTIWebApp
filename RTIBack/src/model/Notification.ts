@@ -19,14 +19,14 @@ const NotificationModel = new Schema({
         type: String,
         required: true
     },
+    type:{
+        type: NotificationsTypeModel,
+        required: true
+    },
     dateCreation:{
         type: Date,
         required: true,
         default: Date.now()
-    },
-    type:{
-        type: NotificationsTypeModel,
-        required: true
     }
 });
 

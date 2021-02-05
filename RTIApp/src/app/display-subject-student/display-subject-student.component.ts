@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ISubjNotif } from '../display-subject-notifications/display-subject-notifications.component';
-import { IWeekly } from '../master/master.component';
+import { Itimetable } from '../master/master.component';
 import { IStudent, IUser } from '../registration/registration.component';
 import { AuthenticationService } from '../Services/Authentication/authentication.service';
 import { StudentService } from '../Services/Students/student.service';

@@ -144,7 +144,7 @@ export class DisplaySubjectEmployeeLabMaterialsComponent implements OnInit {
 
   public update(): void {
     if (this.subject.lab.numberOfLabs > 0) {
-      this.subject.haveLab = true;
+      this.subject.bLab = true;
     }
     this.updateSubject();
   }
@@ -157,7 +157,7 @@ export class DisplaySubjectEmployeeLabMaterialsComponent implements OnInit {
 
   public addNewLab(): void {
     this.subject.lab.labs.push(this.newLab);
-    this.subject.haveLab = true;
+    this.subject.bLab = true;
     this.initFiles();
     this.initNewLab();
     this.updateSubject();

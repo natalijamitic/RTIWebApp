@@ -81,10 +81,10 @@
                             <td>
                                 <div class="form-group input-group">
                                     <input name="goal" class="form-control"
-                                        placeholder="Cilj" type="text" [(ngModel)]="subject.subjectGoal">
+                                        placeholder="Cilj" type="text" [(ngModel)]="subject.goal">
                                 </div>
                                 <div class="form-group input-group">
-                                    <input name="goal" class="form-control"
+                                    <input name="prop" class="form-control"
                                         placeholder="Propozicije" type="text" [(ngModel)]="subject.propositions">
                                 </div>
                             </td>
@@ -120,19 +120,19 @@
                             <td>
                                 <div class="form-group input-group">
                                     <input name="lecture" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
-                                        placeholder="Predavanja" type="number" [(ngModel)]="subject.weekly.lecture" min="0">
+                                        placeholder="Predavanja" type="number" [(ngModel)]="subject.timetable.lecture" min="0">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group input-group">
                                     <input name="lecture2" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
-                                        placeholder="Vezbe" type="number" [(ngModel)]="subject.weekly.exercise" min="0">
+                                        placeholder="Vezbe" type="number" [(ngModel)]="subject.timetable.exercise" min="0">
                                 </div>
                             </td>
                             <td>
                                 <div class="form-group input-group">
                                     <input name="lecture3" onkeypress="return /[0-9]/i.test(event.key)" class="form-control"
-                                        placeholder="Labovi" type="number" [(ngModel)]="subject.weekly.lab" min="0">
+                                        placeholder="Labovi" type="number" [(ngModel)]="subject.timetable.lab" min="0">
                                 </div>
                             </td>
                         </tr>

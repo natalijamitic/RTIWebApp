@@ -395,7 +395,7 @@ router.route('/notificationtypes/delete/:type').delete((request, response) => {
 
 /************SUBJECT *************/
 router.route('/subjects/insert/notification').post((request, response) => {
-    subjectQueries.insertNotification(request.body.notif, request.body.subjects).then((result) => {
+    subjectQueries.insertNotification(request.body.notif, request.body.subjects).then((result: any) => {
         response.status(200).json(result);
     })
 });
@@ -438,10 +438,10 @@ const subjectInfoFilesUrl = "src/uploaded_files/subjects";
 
 /*** PORFILE PICTURE ***/
 var storageImg = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: function (req: any, file: any, cb: any) {
         cb(null, profilePictureUrl);
     },
-    filename: function (req, file, cb) {
+    filename: function (req: any, file: any, cb: any) {
         cb(null, file.fieldname + '-' + Date.now() + '.' + fileExtension(file.originalname))
     }
 });
@@ -450,7 +450,7 @@ var uploadImg = multer({
     limits: {
         fileSize: 2000000 //2MBs
     },
-    fileFilter(req, file, cb) {
+    fileFilter(req: any, file: any, cb: any) {
         if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
             //Error
             cb(new Error('Please upload JPG and PNG images only!'))
@@ -509,10 +509,10 @@ app.post('/register/uploadfile', uploadImg.single('uploadedImage'), (req, res, n
 
 /*** PORFILE PICTURE ***/
 var storageInfoFile = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: function (req: any, file: any, cb: any) {
         cb(null, subjectInfoFilesUrl);
     },
-    filename: function (req, file, cb) {
+    filename: function (req: any, file: any, cb: any) {
         cb(null, file.fieldname + '-' + Date.now() + '.' + fileExtension(file.originalname))
     }
 });
@@ -522,10 +522,10 @@ var uploadInfoFile = multer({
     limits: {
         fileSize: 10000000 //2MBs
     },
-    fileFilter(req, file, cb) {
+    fileFilter(req: any, file: any, cb: any) {
         if (!file.originalname.match(/\.(pdf|pptx|zip|7z)$/)) {
             //Error
-            cb(new Error('Please upload PDF files only!'))
+            cb(new Error('Please upload PDF, PPTX, ZIP, 7Z files only!'))
         }
         //Success
         cb(undefined, true)

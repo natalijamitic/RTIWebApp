@@ -5,13 +5,13 @@ import { map } from 'rxjs/operators';
 import { ISubjectNew } from 'src/app/add-new-subject/add-new-subject.component';
 import { INotification } from 'src/app/add-subject-notifications/add-subject-notifications.component';
 import { ISubjNotif } from 'src/app/display-subject-notifications/display-subject-notifications.component';
-import { ISubjectShort, IWeekly } from 'src/app/master/master.component';
+import { ISubjectShort, Itimetable } from 'src/app/master/master.component';
 import { environment } from 'src/environments/environment';
 
 export interface ISubjExamMaterials {
-    examExamples: string[];
-    examSolutions: string[];
-    isExamExamplesHidden: boolean;
+    examples: string[];
+    solutions: string[];
+    isHidden: boolean;
 }
 export interface ISubjLab {
     labDescription: string;
@@ -40,17 +40,17 @@ export interface ISubjectFull {
     espb: number;
     examMaterials: ISubjExamMaterials;
     exercises: string[];
-    haveLab: boolean;
+    bLab: boolean;
     lab: ISubjLabMaterials;
     lectures: string[];
     notifications: INotification[];
     project: ISubjProjectMaterials;
     propositions: string;
     semestar: number;
-    subjectGoal: string;
+    goal: string;
     title: string;
     type: string;
-    weekly: IWeekly;
+    timetable: Itimetable;
     comment: string;
 }
 
@@ -92,7 +92,7 @@ export class SubjectsService {
                             semestar: subj.semestar,
                             code: subj.code,
                             title: subj.title,
-                            weekly: subj.weekly,
+                            timetable: subj.timetable,
                             espb: subj.espb,
                         });
                     }
@@ -112,7 +112,7 @@ export class SubjectsService {
                             semestar: subj.semestar,
                             code: subj.code,
                             title: subj.title,
-                            weekly: subj.weekly,
+                            timetable: subj.timetable,
                             espb: subj.espb,
                         });
                     }
@@ -162,20 +162,20 @@ export class SubjectsService {
                 semestar: s.semestar,
                 title: s.title,
                 code: s.code,
-                weekly: s.weekly,
+                timetable: s.timetable,
                 espb: s.espb,
                 classTime: s.classTime,
                 excerTime: s.excerTime,
                 propositions: s.propositions,
-                subjectGoal: s.subjectGoal,
+                goal: s.goal,
                 examMaterials: {
-                    examExamples: s.examMaterials.examExamples,
-                    examSolutions: s.examMaterials.examSolutions,
-                    isExamExamplesHidden: s.examMaterials.isExamExamplesHidden
+                    examples: s.examMaterials.examples,
+                    solutions: s.examMaterials.solutions,
+                    isHidden: s.examMaterials.isHidden
                 },
                 lectures: s.lectures,
                 exercises: s.exercises,
-                haveLab: s.haveLab,
+                bLab: s.bLab,
                 lab: {
                     isHidden: s.lab.isHidden,
                     numberOfLabs: s.lab.numberOfLabs,

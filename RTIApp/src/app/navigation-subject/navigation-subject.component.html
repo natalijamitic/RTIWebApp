@@ -18,7 +18,7 @@
             <li class="nav-item" [routerLinkActive]="['active']">
                 <a class="nav-link" routerLink="vezbe">Vezbe</a>
             </li>
-            <li *ngIf="subject && !subject.examMaterials.isExamExamplesHidden" class="nav-item" [routerLinkActive]="['active']">
+            <li *ngIf="subject && !subject.examMaterials.isHidden" class="nav-item" [routerLinkActive]="['active']">
                 <a class="nav-link" routerLink="ispitna-pitanja">Ispitna pitanja</a>
             </li>
             <li *ngIf="subject && !subject.lab.isHidden" class="nav-item" [routerLinkActive]="['active']">

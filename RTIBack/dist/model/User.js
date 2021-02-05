@@ -36,6 +36,16 @@ const EmployeeModel = new Schema({
         type: String,
         required: true
     },
+    status: {
+        type: String,
+        required: true,
+        enum: ["aktivan", "neaktivan"]
+    },
+    type: {
+        type: String,
+        required: true,
+        enum: ["nastavnik", "laborant"]
+    },
     firstName: {
         type: String,
         required: true
@@ -68,16 +78,6 @@ const EmployeeModel = new Schema({
     room: {
         type: String,
         required: false
-    },
-    status: {
-        type: String,
-        required: true,
-        enum: ["aktivan", "neaktivan"]
-    },
-    type: {
-        type: String,
-        required: true,
-        enum: ["nastavnik", "laborant"]
     }
 });
 const StudentModel = new Schema({
