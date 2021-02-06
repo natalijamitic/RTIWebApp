@@ -45,6 +45,12 @@ export function existsStudent(student: any): any {
         .then((user: any) => user);
 }
 
+
+export function existsStudent2(student: any): any {
+    return Student.findOne({ username: student.username })
+        .then((user: any) => user);
+}
+
 export function existsEmployee(employee: any): any {
     return Employee.findOne({ username: employee.username })
         .then((user: any) => user);
@@ -95,6 +101,12 @@ export async function registerStudent(user: any, student: any): Promise<any> {
             resolve({ status: -1, msg: "Korisnik sa tim indeksom na takvim studijama vec postoji." });
         });
     } else {
+        exists = await existsStudent2(student);
+        if (exists) {
+            return new Promise(resolve => {
+                resolve({ status: -1, msg: "Korisnik sa tim username-om vec postoji." });
+            });
+        }
         await insertUser(user);
         await insertStudent(student);
         return new Promise(resolve => {

@@ -27,7 +27,7 @@ export class DisplayStudentComponent implements OnInit, OnDestroy {
   private _studentUsername = "piGGBBBBx";
 
   public get studentUsername(): string {
-    this._studentUsername = `${this.student.lastName ? this.student.lastName[0].toLowerCase() : this.studentOld?.lastName[0]?.toLowerCase()}${this.student.firstName ? this.student.firstName[0].toLowerCase() : this.studentOld?.firstName[0]?.toLowerCase()}${this.student.index?.length > 2 ? this.student.index[2] : this.studentOld?.index[2]}${this.student.index?.length > 3 ? this.student.index[3] : this.studentOld?.index[3]}${this.student.index?.length > 8 ? this.student.index.substr(5, 4) : this.studentOld?.index.substr(5, 4)}${this.student.type !== 'Tip studija' ? this.student.type : 'x'}`;
+    //this._studentUsername = `${this.student.lastName ? this.student.lastName[0].toLowerCase() : this.studentOld?.lastName[0]?.toLowerCase()}${this.student.firstName ? this.student.firstName[0].toLowerCase() : this.studentOld?.firstName[0]?.toLowerCase()}${this.student.index?.length > 2 ? this.student.index[2] : this.studentOld?.index[2]}${this.student.index?.length > 3 ? this.student.index[3] : this.studentOld?.index[3]}${this.student.index?.length > 8 ? this.student.index.substr(5, 4) : this.studentOld?.index.substr(5, 4)}${this.student.type !== 'Tip studija' ? this.student.type : 'x'}`;
     return this._studentUsername;
   }
 
@@ -59,6 +59,7 @@ export class DisplayStudentComponent implements OnInit, OnDestroy {
             status: this.studentOld.status
           };
 
+          this._studentUsername = this.student.username;
         })
       }
     });
@@ -83,7 +84,7 @@ export class DisplayStudentComponent implements OnInit, OnDestroy {
 
 
     let studentNew: IStudent = {
-      username: `${this.studentUsername}@student.etf.rs`,
+      username: this.studentUsername,
       firstName: this.student.firstName ? this.student.firstName : this.studentOld.firstName,
       lastName: this.student.lastName ? this.student.lastName : this.studentOld.lastName,
       index: this.student.index ? this.student.index : this.studentOld.index,
@@ -92,7 +93,7 @@ export class DisplayStudentComponent implements OnInit, OnDestroy {
     };
 
     let newUser: IUser = {
-      username: `${this.studentUsername}@student.etf.rs`,
+      username: this.studentUsername,
       password: this.pass1 ? this.pass1 : this.user.password,
       firstLogin: this.firstLogin != "Prvo logovanje" ? this.firstLogin : this.user.firstLogin,
       type: this.user.type

@@ -26,7 +26,6 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const seed_1 = __importDefault(require("./seed/seed"));
 const fs = __importStar(require("fs"));
 const middleware = __importStar(require("./middleware"));
 const userQueries = __importStar(require("./query/User"));
@@ -48,7 +47,7 @@ const connection = mongoose_1.default.connection;
 mongoose_1.default.set('useFindAndModify', false);
 connection.once('open', () => {
     // SEED DATABASE LINE 35
-    seed_1.default();
+    //seed();
     console.log('mongo connected');
 });
 /************* ROUTES ***************/

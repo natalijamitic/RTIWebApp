@@ -26,7 +26,7 @@ const subjects = [
             isHidden: false
         },
         propositions: "Barem 50 poena da bi se polozio ispit.",
-        goal: "Cilj je nauciti osnove programiranja.",
+        goal: "Cilj je savladati osnove programiranja.",
         classTime: ["Utorak 18", "Cetvrtak 11"],
         excerTime: ["Utorak 18", "Cetvrtak 11"],
         bLab: true,
@@ -109,7 +109,7 @@ const subjects = [
         classTime: ["Cetvrta 18", "Petak 8"],
         excerTime: ["Petak 8", "Petak 10"],
         propositions: "Propozicije tek treba da budu odbjavljene.",
-        goal: "Cilj je nauciti osnove matematike 2.",
+        goal: "Cilj je savladati osnove matematike 2.",
         bLab: false,
     },
     {
@@ -127,7 +127,7 @@ const subjects = [
         classTime: ["Utorak 8", "Cetvrtak 10"],
         excerTime: ["Utorak 8", "Cetvrtak 10"],
         propositions: "Propozicije tek treba da budu odbjavljene.",
-        goal: "Cilj je nauciti osnove veb programiranja.",
+        goal: "Cilj je savladati osnove veb programiranja.",
         bLab: true,
         lab: {
             isHidden: false,
@@ -175,7 +175,7 @@ const subjects = [
         classTime: ["Utorak 8", "Cetvrtak 10"],
         excerTime: ["Utorak 8", "Cetvrtak 10"],
         propositions: "Propozicije tek treba da budu odbjavljene.",
-        goal: "Cilj je nauciti osnove operativnih sistema.",
+        goal: "Cilj je savladati osnove operativnih sistema.",
         bLab: false,
         project: {
             isHidden: true,
@@ -201,7 +201,7 @@ const subjects = [
         classTime: ["Utorak 18", "Cetvrtak 14"],
         excerTime: ["Utorak 8", "Cetvrtak 10"],
         propositions: "Propozicije tek treba da budu odbjavljene.",
-        goal: "Cilj je nauciti osnove.",
+        goal: "Cilj je savladati osnove.",
         bLab: false,
     },
     {
@@ -219,7 +219,7 @@ const subjects = [
         classTime: ["Utorak 18", "Cetvrtak 14"],
         excerTime: ["Utorak 8", "Cetvrtak 10"],
         propositions: "Propozicije tek treba da budu odbjavljene.",
-        goal: "Cilj je nauciti osnove.",
+        goal: "Cilj je savladati osnove.",
         bLab: false
     }
 ];

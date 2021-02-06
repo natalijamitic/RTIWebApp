@@ -32,7 +32,7 @@ mongoose.set('useFindAndModify', false);
 
 connection.once('open', () => {
     // SEED DATABASE LINE 35
-    seed();
+    //seed();
     console.log('mongo connected');
 })
 

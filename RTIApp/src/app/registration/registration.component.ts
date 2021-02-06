@@ -201,7 +201,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
     this.subscriptionEmployee = this.authService.registerEmployee(this.userEmpl, this.employee).subscribe(
       (result: any) => {
-
+        this.msgEmpl = "Uspeh"
         if (this.loggedUser.type == 'admin') {
           this.uploadImage(result);
         } else {
